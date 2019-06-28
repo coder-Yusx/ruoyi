@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('新增数据校验修改记录')" />
+</head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-tDataCheck-add">
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">检查用户名：</label>
+				<div class="col-sm-8">
+					<input id="checkOsuser" name="checkOsuser" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">检查表名</label>
+				<div class="col-sm-8">
+					<input id="checkTable" name="checkTable" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">检查字段名：</label>
+				<div class="col-sm-8">
+					<input id="checkCol" name="checkCol" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">检查表的主键名称：</label>
+				<div class="col-sm-8">
+					<input id="checkIdname" name="checkIdname" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">检查表主键值：</label>
+				<div class="col-sm-8">
+					<input id="checkId" name="checkId" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">原始值：</label>
+				<div class="col-sm-8">
+					<input id="oldval" name="oldval" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">修改后的值：</label>
+				<div class="col-sm-8">
+					<input id="newval" name="newval" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">操作员：</label>
+				<div class="col-sm-8">
+					<input id="osuser" name="osuser" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">操作时间：</label>
+				<div class="col-sm-8">
+					<input id="osdate" name="osdate" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">0:未修改  1:已修改未审核  2:已审核   3:审核不通过 0:未修改  1:已修改未审核  2:已审核   3:审核不通过：</label>
+				<div class="col-sm-8">
+					<input id="checkStat" name="checkStat" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">0:当前数据库数据  1:上一还原点：</label>
+				<div class="col-sm-8">
+					<input id="restStat" name="restStat" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">扩展字段：</label>
+				<div class="col-sm-8">
+					<input id="ext1" name="ext1" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">扩展字段：</label>
+				<div class="col-sm-8">
+					<input id="ext2" name="ext2" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">扩展字段：</label>
+				<div class="col-sm-8">
+					<input id="ext3" name="ext3" class="form-control" type="text">
+				</div>
+			</div>
+		</form>
+	</div>
+    <div th:include="include::footer"></div>
+    <script type="text/javascript">
+		var prefix = ctx + "basp/tDataCheck"
+		$("#form-tDataCheck-add").validate({
+			rules:{
+				xxxx:{
+					required:true,
+				},
+			},
+			focusCleanup: true
+		});
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	            $.operate.save(prefix + "/add", $('#form-tDataCheck-add').serialize());
+	        }
+	    }
+	</script>
+</body>
+</html>

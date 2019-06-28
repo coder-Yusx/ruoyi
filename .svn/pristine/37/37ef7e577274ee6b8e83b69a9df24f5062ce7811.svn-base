@@ -1,0 +1,83 @@
+package com.ruoyi.basp.service.impl;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.ruoyi.basp.mapper.TDataCheckMapper;
+import com.ruoyi.basp.domain.TDataCheck;
+import com.ruoyi.basp.service.ITDataCheckService;
+import com.ruoyi.common.core.text.Convert;
+
+/**
+ * 数据校验修改记录 服务层实现
+ * 
+ * @author ruoyi
+ * @date 2019-06-04
+ */
+@Service
+public class TDataCheckServiceImpl implements ITDataCheckService 
+{
+	@Autowired
+	private TDataCheckMapper tDataCheckMapper;
+
+	/**
+     * 查询数据校验修改记录信息
+     * 
+     * @param id 数据校验修改记录ID
+     * @return 数据校验修改记录信息
+     */
+    @Override
+	public TDataCheck selectTDataCheckById(String id)
+	{
+	    return tDataCheckMapper.selectTDataCheckById(id);
+	}
+	
+	/**
+     * 查询数据校验修改记录列表
+     * 
+     * @param tDataCheck 数据校验修改记录信息
+     * @return 数据校验修改记录集合
+     */
+	@Override
+	public List<TDataCheck> selectTDataCheckList(TDataCheck tDataCheck)
+	{
+	    return tDataCheckMapper.selectTDataCheckList(tDataCheck);
+	}
+	
+    /**
+     * 新增数据校验修改记录
+     * 
+     * @param tDataCheck 数据校验修改记录信息
+     * @return 结果
+     */
+	@Override
+	public int insertTDataCheck(TDataCheck tDataCheck)
+	{
+	    return tDataCheckMapper.insertTDataCheck(tDataCheck);
+	}
+	
+	/**
+     * 修改数据校验修改记录
+     * 
+     * @param tDataCheck 数据校验修改记录信息
+     * @return 结果
+     */
+	@Override
+	public int updateTDataCheck(TDataCheck tDataCheck)
+	{
+	    return tDataCheckMapper.updateTDataCheck(tDataCheck);
+	}
+
+	/**
+     * 删除数据校验修改记录对象
+     * 
+     * @param ids 需要删除的数据ID
+     * @return 结果
+     */
+	@Override
+	public int deleteTDataCheckByIds(String ids)
+	{
+		return tDataCheckMapper.deleteTDataCheckByIds(Convert.toStrArray(ids));
+	}
+	
+}

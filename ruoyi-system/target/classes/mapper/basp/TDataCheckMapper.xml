@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.basp.mapper.TDataCheckMapper">
+    
+    <resultMap type="TDataCheck" id="TDataCheckResult">
+        <result property="id"    column="id"    />
+        <result property="checkOsuser"    column="check_osuser"    />
+        <result property="checkTable"    column="check_table"    />
+        <result property="checkCol"    column="check_col"    />
+        <result property="checkIdname"    column="check_idname"    />
+        <result property="checkId"    column="check_id"    />
+        <result property="oldval"    column="oldval"    />
+        <result property="newval"    column="newval"    />
+        <result property="osuser"    column="osuser"    />
+        <result property="osdate"    column="osdate"    />
+        <result property="checkStat"    column="check_stat"    />
+        <result property="restStat"    column="rest_stat"    />
+        <result property="ext1"    column="ext1"    />
+        <result property="ext2"    column="ext2"    />
+        <result property="ext3"    column="ext3"    />
+        <result property="tableId"    column="tableId"    />
+    </resultMap>
+	
+	<sql id="selectTDataCheckVo">
+        select id, check_osuser, check_table, check_col, check_idname, check_id, oldval, newval, osuser, osdate, check_stat, rest_stat, ext1, ext2, ext3 from ownfgj.t_data_check
+    </sql>
+	
+    <select id="selectTDataCheckList" parameterType="TDataCheck" resultMap="TDataCheckResult">
+        select a.* from ownfgj.t_data_check a right join (select check_id,max(osdate) osdate from ownfgj.t_data_check group by check_id) b on a.check_id=b.check_id and a.osdate =b.osdate
+        <where>  
+            <if test="id != null  and id != '' "> and a.id = #{id}</if>
+             <if test="checkOsuser != null  and checkOsuser != '' "> and a.check_osuser = #{checkOsuser}</if>
+             <if test="checkTable != null  and checkTable != '' "> and a.check_table = #{checkTable}</if>
+             <if test="checkCol != null  and checkCol != '' "> and a.check_col = #{checkCol}</if>
+             <if test="checkIdname != null  and checkIdname != '' "> and a.check_idname = #{checkIdname}</if>
+             <if test="checkId != null  and checkId != '' "> and a.check_id = #{checkId}</if>
+             <if test="oldval != null  and oldval != '' "> and a.oldval = #{oldval}</if>
+             <if test="newval != null  and newval != '' "> and a.newval = #{newval}</if>
+             <if test="osuser != null  and osuser != '' "> and a.osuser = #{osuser}</if>
+             <if test="osdate != null "> and a.osdate = #{osdate}</if>
+             <if test="checkStat != null  and checkStat != '' "> and a.check_stat = #{checkStat}</if>
+             <if test="restStat != null  and restStat != '' "> and a.rest_stat = #{restStat}</if>
+             <if test="ext1 != null  and ext1 != '' "> and a.ext1 = #{ext1}</if>
+             <if test="ext2 != null  and ext2 != '' "> and a.ext2 = #{ext2}</if>
+             <if test="ext3 != null  and ext3 != '' "> and a.ext3 = #{ext3}</if>
+         </where>
+    </select>
+    
+    <select id="selectTDataCheckById" parameterType="String" resultMap="TDataCheckResult">
+        <include refid="selectTDataCheckVo"/>
+        where id = #{id}
+    </select>
+
+    <select id="selectTDataCheckByTableId" parameterType="String" resultMap="TDataCheckResult">
+          SELECT
+        ID,
+        check_osuser,
+        CASE check_table WHEN  'ggfc_hb' THEN 'ggfc_hb公共户表'
+        WHEN 'cyzt_cyjg_kfs' THEN 'cyzt_cyjg_kfs从业主体_开发商表'
+        WHEN 'xmgl_xm_xmjbxxb' THEN 'xmgl_xm_xmjbxxb项目基本信息表'
+        WHEN 'ggfc_lb' THEN 'ggfc_lb公共楼表'
+        WHEN 'dj_gg_hmx' THEN 'dj_gg_hmx户明细_簿载表'
+        WHEN 'dj_gg_qlrmx' THEN 'dj_gg_qlrmx权利人明细_簿载层表'
+        ELSE '' END AS check_table,
+            check_col,
+            check_idname,
+            check_id,
+            oldval,
+            newval,
+            osuser,
+            osdate,
+            check_stat,
+            rest_stat,
+            ext1,
+            ext2,
+            ext3
+        FROM
+            ownfgj.t_data_check
+        where table_id = #{tableId}
+    </select>
+        
+    <insert id="insertTDataCheck" parameterType="TDataCheck">
+        insert into ownfgj.t_data_check
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null  and id != ''  ">id,</if>
+			<if test="checkOsuser != null  and checkOsuser != ''  ">check_osuser,</if>
+			<if test="checkTable != null  and checkTable != ''  ">check_table,</if>
+			<if test="checkCol != null  and checkCol != ''  ">check_col,</if>
+			<if test="checkIdname != null  and checkIdname != ''  ">check_idname,</if>
+			<if test="checkId != null  and checkId != ''  ">check_id,</if>
+			<if test="oldval != null  and oldval != ''  ">oldval,</if>
+			<if test="newval != null  and newval != ''  ">newval,</if>
+			<if test="osuser != null  and osuser != ''  ">osuser,</if>
+            osdate,
+			<if test="checkStat != null  and checkStat != ''  ">check_stat,</if>
+			<if test="restStat != null  and restStat != ''  ">rest_stat,</if>
+			<if test="ext1 != null  and ext1 != ''  ">ext1,</if>
+			<if test="ext2 != null  and ext2 != ''  ">ext2,</if>
+			<if test="ext3 != null  and ext3 != ''  ">ext3,</if>
+            <if test="tableId != null  and tableId != ''  ">table_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null  and id != ''  ">#{id},</if>
+			<if test="checkOsuser != null  and checkOsuser != ''  ">#{checkOsuser},</if>
+			<if test="checkTable != null  and checkTable != ''  ">#{checkTable},</if>
+			<if test="checkCol != null  and checkCol != ''  ">#{checkCol},</if>
+			<if test="checkIdname != null  and checkIdname != ''  ">#{checkIdname},</if>
+			<if test="checkId != null  and checkId != ''  ">#{checkId},</if>
+			<if test="oldval != null  and oldval != ''  ">#{oldval},</if>
+			<if test="newval != null  and newval != ''  ">#{newval},</if>
+			<if test="osuser != null  and osuser != ''  ">#{osuser},</if>
+            sysdate,
+			<if test="checkStat != null  and checkStat != ''  ">#{checkStat},</if>
+			<if test="restStat != null  and restStat != ''  ">#{restStat},</if>
+			<if test="ext1 != null  and ext1 != ''  ">#{ext1},</if>
+			<if test="ext2 != null  and ext2 != ''  ">#{ext2},</if>
+			<if test="ext3 != null  and ext3 != ''  ">#{ext3},</if>
+            <if test="tableId != null  and tableId != ''  ">#{tableId},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateTDataCheck" parameterType="TDataCheck">
+        update ownfgj.t_data_check
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="checkOsuser != null  and checkOsuser != ''  ">check_osuser = #{checkOsuser},</if>
+            <if test="checkTable != null  and checkTable != ''  ">check_table = #{checkTable},</if>
+            <if test="checkCol != null  and checkCol != ''  ">check_col = #{checkCol},</if>
+            <if test="checkIdname != null  and checkIdname != ''  ">check_idname = #{checkIdname},</if>
+            <if test="checkId != null  and checkId != ''  ">check_id = #{checkId},</if>
+            <if test="oldval != null  and oldval != ''  ">oldval = #{oldval},</if>
+            <if test="newval != null  and newval != ''  ">newval = #{newval},</if>
+            <if test="osuser != null  and osuser != ''  ">osuser = #{osuser},</if>
+            <if test="osdate != null  ">osdate = #{osdate},</if>
+            <if test="checkStat != null  and checkStat != ''  ">check_stat = #{checkStat},</if>
+            <if test="restStat != null  and restStat != ''  ">rest_stat = #{restStat},</if>
+            <if test="ext1 != null  and ext1 != ''  ">ext1 = #{ext1},</if>
+            <if test="ext2 != null  and ext2 != ''  ">ext2 = #{ext2},</if>
+            <if test="ext3 != null  and ext3 != ''  ">ext3 = #{ext3},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+	<delete id="deleteTDataCheckById" parameterType="String">
+        delete from ownfgj.t_data_check where id = #{id}
+    </delete>
+	
+    <delete id="deleteTDataCheckByIds" parameterType="String">
+        delete from ownfgj.t_data_check where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <update id="recoveryById" parameterType="Map">
+        update ${checkOsuser}.${checkTable} set ${updateSql}
+        where ${checkIdname} = #{checkId}
+    </update>
+
+    <update id="updatesql" parameterType="String">
+       ${ext3}
+    </update>
+
+  <!--  修改记录表审核状态-->
+    <update id="updateById" parameterType="TDataCheck">
+        update ownfgj.t_data_check
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="checkOsuser != null  and checkOsuser != ''  ">check_osuser = #{checkOsuser},</if>
+            <if test="checkTable != null  and checkTable != ''  ">check_table = #{checkTable},</if>
+            <if test="checkCol != null  and checkCol != ''  ">check_col = #{checkCol},</if>
+            <if test="checkIdname != null  and checkIdname != ''  ">check_idname = #{checkIdname},</if>
+            <if test="checkId != null  and checkId != ''  ">check_id = #{checkId},</if>
+            <if test="oldval != null  and oldval != ''  ">oldval = #{oldval},</if>
+            <if test="newval != null  and newval != ''  ">newval = #{newval},</if>
+            <if test="osuser != null  and osuser != ''  ">osuser = #{osuser},</if>
+            <if test="osdate != null  ">osdate = #{osdate},</if>
+            <if test="checkStat != null  and checkStat != ''  ">check_stat = #{checkStat},</if>
+            <if test="restStat != null  and restStat != ''  ">rest_stat = #{restStat},</if>
+            <if test="ext1 != null  and ext1 != ''  ">ext1 = #{ext1},</if>
+            <if test="ext2 != null  and ext2 != ''  ">ext2 = #{ext2},</if>
+            <if test="ext3 != null  and ext3 != ''  ">ext3 = #{ext3},</if>
+        </trim>
+        where check_id = #{checkId}
+    </update>
+</mapper>

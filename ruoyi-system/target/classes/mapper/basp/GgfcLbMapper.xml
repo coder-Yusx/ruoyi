@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.basp.mapper.GgfcLbMapper">
+    
+    <resultMap type="GgfcLb" id="GgfcLbResult">
+        <result property="id"    column="id"    />
+        <result property="idXmxq"    column="id_xmxq"    />
+        <result property="lmc"    column="lmc"    />
+        <result property="fwzl"    column="fwzl"    />
+        <result property="jlx"    column="jlx"    />
+        <result property="mph"    column="mph"    />
+        <result property="dh"    column="dh"    />
+        <result property="zh"    column="zh"    />
+        <result property="zcs"    column="zcs"    />
+        <result property="jzjg"    column="jzjg"    />
+        <result property="jzyt"    column="jzyt"    />
+        <result property="tfh"    column="tfh"    />
+        <result property="cx"    column="cx"    />
+        <result property="zl"    column="zl"    />
+        <result property="jcnd"    column="jcnd"    />
+        <result property="jzzt"    column="jzzt"    />
+        <result property="dscs"    column="dscs"    />
+        <result property="dxcs"    column="dxcs"    />
+        <result property="sgbh"    column="sgbh"    />
+        <result property="jgrq"    column="jgrq"    />
+        <result property="jlsj"    column="jlsj"    />
+        <result property="zqm"    column="zqm"    />
+        <result property="chlx"    column="chlx"    />
+        <result property="sjly"    column="sjly"    />
+        <result property="chbgzt"    column="chbgzt"    />
+        <result property="bz"    column="bz"    />
+        <result property="sfyx"    column="sfyx"    />
+        <result property="ext1"    column="ext1"    />
+        <result property="ext2"    column="ext2"    />
+        <result property="ext3"    column="ext3"    />
+        <result property="ext4"    column="ext4"    />
+        <result property="ext5"    column="ext5"    />
+        <result property="bdcdyh"    column="bdcdyh"    />
+        <result property="tdsyqzh"    column="tdsyqzh"    />
+        <result property="tdyt"    column="tdyt"    />
+        <result property="tdlx"    column="tdlx"    />
+        <result property="tdsyqqdfs"    column="tdsyqqdfs"    />
+        <result property="tdsynxq"    column="tdsynxq"    />
+        <result property="tdsynxz"    column="tdsynxz"    />
+        <result property="tdspxx"    column="tdspxx"    />
+        <result property="ghspxx"    column="ghspxx"    />
+        <result property="jgspxx"    column="jgspxx"    />
+    </resultMap>
+	
+	<sql id="selectGgfcLbVo">
+        select id, id_xmxq, lmc, fwzl, jlx, mph, dh, zh, zcs, jzjg, jzyt, tfh, cx, zl, jcnd, jzzt, dscs, dxcs, sgbh, jgrq, jlsj, zqm, chlx, sjly, chbgzt, bz, sfyx, ext1, ext2, ext3, ext4, ext5, bdcdyh, tdsyqzh, tdyt, tdlx, tdsyqqdfs, tdsynxq, tdsynxz, tdspxx, ghspxx, jgspxx from basp.ggfc_lb
+    </sql>
+	
+    <select id="selectGgfcLbList" parameterType="GgfcLb" resultMap="GgfcLbResult">
+        <include refid="selectGgfcLbVo"/>
+        <where>  
+            <if test="id != null  and id != '' "> and id = #{id}</if>
+             <if test="idXmxq != null  and idXmxq != '' "> and id_xmxq = #{idXmxq}</if>
+             <if test="lmc != null  and lmc != '' "> and lmc = #{lmc}</if>
+             <if test="fwzl != null  and fwzl != '' "> and fwzl = #{fwzl}</if>
+             <if test="jlx != null  and jlx != '' "> and jlx = #{jlx}</if>
+             <if test="mph != null  and mph != '' "> and mph = #{mph}</if>
+             <if test="dh != null  and dh != '' "> and dh = #{dh}</if>
+             <if test="zh != null  and zh != '' "> and zh = #{zh}</if>
+             <if test="zcs != null  and zcs != '' "> and zcs = #{zcs}</if>
+             <if test="jzjg != null  and jzjg != '' "> and jzjg = #{jzjg}</if>
+             <if test="jzyt != null  and jzyt != '' "> and jzyt = #{jzyt}</if>
+             <if test="tfh != null  and tfh != '' "> and tfh = #{tfh}</if>
+             <if test="cx != null  and cx != '' "> and cx = #{cx}</if>
+             <if test="zl != null  and zl != '' "> and zl = #{zl}</if>
+             <if test="jcnd != null  and jcnd != '' "> and jcnd = #{jcnd}</if>
+             <if test="jzzt != null  and jzzt != '' "> and jzzt = #{jzzt}</if>
+             <if test="dscs != null  and dscs != '' "> and dscs = #{dscs}</if>
+             <if test="dxcs != null  and dxcs != '' "> and dxcs = #{dxcs}</if>
+             <if test="sgbh != null  and sgbh != '' "> and sgbh = #{sgbh}</if>
+             <if test="jgrq != null "> and jgrq = #{jgrq}</if>
+             <if test="jlsj != null "> and jlsj = #{jlsj}</if>
+             <if test="zqm != null  and zqm != '' "> and zqm = #{zqm}</if>
+             <if test="chlx != null  and chlx != '' "> and chlx = #{chlx}</if>
+             <if test="sjly != null  and sjly != '' "> and sjly = #{sjly}</if>
+             <if test="chbgzt != null  and chbgzt != '' "> and chbgzt = #{chbgzt}</if>
+             <if test="bz != null  and bz != '' "> and bz = #{bz}</if>
+             <if test="sfyx != null  and sfyx != '' "> and sfyx = #{sfyx}</if>
+             <if test="ext1 != null  and ext1 != '' "> and ext1 = #{ext1}</if>
+             <if test="ext2 != null  and ext2 != '' "> and ext2 = #{ext2}</if>
+             <if test="ext3 != null  and ext3 != '' "> and ext3 = #{ext3}</if>
+             <if test="ext4 != null  and ext4 != '' "> and ext4 = #{ext4}</if>
+             <if test="ext5 != null  and ext5 != '' "> and ext5 = #{ext5}</if>
+             <if test="bdcdyh != null  and bdcdyh != '' "> and bdcdyh = #{bdcdyh}</if>
+             <if test="tdsyqzh != null  and tdsyqzh != '' "> and tdsyqzh = #{tdsyqzh}</if>
+             <if test="tdyt != null  and tdyt != '' "> and tdyt = #{tdyt}</if>
+             <if test="tdlx != null  and tdlx != '' "> and tdlx = #{tdlx}</if>
+             <if test="tdsyqqdfs != null  and tdsyqqdfs != '' "> and tdsyqqdfs = #{tdsyqqdfs}</if>
+             <if test="tdsynxq != null "> and tdsynxq = #{tdsynxq}</if>
+             <if test="tdsynxz != null "> and tdsynxz = #{tdsynxz}</if>
+             <if test="tdspxx != null  and tdspxx != '' "> and tdspxx = #{tdspxx}</if>
+             <if test="ghspxx != null  and ghspxx != '' "> and ghspxx = #{ghspxx}</if>
+             <if test="jgspxx != null  and jgspxx != '' "> and jgspxx = #{jgspxx}</if>
+         </where>
+    </select>
+    
+    <select id="selectGgfcLbById" parameterType="String" resultMap="GgfcLbResult">
+        <include refid="selectGgfcLbVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertGgfcLb" parameterType="GgfcLb">
+        insert into basp.ggfc_lb
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null  and id != ''  ">id,</if>
+			<if test="idXmxq != null  and idXmxq != ''  ">id_xmxq,</if>
+			<if test="lmc != null  and lmc != ''  ">lmc,</if>
+			<if test="fwzl != null  and fwzl != ''  ">fwzl,</if>
+			<if test="jlx != null  and jlx != ''  ">jlx,</if>
+			<if test="mph != null  and mph != ''  ">mph,</if>
+			<if test="dh != null  and dh != ''  ">dh,</if>
+			<if test="zh != null  and zh != ''  ">zh,</if>
+			<if test="zcs != null  and zcs != ''  ">zcs,</if>
+			<if test="jzjg != null  and jzjg != ''  ">jzjg,</if>
+			<if test="jzyt != null  and jzyt != ''  ">jzyt,</if>
+			<if test="tfh != null  and tfh != ''  ">tfh,</if>
+			<if test="cx != null  and cx != ''  ">cx,</if>
+			<if test="zl != null  and zl != ''  ">zl,</if>
+			<if test="jcnd != null  and jcnd != ''  ">jcnd,</if>
+			<if test="jzzt != null  and jzzt != ''  ">jzzt,</if>
+			<if test="dscs != null  and dscs != ''  ">dscs,</if>
+			<if test="dxcs != null  and dxcs != ''  ">dxcs,</if>
+			<if test="sgbh != null  and sgbh != ''  ">sgbh,</if>
+			<if test="jgrq != null  ">jgrq,</if>
+			<if test="jlsj != null  ">jlsj,</if>
+			<if test="zqm != null  and zqm != ''  ">zqm,</if>
+			<if test="chlx != null  and chlx != ''  ">chlx,</if>
+			<if test="sjly != null  and sjly != ''  ">sjly,</if>
+			<if test="chbgzt != null  and chbgzt != ''  ">chbgzt,</if>
+			<if test="bz != null  and bz != ''  ">bz,</if>
+			<if test="sfyx != null  and sfyx != ''  ">sfyx,</if>
+			<if test="ext1 != null  and ext1 != ''  ">ext1,</if>
+			<if test="ext2 != null  and ext2 != ''  ">ext2,</if>
+			<if test="ext3 != null  and ext3 != ''  ">ext3,</if>
+			<if test="ext4 != null  and ext4 != ''  ">ext4,</if>
+			<if test="ext5 != null  and ext5 != ''  ">ext5,</if>
+			<if test="bdcdyh != null  and bdcdyh != ''  ">bdcdyh,</if>
+			<if test="tdsyqzh != null  and tdsyqzh != ''  ">tdsyqzh,</if>
+			<if test="tdyt != null  and tdyt != ''  ">tdyt,</if>
+			<if test="tdlx != null  and tdlx != ''  ">tdlx,</if>
+			<if test="tdsyqqdfs != null  and tdsyqqdfs != ''  ">tdsyqqdfs,</if>
+			<if test="tdsynxq != null  ">tdsynxq,</if>
+			<if test="tdsynxz != null  ">tdsynxz,</if>
+			<if test="tdspxx != null  and tdspxx != ''  ">tdspxx,</if>
+			<if test="ghspxx != null  and ghspxx != ''  ">ghspxx,</if>
+			<if test="jgspxx != null  and jgspxx != ''  ">jgspxx,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null  and id != ''  ">#{id},</if>
+			<if test="idXmxq != null  and idXmxq != ''  ">#{idXmxq},</if>
+			<if test="lmc != null  and lmc != ''  ">#{lmc},</if>
+			<if test="fwzl != null  and fwzl != ''  ">#{fwzl},</if>
+			<if test="jlx != null  and jlx != ''  ">#{jlx},</if>
+			<if test="mph != null  and mph != ''  ">#{mph},</if>
+			<if test="dh != null  and dh != ''  ">#{dh},</if>
+			<if test="zh != null  and zh != ''  ">#{zh},</if>
+			<if test="zcs != null  and zcs != ''  ">#{zcs},</if>
+			<if test="jzjg != null  and jzjg != ''  ">#{jzjg},</if>
+			<if test="jzyt != null  and jzyt != ''  ">#{jzyt},</if>
+			<if test="tfh != null  and tfh != ''  ">#{tfh},</if>
+			<if test="cx != null  and cx != ''  ">#{cx},</if>
+			<if test="zl != null  and zl != ''  ">#{zl},</if>
+			<if test="jcnd != null  and jcnd != ''  ">#{jcnd},</if>
+			<if test="jzzt != null  and jzzt != ''  ">#{jzzt},</if>
+			<if test="dscs != null  and dscs != ''  ">#{dscs},</if>
+			<if test="dxcs != null  and dxcs != ''  ">#{dxcs},</if>
+			<if test="sgbh != null  and sgbh != ''  ">#{sgbh},</if>
+			<if test="jgrq != null  ">#{jgrq},</if>
+			<if test="jlsj != null  ">#{jlsj},</if>
+			<if test="zqm != null  and zqm != ''  ">#{zqm},</if>
+			<if test="chlx != null  and chlx != ''  ">#{chlx},</if>
+			<if test="sjly != null  and sjly != ''  ">#{sjly},</if>
+			<if test="chbgzt != null  and chbgzt != ''  ">#{chbgzt},</if>
+			<if test="bz != null  and bz != ''  ">#{bz},</if>
+			<if test="sfyx != null  and sfyx != ''  ">#{sfyx},</if>
+			<if test="ext1 != null  and ext1 != ''  ">#{ext1},</if>
+			<if test="ext2 != null  and ext2 != ''  ">#{ext2},</if>
+			<if test="ext3 != null  and ext3 != ''  ">#{ext3},</if>
+			<if test="ext4 != null  and ext4 != ''  ">#{ext4},</if>
+			<if test="ext5 != null  and ext5 != ''  ">#{ext5},</if>
+			<if test="bdcdyh != null  and bdcdyh != ''  ">#{bdcdyh},</if>
+			<if test="tdsyqzh != null  and tdsyqzh != ''  ">#{tdsyqzh},</if>
+			<if test="tdyt != null  and tdyt != ''  ">#{tdyt},</if>
+			<if test="tdlx != null  and tdlx != ''  ">#{tdlx},</if>
+			<if test="tdsyqqdfs != null  and tdsyqqdfs != ''  ">#{tdsyqqdfs},</if>
+			<if test="tdsynxq != null  ">#{tdsynxq},</if>
+			<if test="tdsynxz != null  ">#{tdsynxz},</if>
+			<if test="tdspxx != null  and tdspxx != ''  ">#{tdspxx},</if>
+			<if test="ghspxx != null  and ghspxx != ''  ">#{ghspxx},</if>
+			<if test="jgspxx != null  and jgspxx != ''  ">#{jgspxx},</if>
+         </trim>
+    </insert>
+
+    <update id="updateGgfcLb" parameterType="GgfcLb">
+        update basp.ggfc_lb
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="idXmxq != null  and idXmxq != ''  ">id_xmxq = #{idXmxq},</if>
+            <if test="lmc != null  and lmc != ''  ">lmc = #{lmc},</if>
+            <if test="fwzl != null  and fwzl != ''  ">fwzl = #{fwzl},</if>
+            <if test="jlx != null  and jlx != ''  ">jlx = #{jlx},</if>
+            <if test="mph != null  and mph != ''  ">mph = #{mph},</if>
+            <if test="dh != null  and dh != ''  ">dh = #{dh},</if>
+            <if test="zh != null  and zh != ''  ">zh = #{zh},</if>
+            <if test="zcs != null  and zcs != ''  ">zcs = #{zcs},</if>
+            <if test="jzjg != null  and jzjg != ''  ">jzjg = #{jzjg},</if>
+            <if test="jzyt != null  and jzyt != ''  ">jzyt = #{jzyt},</if>
+            <if test="tfh != null  and tfh != ''  ">tfh = #{tfh},</if>
+            <if test="cx != null  and cx != ''  ">cx = #{cx},</if>
+            <if test="zl != null  and zl != ''  ">zl = #{zl},</if>
+            <if test="jcnd != null  and jcnd != ''  ">jcnd = #{jcnd},</if>
+            <if test="jzzt != null  and jzzt != ''  ">jzzt = #{jzzt},</if>
+            <if test="dscs != null  and dscs != ''  ">dscs = #{dscs},</if>
+            <if test="dxcs != null  and dxcs != ''  ">dxcs = #{dxcs},</if>
+            <if test="sgbh != null  and sgbh != ''  ">sgbh = #{sgbh},</if>
+            <if test="jgrq != null  ">jgrq = #{jgrq},</if>
+            <if test="jlsj != null  ">jlsj = #{jlsj},</if>
+            <if test="zqm != null  and zqm != ''  ">zqm = #{zqm},</if>
+            <if test="chlx != null  and chlx != ''  ">chlx = #{chlx},</if>
+            <if test="sjly != null  and sjly != ''  ">sjly = #{sjly},</if>
+            <if test="chbgzt != null  and chbgzt != ''  ">chbgzt = #{chbgzt},</if>
+            <if test="bz != null  and bz != ''  ">bz = #{bz},</if>
+            <if test="sfyx != null  and sfyx != ''  ">sfyx = #{sfyx},</if>
+            <if test="ext1 != null  and ext1 != ''  ">ext1 = #{ext1},</if>
+            <if test="ext2 != null  and ext2 != ''  ">ext2 = #{ext2},</if>
+            <if test="ext3 != null  and ext3 != ''  ">ext3 = #{ext3},</if>
+            <if test="ext4 != null  and ext4 != ''  ">ext4 = #{ext4},</if>
+            <if test="ext5 != null  and ext5 != ''  ">ext5 = #{ext5},</if>
+            <if test="bdcdyh != null  and bdcdyh != ''  ">bdcdyh = #{bdcdyh},</if>
+            <if test="tdsyqzh != null  and tdsyqzh != ''  ">tdsyqzh = #{tdsyqzh},</if>
+            <if test="tdyt != null  and tdyt != ''  ">tdyt = #{tdyt},</if>
+            <if test="tdlx != null  and tdlx != ''  ">tdlx = #{tdlx},</if>
+            <if test="tdsyqqdfs != null  and tdsyqqdfs != ''  ">tdsyqqdfs = #{tdsyqqdfs},</if>
+            <if test="tdsynxq != null  ">tdsynxq = #{tdsynxq},</if>
+            <if test="tdsynxz != null  ">tdsynxz = #{tdsynxz},</if>
+            <if test="tdspxx != null  and tdspxx != ''  ">tdspxx = #{tdspxx},</if>
+            <if test="ghspxx != null  and ghspxx != ''  ">ghspxx = #{ghspxx},</if>
+            <if test="jgspxx != null  and jgspxx != ''  ">jgspxx = #{jgspxx},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+	<delete id="deleteGgfcLbById" parameterType="String">
+        delete from basp.ggfc_lb where id = #{id}
+    </delete>
+
+    <delete id="deleteGgfcLbByIds" parameterType="String">
+        delete from basp.ggfc_lb where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="selectGgfcLbByHbId" parameterType="String" resultMap="GgfcLbResult">
+        select lb.* from BASP.GGFC_LB lb
+        left join BASP.GGFC_HB hb  on hb.ID_LID = lb.id
+        where hb.id = #{id}
+    </select>
+
+</mapper>

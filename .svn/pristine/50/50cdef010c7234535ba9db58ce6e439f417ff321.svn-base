@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('修改权利人明细_簿载层')" />
+</head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-djGgQlrmx-edit" th:object="${djGgQlrmx}">
+            <input id="id" name="id" th:field="*{id}"  type="hidden">
+			<div class="form-group">
+				<label class="col-sm-3 control-label">文件目录名称：</label>
+				<div class="col-sm-8">
+					<input id="dirname" name="dirname" th:field="*{dirname}" readonly="readonly" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">文件所在路径：</label>
+				<div class="col-sm-8">
+					<input id="ftppath" name="ftppath" th:field="*{ftppath}" readonly="readonly" class="form-control" type="text">
+				</div>
+			</div>
+
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">登记主表ID(外键)：</label>
+				<div class="col-sm-8">
+					<input id="idZb" name="idZb" th:field="*{idZb}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">接件编号：</label>
+				<div class="col-sm-8">
+					<input id="jjbh" name="jjbh" th:field="*{jjbh}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">实体id：</label>
+				<div class="col-sm-8">
+					<input id="idEntity" name="idEntity" th:field="*{idEntity}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">业务登记类型：</label>
+				<div class="col-sm-8">
+					<input id="ywdjlx" name="ywdjlx" th:field="*{ywdjlx}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">子业务登记类型：</label>
+				<div class="col-sm-8">
+					<input id="subywdjlx" name="subywdjlx" th:field="*{subywdjlx}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利类型：</label>
+				<div class="col-sm-8">
+					<input id="qllx" name="qllx" th:field="*{qllx}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人类型(1,产权人;21,抵押权人,22,抵押人,23,债务人;31,预告登记权利人,32,预告登记义务人;41,申请执行人,42,被执行人)：</label>
+				<div class="col-sm-8">
+					<input id="qlrlx" name="qlrlx" th:field="*{qlrlx}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">个人单位(01,个人;02,单位)：</label>
+				<div class="col-sm-8">
+					<input id="grdw" name="grdw" th:field="*{grdw}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人联系地址(自然人)/公司联系地址(非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="qlrlxdz" name="qlrlxdz" th:field="*{qlrlxdz}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人名称(自然人)/公司名称(非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="qlrmc" name="qlrmc" th:field="*{qlrmc}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人国籍(自然人)/空(非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="qlrgj" name="qlrgj" th:field="*{qlrgj}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">户籍所在地(自然人)/单位地址(非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="qlrdz" name="qlrdz" th:field="*{qlrdz}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人联系电话(自然人)/公司联系电话(非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="qlrdh" name="qlrdh" th:field="*{qlrdh}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人单位性质(自然人)/公司单位性质(非自然人）)：</label>
+				<div class="col-sm-8">
+					<input id="qlrdwxz" name="qlrdwxz" th:field="*{qlrdwxz}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人编号：</label>
+				<div class="col-sm-8">
+					<input id="qlrbh" name="qlrbh" th:field="*{qlrbh}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人证件名称(自然人/非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="qlrzjmc" name="qlrzjmc" th:field="*{qlrzjmc}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人证件编码(自然人/非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="qlrzjhm" name="qlrzjhm" th:field="*{qlrzjhm}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人单位名称(自然人)/(非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="qlrdwmc" name="qlrdwmc" th:field="*{qlrdwmc}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">法人代表名称(自然人/非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="frdbmc" name="frdbmc" th:field="*{frdbmc}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">法人代表联系电话(自然人/非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="frdblxdh" name="frdblxdh" th:field="*{frdblxdh}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">法人代表证件名称(自然人/非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="frdbzjmc" name="frdbzjmc" th:field="*{frdbzjmc}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">法人代表证件编号(自然人/非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="frdbzjhm" name="frdbzjhm" th:field="*{frdbzjhm}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">原权利人主键（自然人/非自然人）：</label>
+				<div class="col-sm-8">
+					<input id="yqlrzj" name="yqlrzj" th:field="*{yqlrzj}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人性别：</label>
+				<div class="col-sm-8">
+					<input id="qlrxb" name="qlrxb" th:field="*{qlrxb}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">共有情况（自然人/非自然人）：</label>
+				<div class="col-sm-8">
+					<input id="gyqk" name="gyqk" th:field="*{gyqk}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">产权份额（自然人/非自然人）：</label>
+				<div class="col-sm-8">
+					<input id="qlfe" name="qlfe" th:field="*{qlfe}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">身份证签发机关：</label>
+				<div class="col-sm-8">
+					<input id="sfzqfjg" name="sfzqfjg" th:field="*{sfzqfjg}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">身份证有效期限：</label>
+				<div class="col-sm-8">
+					<input id="sfzyxqx" name="sfzyxqx" th:field="*{sfzyxqx}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">产权证号（自然人/非自然人）：</label>
+				<div class="col-sm-8">
+					<input id="cqzh" name="cqzh" th:field="*{cqzh}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">产权证编号（自然人/非自然人）：</label>
+				<div class="col-sm-8">
+					<input id="qzbh" name="qzbh" th:field="*{qzbh}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">附记（自然人/非自然人）：</label>
+				<div class="col-sm-8">
+					<input id="fj" name="fj" th:field="*{fj}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">排序：</label>
+				<div class="col-sm-8">
+					<input id="seq" name="seq" th:field="*{seq}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">人像：</label>
+				<div class="col-sm-8">
+					<input id="image" name="image" th:field="*{image}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">ext1：</label>
+				<div class="col-sm-8">
+					<input id="ext1" name="ext1" th:field="*{ext1}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">ext2：</label>
+				<div class="col-sm-8">
+					<input id="ext2" name="ext2" th:field="*{ext2}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">ext3：</label>
+				<div class="col-sm-8">
+					<input id="ext3" name="ext3" th:field="*{ext3}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">ext4：</label>
+				<div class="col-sm-8">
+					<input id="ext4" name="ext4" th:field="*{ext4}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">ext5：</label>
+				<div class="col-sm-8">
+					<input id="ext5" name="ext5" th:field="*{ext5}" class="form-control" type="text">
+				</div>
+			</div>
+		</form>
+    </div>
+    <div th:include="include::footer"></div>
+    <script type="text/javascript">
+		var prefix = ctx + "basp/djGgQlrmx";
+		$("#form-djGgQlrmx-edit").validate({
+			rules:{
+				xxxx:{
+					required:true,
+				},
+			},
+			focusCleanup: true
+		});
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	            $.operate.save(prefix + "/edit", $('#form-djGgQlrmx-edit').serialize());
+	        }
+	    }
+	</script>
+</body>
+</html>

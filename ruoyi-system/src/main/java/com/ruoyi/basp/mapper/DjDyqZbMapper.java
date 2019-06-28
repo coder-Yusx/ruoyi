@@ -1,0 +1,62 @@
+package com.ruoyi.basp.mapper;
+
+import com.ruoyi.basp.domain.DjDyqZb;
+import java.util.List;	
+
+/**
+ * ?????_??? 数据层
+ * 
+ * @author ruoyi
+ * @date 2019-05-31
+ */
+public interface DjDyqZbMapper 
+{
+	/**
+     * 查询?????_???信息
+     * 
+     * @param id ?????_???ID
+     * @return ?????_???信息
+     */
+	public DjDyqZb selectDjDyqZbById(String id);
+	
+	/**
+     * 查询?????_???列表
+     * 
+     * @param djDyqZb ?????_???信息
+     * @return ?????_???集合
+     */
+	public List<DjDyqZb> selectDjDyqZbList(DjDyqZb djDyqZb);
+	
+	/**
+     * 新增?????_???
+     * 
+     * @param djDyqZb ?????_???信息
+     * @return 结果
+     */
+	public int insertDjDyqZb(DjDyqZb djDyqZb);
+	
+	/**
+     * 修改?????_???
+     * 
+     * @param djDyqZb ?????_???信息
+     * @return 结果
+     */
+	public int updateDjDyqZb(DjDyqZb djDyqZb);
+	
+	/**
+     * 删除?????_???
+     * 
+     * @param id ?????_???ID
+     * @return 结果
+     */
+	public int deleteDjDyqZbById(String id);
+	
+	/**
+     * 批量删除?????_???
+     * 
+     * @param ids 需要删除的数据ID
+     * @return 结果
+     */
+	public int deleteDjDyqZbByIds(String[] ids);
+	
+}

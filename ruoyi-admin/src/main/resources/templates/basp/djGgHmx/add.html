@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('新增户明细_簿载')" />
+</head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-djGgHmx-add">
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">簿载房屋代理主键：</label>
+				<div class="col-sm-8">
+					<input id="idBz" name="idBz" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">登记主表ID（外键）：</label>
+				<div class="col-sm-8">
+					<input id="idZb" name="idZb" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">接件编号：</label>
+				<div class="col-sm-8">
+					<input id="jjbh" name="jjbh" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">实体id：</label>
+				<div class="col-sm-8">
+					<input id="idEntity" name="idEntity" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">业务登记类型：</label>
+				<div class="col-sm-8">
+					<input id="ywdjlx" name="ywdjlx" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">子业务登记类型：</label>
+				<div class="col-sm-8">
+					<input id="subywdjlx" name="subywdjlx" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利类型：</label>
+				<div class="col-sm-8">
+					<input id="qllx" name="qllx" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">楼id：</label>
+				<div class="col-sm-8">
+					<input id="idLid" name="idLid" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">房屋编号：</label>
+				<div class="col-sm-8">
+					<input id="fwbh" name="fwbh" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">单元间号（户室）：</label>
+				<div class="col-sm-8">
+					<input id="dyjh" name="dyjh" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">房屋座落：</label>
+				<div class="col-sm-8">
+					<input id="fwzl" name="fwzl" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">政区码：</label>
+				<div class="col-sm-8">
+					<input id="zqm" name="zqm" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">街路巷：</label>
+				<div class="col-sm-8">
+					<input id="jlx" name="jlx" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">门牌号：</label>
+				<div class="col-sm-8">
+					<input id="mph" name="mph" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">幢号：</label>
+				<div class="col-sm-8">
+					<input id="zh" name="zh" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">单元：</label>
+				<div class="col-sm-8">
+					<input id="dy" name="dy" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">房号：</label>
+				<div class="col-sm-8">
+					<input id="fh" name="fh" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">朝向：</label>
+				<div class="col-sm-8">
+					<input id="cx" name="cx" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">质量：</label>
+				<div class="col-sm-8">
+					<input id="zl" name="zl" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">房籍号：</label>
+				<div class="col-sm-8">
+					<input id="fjh" name="fjh" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">户型：</label>
+				<div class="col-sm-8">
+					<input id="hx" name="hx" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">地号：</label>
+				<div class="col-sm-8">
+					<input id="dh" name="dh" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">层高：</label>
+				<div class="col-sm-8">
+					<input id="cg" name="cg" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">四至_东临：</label>
+				<div class="col-sm-8">
+					<input id="szdl" name="szdl" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">四至_西临：</label>
+				<div class="col-sm-8">
+					<input id="szxl" name="szxl" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">四至_南临：</label>
+				<div class="col-sm-8">
+					<input id="sznl" name="sznl" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">四至_北临：</label>
+				<div class="col-sm-8">
+					<input id="szbl" name="szbl" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">逻辑楼层：</label>
+				<div class="col-sm-8">
+					<input id="ljcs" name="ljcs" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">物理楼层：</label>
+				<div class="col-sm-8">
+					<input id="wlcs" name="wlcs" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">所在楼总层数：</label>
+				<div class="col-sm-8">
+					<input id="zcs" name="zcs" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">建筑结构：</label>
+				<div class="col-sm-8">
+					<input id="jzjg" name="jzjg" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">房屋类别：</label>
+				<div class="col-sm-8">
+					<input id="fwlb" name="fwlb" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">房屋用途：</label>
+				<div class="col-sm-8">
+					<input id="fwyt" name="fwyt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">房屋性质：</label>
+				<div class="col-sm-8">
+					<input id="fwxz" name="fwxz" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">建筑面积：</label>
+				<div class="col-sm-8">
+					<input id="jzmj" name="jzmj" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">套内面积：</label>
+				<div class="col-sm-8">
+					<input id="tnmj" name="tnmj" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">分摊面积：</label>
+				<div class="col-sm-8">
+					<input id="ftmj" name="ftmj" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">阳台面积：</label>
+				<div class="col-sm-8">
+					<input id="ytmj" name="ytmj" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">使用面积：</label>
+				<div class="col-sm-8">
+					<input id="symj" name="symj" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">房屋状态：</label>
+				<div class="col-sm-8">
+					<input id="fwzt" name="fwzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">建设状态：</label>
+				<div class="col-sm-8">
+					<input id="jszt" name="jszt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">所有权利状态：</label>
+				<div class="col-sm-8">
+					<input id="syqlzt" name="syqlzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">法律限制状态：</label>
+				<div class="col-sm-8">
+					<input id="flxzzt" name="flxzzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">他项权利状态：</label>
+				<div class="col-sm-8">
+					<input id="txqlzt" name="txqlzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">拆迁冻结状态：</label>
+				<div class="col-sm-8">
+					<input id="cqdjzt" name="cqdjzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">合同备案状态：</label>
+				<div class="col-sm-8">
+					<input id="htbazt" name="htbazt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">初始登记状态：</label>
+				<div class="col-sm-8">
+					<input id="csdjzt" name="csdjzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">预售预告状态：</label>
+				<div class="col-sm-8">
+					<input id="ysygzt" name="ysygzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">预售抵押预告状态：</label>
+				<div class="col-sm-8">
+					<input id="ysdyygzt" name="ysdyygzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">在建工程抵押状态：</label>
+				<div class="col-sm-8">
+					<input id="zjgcdyzt" name="zjgcdyzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">地役权状态：</label>
+				<div class="col-sm-8">
+					<input id="dyqzt" name="dyqzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">产权面积状态 ：</label>
+				<div class="col-sm-8">
+					<input id="cqmjzt" name="cqmjzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">行政限制状态 ：</label>
+				<div class="col-sm-8">
+					<input id="xzxzzt" name="xzxzzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">异议登记状态 ：</label>
+				<div class="col-sm-8">
+					<input id="yydjzt" name="yydjzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">测绘变更状态：</label>
+				<div class="col-sm-8">
+					<input id="chbgzt" name="chbgzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">是否纳入规划状态：</label>
+				<div class="col-sm-8">
+					<input id="sfnrghzt" name="sfnrghzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">存量房转移预告状态：</label>
+				<div class="col-sm-8">
+					<input id="clfzyygzt" name="clfzyygzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">抵押预告状态：</label>
+				<div class="col-sm-8">
+					<input id="dyygzt" name="dyygzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">限制状态：</label>
+				<div class="col-sm-8">
+					<input id="xzzt" name="xzzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">预售许可状态：</label>
+				<div class="col-sm-8">
+					<input id="ysxkzt" name="ysxkzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">物业用房状态：</label>
+				<div class="col-sm-8">
+					<input id="wyyfzt" name="wyyfzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">拆迁安置状态：</label>
+				<div class="col-sm-8">
+					<input id="cqazzt" name="cqazzt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">人防工程状态：</label>
+				<div class="col-sm-8">
+					<input id="rfgczt" name="rfgczt" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">问题卷标识：</label>
+				<div class="col-sm-8">
+					<input id="wtjbs" name="wtjbs" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">数据来源 ：</label>
+				<div class="col-sm-8">
+					<input id="sjly" name="sjly" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">发布时间：</label>
+				<div class="col-sm-8">
+					<input id="cjsj" name="cjsj" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">分摊系数：</label>
+				<div class="col-sm-8">
+					<input id="ftxs" name="ftxs" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">[SZQY] 所在区域 ：</label>
+				<div class="col-sm-8">
+					<input id="szqy" name="szqy" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">测绘变更标识：</label>
+				<div class="col-sm-8">
+					<input id="chlx" name="chlx" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">分层分户图ID：</label>
+				<div class="col-sm-8">
+					<input id="fcfhid" name="fcfhid" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">测绘变更标识：</label>
+				<div class="col-sm-8">
+					<input id="chbgbs" name="chbgbs" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">房屋备注：</label>
+				<div class="col-sm-8">
+					<input id="bz" name="bz" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">是否有效：</label>
+				<div class="col-sm-8">
+					<input id="sfyx" name="sfyx" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">抵押_抵押面积：</label>
+				<div class="col-sm-8">
+					<input id="dyDymj" name="dyDymj" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">所有权_单价(每建筑㎡)：</label>
+				<div class="col-sm-8">
+					<input id="syqDj" name="syqDj" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">所有权_成交总价：</label>
+				<div class="col-sm-8">
+					<input id="syqCjzj" name="syqCjzj" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">所有权_货币类型：</label>
+				<div class="col-sm-8">
+					<input id="syqHblx" name="syqHblx" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">排序：</label>
+				<div class="col-sm-8">
+					<input id="seq" name="seq" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="ext1" name="ext1" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="ext2" name="ext2" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="ext3" name="ext3" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="ext4" name="ext4" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="ext5" name="ext5" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="bdcdybh" name="bdcdybh" class="form-control" type="text">
+				</div>
+			</div>
+		</form>
+	</div>
+    <div th:include="include::footer"></div>
+    <script type="text/javascript">
+		var prefix = ctx + "basp/djGgHmx"
+		$("#form-djGgHmx-add").validate({
+			rules:{
+				xxxx:{
+					required:true,
+				},
+			},
+			focusCleanup: true
+		});
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	            $.operate.save(prefix + "/add", $('#form-djGgHmx-add').serialize());
+	        }
+	    }
+	</script>
+</body>
+</html>

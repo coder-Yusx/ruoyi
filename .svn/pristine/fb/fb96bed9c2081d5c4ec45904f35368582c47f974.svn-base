@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('测试')" />
+</head>
+<body class="gray-bg">
+    <div class="container-div">
+        <div class="row">
+            <div class="col-sm-12 search-collapse">
+                <form id="formId">
+                    <div class="select-list">
+                        <ul>
+                            <li>
+                                表空间：<select id="owner" name="owner" th:with="owners=${@tableCleanServiceImpl.selectAllDbUsers('OPEN')}" th:onchange="getTableName()">
+                                <option value="">ALL</option>
+                                <option th:each="owner : ${owners}" th:text="${owner}" th:value="${owner}"></option>
+                                </select>
+                            </li>
+
+                            <li>
+                                表空间：<select id="tableName" name="tableName" th:onchange="tableNameChange()">
+                                <!--<option value="">ALL</option>-->
+                                <!--<option th:each="table : ${tables}" th:text="${table}" th:value="${table}"></option>-->
+                            </select>
+                            </li>
+
+                            <!--<li>
+                                <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                                <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+                            </li>-->
+                        </ul>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-sm-12" style="overflow: scroll">
+                <table id="bootstrap-table" style="min-width: 800px;">
+                </table>
+            </div>
+        </div>
+
+    </div>
+     <div th:include="include :: footer"></div>
+    <script th:inline="javascript">
+
+        var prefix = ctx + "baseclean/basetest";
+
+        var param=$('#basetest').serializeJSON();
+        console.log(JSON.stringify(param));
+
+        function getTableName(){
+            var owner = $('#owner').val();
+            $.ajax({
+                type : "POST",
+                url : prefix+"/tableList",
+                data : {"owner":owner},
+                error : function(request) {
+                    $.modal.alertError("系统错误");
+                },
+                success : function(data) {
+                    console.log(data)
+                    var options="";
+                    $.each(data.data,function (index,item) {
+                        options += "<option value="+item.tableName+">"+item.tableName+"</option>";
+                    });
+                    $("#tableName").empty();
+                    $("#tableName").append(options);
+                }
+            });
+        };
+
+        function tableNameChange(){
+            var owner = $("#owner").val();
+            var tableName = $("#tableName").val();
+            $.ajax({
+                type : "GET",
+                url : prefix+"/listColName/"+owner+"/"+tableName,
+                error : function(request) {
+                    $.modal.alertError("系统错误");
+                },
+                success : function(data) {
+                    console.log(data)
+                    var thead="<thead>";
+                    $.each(data.data,function (index,item) {
+                        thead += "<td>"+item.comments+"</td>";
+                    });
+                    thead +="</thead>";
+                    $("#bootstrap-table").empty();
+                    $("#bootstrap-table").append(thead);
+                    getTableData();
+                }
+            });
+        };
+
+        function getTableData(){
+            $.ajax({
+                type : "POST",
+                url : prefix+"/listPerson",
+                dataType : "json",
+                contentType:"application/json;charset=UTF-8",
+                data : JSON.stringify(param),
+                error : function(request) {
+                    $.modal.alertError("系统错误");
+                },
+                success : function(data) {
+                    var tableHtml="";
+                    $.each(data.data,function (index,item) {
+                        tableHtml += "<tr>";
+                        for(var key in item){
+                            tableHtml += "<td>"+item[key]+"</td>";
+                            //console.log(item[key]);
+                        }
+                        tableHtml += "</tr>";
+                    });
+                    $("#bootstrap-table").append(tableHtml);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

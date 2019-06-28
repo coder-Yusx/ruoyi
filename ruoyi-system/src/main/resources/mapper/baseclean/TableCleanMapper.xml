@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.baseclean.mapper.TableCleanMapper">
+
+    <resultMap id="tableCleanMap" type="TableClean">
+        <id column="rownum" property="tableId"></id>
+        <result column="table_name" property="tableName"/>
+        <result column="owner" property="owner"/>
+        <result column="comments" property="tableComments"/>
+    </resultMap>
+
+    <resultMap id="colCleanMap" type="ColClean">
+        <id column="rownum" property="colId"></id>
+        <result column="column_name" property="columnName"></result>
+        <result column="comments" property="comments"></result>
+        <result column="data_type" property="dataType"></result>
+        <result column="table_name" property="tableName"></result>
+        <result column="owner" property="owner"></result>
+    </resultMap>
+
+    <select id="selectTableByUser" parameterType="TableClean" resultMap="tableCleanMap">
+        select rownum, ts.table_name, ts.owner, tc.comments
+          from all_tables ts
+          join all_tab_comments tc on ts.table_name = tc.TABLE_NAME
+         where 1=1
+        <if test="owner != null and owner !=''">
+          and  ts.owner =  #{owner,jdbcType=VARCHAR}
+        </if>
+        <if test="tableName != null and tableName !=''">
+            and  ts.table_name =  #{tableName,jdbcType=VARCHAR}
+        </if>
+    </select>
+    
+    <select id="selectAllDbUsers" parameterType="String" resultType="String">
+        select username
+          from dba_users
+         where 1=1
+         <if test="_parameter != null and _parameter !=''">
+             and account_status = #{_parameter,jdbcType=VARCHAR}
+         </if>
+         order by username
+    </select>
+
+    <select id="selectColsByTableName" parameterType="ColClean" resultMap="colCleanMap">
+        select b.*, a.data_type, a.table_name, a.owner
+          from (select tc.owner, tc.table_name, tc.column_name, tc.data_type
+                  from all_tab_cols tc
+                 where tc.table_name = #{tableName,jdbcType=VARCHAR}
+                   and tc.owner = #{owner,jdbcType=VARCHAR}) a,
+               (select rownum, cc.column_name, cc.comments
+                  from all_col_comments cc
+                 where cc.table_name = #{tableName,jdbcType=VARCHAR}) b
+         where a.column_name = b.column_name
+    </select>
+
+    <select id="selectColVal" parameterType="String" resultType="TDataResult">
+        ${_parameter}
+    </select>
+
+    <update id="updateColVal" parameterType="String">
+        ${_parameter}
+    </update>
+</mapper>

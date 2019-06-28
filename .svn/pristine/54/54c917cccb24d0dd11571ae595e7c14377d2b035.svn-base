@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.basp.mapper.TDataDistributionMapper">
+    
+    <resultMap type="TDataDistribution" id="TDataDistributionResult">
+        <result property="id"    column="id"    />
+        <result property="rid"    column="rid"    />
+        <result property="tablename"    column="tablename"    />
+        <result property="dataid"    column="dataid"    />
+        <result property="state"    column="state"    />
+        <result property="ext1"    column="ext1"    />
+        <result property="ext2"    column="ext2"    />
+        <result property="ext3"    column="ext3"    />
+        <result property="operator"    column="operator"    />
+        <result property="osdate"    column="osdate"    />
+    </resultMap>
+	
+	<sql id="selectTDataDistributionVo">
+        select id,	(
+		select
+			s.user_name
+		from
+			sys_person s
+		where
+			s.user_id =t.rid
+	) as rid , tablename, dataid, state, ext1, ext2, ext3,operator,osdate from ownfgj.t_data_distribution t
+    </sql>
+	
+    <select id="selectTDataDistributionList" parameterType="TDataDistribution" resultMap="TDataDistributionResult">
+        <include refid="selectTDataDistributionVo"/>
+        <where>  
+            <if test="id != null  and id != '' "> and id = #{id}</if>
+             <if test="rid != null  and rid != '' "> and rid = #{rid}</if>
+             <if test="tablename != null  and tablename != '' "> and tablename = #{tablename}</if>
+             <if test="dataid != null  and dataid != '' "> and dataid = #{dataid}</if>
+             <if test="state != null  and state != '' "> and state = #{state}</if>
+             <if test="ext1 != null  and ext1 != '' "> and ext1 = #{ext1}</if>
+             <if test="ext2 != null  and ext2 != '' "> and ext2 = #{ext2}</if>
+             <if test="ext3 != null  and ext3 != '' "> and ext3 = #{ext3}</if>
+         </where>
+    </select>
+
+    <!--分配后展示数据 instr(t.rid,#{uid})>-->
+    <select id="selectTDataDistributionListUser" parameterType="String" resultMap="TDataDistributionResult">
+           select wm_concat(dataid) as dataid from ownfgj.t_data_distribution t
+       where t.rid=#{uid}
+    </select>
+    
+    <select id="selectTDataDistributionById" parameterType="String" resultMap="TDataDistributionResult">
+        <include refid="selectTDataDistributionVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertTDataDistribution" parameterType="TDataDistribution">
+        insert into OWNFGJ.t_data_distribution
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null  and id != ''  ">id,</if>
+			<if test="rid != null  and rid != ''  ">rid,</if>
+			<if test="tablename != null  and tablename != ''  ">tablename,</if>
+			<if test="dataid != null  and dataid != ''  ">dataid,</if>
+			<if test="state != null  and state != ''  ">state,</if>
+			<if test="ext1 != null  and ext1 != ''  ">ext1,</if>
+			<if test="ext2 != null  and ext2 != ''  ">ext2,</if>
+			<if test="ext3 != null  and ext3 != ''  ">ext3,</if>
+            <if test="operator != null  and operator != ''  ">operator,</if>
+            <if test="osdate != null  and osdate != ''  ">osdate,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null  and id != ''  ">#{id},</if>
+			<if test="rid != null  and rid != ''  ">#{rid},</if>
+			<if test="tablename != null  and tablename != ''  ">#{tablename},</if>
+			<if test="dataid != null  and dataid != ''  ">#{dataid},</if>
+			<if test="state != null  and state != ''  ">#{state},</if>
+			<if test="ext1 != null  and ext1 != ''  ">#{ext1},</if>
+			<if test="ext2 != null  and ext2 != ''  ">#{ext2},</if>
+			<if test="ext3 != null  and ext3 != ''  ">#{ext3},</if>
+            <if test="operator != null  and operator != ''  ">#{operator},</if>
+            <if test="osdate != null  and osdate != ''  ">#{osdate},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateTDataDistribution" parameterType="TDataDistribution">
+        update OWNFGJ.t_data_distribution
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="rid != null  and rid != ''  ">rid = #{rid},</if>
+            <if test="tablename != null  and tablename != ''  ">tablename = #{tablename},</if>
+            <if test="dataid != null  and dataid != ''  ">dataid = #{dataid},</if>
+            <if test="state != null  and state != ''  ">state = #{state},</if>
+            <if test="ext1 != null  and ext1 != ''  ">ext1 = #{ext1},</if>
+            <if test="ext2 != null  and ext2 != ''  ">ext2 = #{ext2},</if>
+            <if test="ext3 != null  and ext3 != ''  ">ext3 = #{ext3},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+	<delete id="deleteTDataDistributionById" parameterType="String">
+        delete from OWNFGJ.t_data_distribution where id = #{id}
+    </delete>
+	
+    <delete id="deleteTDataDistributionByIds" parameterType="String">
+        delete from OWNFGJ.t_data_distribution where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

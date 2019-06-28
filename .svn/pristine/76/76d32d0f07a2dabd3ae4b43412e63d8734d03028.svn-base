@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.baseclean.mapper.TDataRuleMapper">
+    
+    <resultMap type="TDataRule" id="TDataRuleResult">
+        <result property="ruleId"    column="rule_id"    />
+        <result property="ruleName"    column="rule_name"    />
+        <result property="ruleCode"    column="rule_code"    />
+        <result property="ruleDescribtion"    column="rule_describtion"    />
+        <result property="ruleType"    column="rule_type"    />
+        <result property="ruleParams"    column="rule_params"    />
+        <result property="ruleStatus"    column="rule_status"    />
+        <result property="ext1"    column="ext1"    />
+        <result property="ext2"    column="ext2"    />
+        <result property="ext3"    column="ext3"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+	
+	<sql id="selectTDataRuleVo">
+        select rule_id, rule_name, rule_code, rule_describtion, rule_type, rule_params, rule_status, ext1, ext2, ext3, create_by, create_time, update_by, update_time from t_data_rule
+    </sql>
+	
+    <select id="selectTDataRuleList" parameterType="TDataRule" resultMap="TDataRuleResult">
+        <include refid="selectTDataRuleVo"/>
+        <where>  
+            <if test="ruleId != null "> and rule_id = #{ruleId}</if>
+             <if test="ruleName != null  and ruleName != '' "> and rule_name = #{ruleName}</if>
+             <if test="ruleCode != null  and ruleCode != '' "> and rule_code = #{ruleCode}</if>
+             <if test="ruleDescribtion != null  and ruleDescribtion != '' "> and rule_describtion = #{ruleDescribtion}</if>
+             <if test="ruleType != null  and ruleType != '' "> and rule_type = #{ruleType}</if>
+             <if test="ruleParams != null  and ruleParams != '' "> and rule_params = #{ruleParams}</if>
+             <if test="ruleStatus != null  and ruleStatus != '' "> and rule_status = #{ruleStatus}</if>
+             <if test="ext1 != null  and ext1 != '' "> and ext1 = #{ext1}</if>
+             <if test="ext2 != null  and ext2 != '' "> and ext2 = #{ext2}</if>
+             <if test="ext3 != null  and ext3 != '' "> and ext3 = #{ext3}</if>
+             <if test="createBy != null  and createBy != '' "> and create_by = #{createBy}</if>
+             <if test="createTime != null "> and create_time = #{createTime}</if>
+             <if test="updateBy != null  and updateBy != '' "> and update_by = #{updateBy}</if>
+             <if test="updateTime != null "> and update_time = #{updateTime}</if>
+         </where>
+    </select>
+    
+    <select id="selectTDataRuleById" parameterType="Long" resultMap="TDataRuleResult">
+        <include refid="selectTDataRuleVo"/>
+        where rule_id = #{ruleId}
+    </select>
+        
+    <insert id="insertTDataRule" parameterType="TDataRule" useGeneratedKeys="true" keyProperty="ruleId">
+        <selectKey keyProperty="ruleId" order="BEFORE" resultType="INTEGER">
+            select seq_t_data_rule.nextval as ruleId from DUAL
+        </selectKey>
+        insert into t_data_rule
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="ruleId != null  ">rule_id,</if>
+			<if test="ruleName != null  and ruleName != ''  ">rule_name,</if>
+			<if test="ruleCode != null  and ruleCode != ''  ">rule_code,</if>
+			<if test="ruleDescribtion != null  and ruleDescribtion != ''  ">rule_describtion,</if>
+			<if test="ruleType != null  and ruleType != ''  ">rule_type,</if>
+			<if test="ruleParams != null  and ruleParams != ''  ">rule_params,</if>
+			<if test="ruleStatus != null  and ruleStatus != ''  ">rule_status,</if>
+			<if test="ext1 != null  and ext1 != ''  ">ext1,</if>
+			<if test="ext2 != null  and ext2 != ''  ">ext2,</if>
+			<if test="ext3 != null  and ext3 != ''  ">ext3,</if>
+			<if test="createBy != null  and createBy != ''  ">create_by,</if>
+			<if test="createTime != null  ">create_time,</if>
+			<if test="updateBy != null  and updateBy != ''  ">update_by,</if>
+			<if test="updateTime != null  ">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="ruleId != null  ">#{ruleId},</if>
+			<if test="ruleName != null  and ruleName != ''  ">#{ruleName},</if>
+			<if test="ruleCode != null  and ruleCode != ''  ">#{ruleCode},</if>
+			<if test="ruleDescribtion != null  and ruleDescribtion != ''  ">#{ruleDescribtion},</if>
+			<if test="ruleType != null  and ruleType != ''  ">#{ruleType},</if>
+			<if test="ruleParams != null  and ruleParams != ''  ">#{ruleParams},</if>
+			<if test="ruleStatus != null  and ruleStatus != ''  ">#{ruleStatus},</if>
+			<if test="ext1 != null  and ext1 != ''  ">#{ext1},</if>
+			<if test="ext2 != null  and ext2 != ''  ">#{ext2},</if>
+			<if test="ext3 != null  and ext3 != ''  ">#{ext3},</if>
+			<if test="createBy != null  and createBy != ''  ">#{createBy},</if>
+			<if test="createTime != null  ">#{createTime},</if>
+			<if test="updateBy != null  and updateBy != ''  ">#{updateBy},</if>
+			<if test="updateTime != null  ">#{updateTime},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateTDataRule" parameterType="TDataRule">
+        update t_data_rule
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="ruleName != null  and ruleName != ''  ">rule_name = #{ruleName},</if>
+            <if test="ruleCode != null  and ruleCode != ''  ">rule_code = #{ruleCode},</if>
+            <if test="ruleDescribtion != null  and ruleDescribtion != ''  ">rule_describtion = #{ruleDescribtion},</if>
+            <if test="ruleType != null  and ruleType != ''  ">rule_type = #{ruleType},</if>
+            <if test="ruleParams != null  and ruleParams != ''  ">rule_params = #{ruleParams},</if>
+            <if test="ruleStatus != null  and ruleStatus != ''  ">rule_status = #{ruleStatus},</if>
+            <if test="ext1 != null  and ext1 != ''  ">ext1 = #{ext1},</if>
+            <if test="ext2 != null  and ext2 != ''  ">ext2 = #{ext2},</if>
+            <if test="ext3 != null  and ext3 != ''  ">ext3 = #{ext3},</if>
+            <if test="createBy != null  and createBy != ''  ">create_by = #{createBy},</if>
+            <if test="createTime != null  ">create_time = #{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''  ">update_by = #{updateBy},</if>
+            <if test="updateTime != null  ">update_time = #{updateTime},</if>
+        </trim>
+        where rule_id = #{ruleId}
+    </update>
+
+	<delete id="deleteTDataRuleById" parameterType="Integer">
+        delete from t_data_rule where rule_id = #{ruleId}
+    </delete>
+	
+    <delete id="deleteTDataRuleByIds" parameterType="String">
+        delete from t_data_rule where rule_id in 
+        <foreach item="ruleId" collection="array" open="(" separator="," close=")">
+            #{ruleId}
+        </foreach>
+    </delete>
+    
+</mapper>

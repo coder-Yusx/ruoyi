@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('新增权利人明细_簿载层')" />
+</head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-djGgQlrmx-add">
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">登记主表ID(外键)：</label>
+				<div class="col-sm-8">
+					<input id="idZb" name="idZb" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">接件编号：</label>
+				<div class="col-sm-8">
+					<input id="jjbh" name="jjbh" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">实体id：</label>
+				<div class="col-sm-8">
+					<input id="idEntity" name="idEntity" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">业务登记类型：</label>
+				<div class="col-sm-8">
+					<input id="ywdjlx" name="ywdjlx" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">子业务登记类型：</label>
+				<div class="col-sm-8">
+					<input id="subywdjlx" name="subywdjlx" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利类型：</label>
+				<div class="col-sm-8">
+					<input id="qllx" name="qllx" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人类型(1,产权人;21,抵押权人,22,抵押人,23,债务人;31,预告登记权利人,32,预告登记义务人;41,申请执行人,42,被执行人)：</label>
+				<div class="col-sm-8">
+					<input id="qlrlx" name="qlrlx" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">个人单位(01,个人;02,单位)：</label>
+				<div class="col-sm-8">
+					<input id="grdw" name="grdw" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人联系地址(自然人)/公司联系地址(非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="qlrlxdz" name="qlrlxdz" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人名称(自然人)/公司名称(非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="qlrmc" name="qlrmc" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人国籍(自然人)/空(非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="qlrgj" name="qlrgj" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">户籍所在地(自然人)/单位地址(非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="qlrdz" name="qlrdz" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人联系电话(自然人)/公司联系电话(非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="qlrdh" name="qlrdh" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人单位性质(自然人)/公司单位性质(非自然人）)：</label>
+				<div class="col-sm-8">
+					<input id="qlrdwxz" name="qlrdwxz" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人编号：</label>
+				<div class="col-sm-8">
+					<input id="qlrbh" name="qlrbh" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人证件名称(自然人/非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="qlrzjmc" name="qlrzjmc" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人证件编码(自然人/非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="qlrzjhm" name="qlrzjhm" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人单位名称(自然人)/(非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="qlrdwmc" name="qlrdwmc" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">法人代表名称(自然人/非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="frdbmc" name="frdbmc" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">法人代表联系电话(自然人/非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="frdblxdh" name="frdblxdh" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">法人代表证件名称(自然人/非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="frdbzjmc" name="frdbzjmc" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">法人代表证件编号(自然人/非自然人)：</label>
+				<div class="col-sm-8">
+					<input id="frdbzjhm" name="frdbzjhm" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">原权利人主键（自然人/非自然人）：</label>
+				<div class="col-sm-8">
+					<input id="yqlrzj" name="yqlrzj" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">权利人性别：</label>
+				<div class="col-sm-8">
+					<input id="qlrxb" name="qlrxb" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">共有情况（自然人/非自然人）：</label>
+				<div class="col-sm-8">
+					<input id="gyqk" name="gyqk" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">产权份额（自然人/非自然人）：</label>
+				<div class="col-sm-8">
+					<input id="qlfe" name="qlfe" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">身份证签发机关：</label>
+				<div class="col-sm-8">
+					<input id="sfzqfjg" name="sfzqfjg" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">身份证有效期限：</label>
+				<div class="col-sm-8">
+					<input id="sfzyxqx" name="sfzyxqx" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">产权证号（自然人/非自然人）：</label>
+				<div class="col-sm-8">
+					<input id="cqzh" name="cqzh" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">产权证编号（自然人/非自然人）：</label>
+				<div class="col-sm-8">
+					<input id="qzbh" name="qzbh" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">附记（自然人/非自然人）：</label>
+				<div class="col-sm-8">
+					<input id="fj" name="fj" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">排序：</label>
+				<div class="col-sm-8">
+					<input id="seq" name="seq" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">人像：</label>
+				<div class="col-sm-8">
+					<input id="image" name="image" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">ext1：</label>
+				<div class="col-sm-8">
+					<input id="ext1" name="ext1" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">ext2：</label>
+				<div class="col-sm-8">
+					<input id="ext2" name="ext2" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">ext3：</label>
+				<div class="col-sm-8">
+					<input id="ext3" name="ext3" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">ext4：</label>
+				<div class="col-sm-8">
+					<input id="ext4" name="ext4" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">ext5：</label>
+				<div class="col-sm-8">
+					<input id="ext5" name="ext5" class="form-control" type="text">
+				</div>
+			</div>
+		</form>
+	</div>
+    <div th:include="include::footer"></div>
+    <script type="text/javascript">
+		var prefix = ctx + "basp/djGgQlrmx"
+		$("#form-djGgQlrmx-add").validate({
+			rules:{
+				xxxx:{
+					required:true,
+				},
+			},
+			focusCleanup: true
+		});
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	            $.operate.save(prefix + "/add", $('#form-djGgQlrmx-add').serialize());
+	        }
+	    }
+	</script>
+</body>
+</html>

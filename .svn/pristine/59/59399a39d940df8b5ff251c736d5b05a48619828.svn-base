@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.basp.mapper.DjXzqZbMapper">
+    
+    <resultMap type="DjXzqZb" id="DjXzqZbResult">
+        <result property="id"    column="id"    />
+        <result property="jjbh"    column="jjbh"    />
+        <result property="idEntity"    column="id_entity"    />
+        <result property="ywdjlx"    column="ywdjlx"    />
+        <result property="subywdjlx"    column="subywdjlx"    />
+        <result property="qllx"    column="qllx"    />
+        <result property="ydah"    column="ydah"    />
+        <result property="xdah"    column="xdah"    />
+        <result property="xzbw"    column="xzbw"    />
+        <result property="xzmj"    column="xzmj"    />
+        <result property="xzwjlx"    column="xzwjlx"    />
+        <result property="xzwj"    column="xzwj"    />
+        <result property="xzwh"    column="xzwh"    />
+        <result property="xzsj"    column="xzsj"    />
+        <result property="xzsxkssj"    column="xzsxkssj"    />
+        <result property="xzsxjssj"    column="xzsxjssj"    />
+        <result property="xzdjly"    column="xzdjly"    />
+        <result property="fj"    column="fj"    />
+        <result property="dbr"    column="dbr"    />
+        <result property="dbsj"    column="dbsj"    />
+        <result property="bz"    column="bz"    />
+        <result property="sfyx"    column="sfyx"    />
+        <result property="ext1"    column="ext1"    />
+        <result property="ext2"    column="ext2"    />
+        <result property="ext3"    column="ext3"    />
+        <result property="ext4"    column="ext4"    />
+        <result property="ext5"    column="ext5"    />
+        <result property="ext6"    column="ext6"    />
+        <result property="ext7"    column="ext7"    />
+        <result property="ext8"    column="ext8"    />
+        <result property="ext9"    column="ext9"    />
+        <result property="ext10"    column="ext10"    />
+        <result property="orgcode"    column="orgcode"    />
+    </resultMap>
+	
+	<sql id="selectDjXzqZbVo">
+        select id, jjbh, id_entity, ywdjlx, subywdjlx, qllx, ydah, xdah, xzbw, xzmj, xzwjlx, xzwj, xzwh, xzsj, xzsxkssj, xzsxjssj, xzdjly, fj, dbr, dbsj, bz, sfyx, ext1, ext2, ext3, ext4, ext5, ext6, ext7, ext8, ext9, ext10, orgcode from dj_xzq_zb
+    </sql>
+	
+    <select id="selectDjXzqZbList" parameterType="DjXzqZb" resultMap="DjXzqZbResult">
+        <include refid="selectDjXzqZbVo"/>
+        <where>  
+            <if test="id != null  and id != '' "> and id = #{id}</if>
+             <if test="jjbh != null  and jjbh != '' "> and jjbh = #{jjbh}</if>
+             <if test="idEntity != null  and idEntity != '' "> and id_entity = #{idEntity}</if>
+             <if test="ywdjlx != null  and ywdjlx != '' "> and ywdjlx = #{ywdjlx}</if>
+             <if test="subywdjlx != null  and subywdjlx != '' "> and subywdjlx = #{subywdjlx}</if>
+             <if test="qllx != null  and qllx != '' "> and qllx = #{qllx}</if>
+             <if test="ydah != null  and ydah != '' "> and ydah = #{ydah}</if>
+             <if test="xdah != null  and xdah != '' "> and xdah = #{xdah}</if>
+             <if test="xzbw != null  and xzbw != '' "> and xzbw = #{xzbw}</if>
+             <if test="xzmj != null "> and xzmj = #{xzmj}</if>
+             <if test="xzwjlx != null  and xzwjlx != '' "> and xzwjlx = #{xzwjlx}</if>
+             <if test="xzwj != null  and xzwj != '' "> and xzwj = #{xzwj}</if>
+             <if test="xzwh != null  and xzwh != '' "> and xzwh = #{xzwh}</if>
+             <if test="xzsj != null "> and xzsj = #{xzsj}</if>
+             <if test="xzsxkssj != null "> and xzsxkssj = #{xzsxkssj}</if>
+             <if test="xzsxjssj != null "> and xzsxjssj = #{xzsxjssj}</if>
+             <if test="xzdjly != null  and xzdjly != '' "> and xzdjly = #{xzdjly}</if>
+             <if test="fj != null  and fj != '' "> and fj = #{fj}</if>
+             <if test="dbr != null  and dbr != '' "> and dbr = #{dbr}</if>
+             <if test="dbsj != null "> and dbsj = #{dbsj}</if>
+             <if test="bz != null  and bz != '' "> and bz = #{bz}</if>
+             <if test="sfyx != null  and sfyx != '' "> and sfyx = #{sfyx}</if>
+             <if test="ext1 != null  and ext1 != '' "> and ext1 = #{ext1}</if>
+             <if test="ext2 != null  and ext2 != '' "> and ext2 = #{ext2}</if>
+             <if test="ext3 != null  and ext3 != '' "> and ext3 = #{ext3}</if>
+             <if test="ext4 != null  and ext4 != '' "> and ext4 = #{ext4}</if>
+             <if test="ext5 != null  and ext5 != '' "> and ext5 = #{ext5}</if>
+             <if test="ext6 != null  and ext6 != '' "> and ext6 = #{ext6}</if>
+             <if test="ext7 != null  and ext7 != '' "> and ext7 = #{ext7}</if>
+             <if test="ext8 != null  and ext8 != '' "> and ext8 = #{ext8}</if>
+             <if test="ext9 != null  and ext9 != '' "> and ext9 = #{ext9}</if>
+             <if test="ext10 != null  and ext10 != '' "> and ext10 = #{ext10}</if>
+             <if test="orgcode != null  and orgcode != '' "> and orgcode = #{orgcode}</if>
+         </where>
+    </select>
+    
+    <select id="selectDjXzqZbById" parameterType="String" resultMap="DjXzqZbResult">
+        <include refid="selectDjXzqZbVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertDjXzqZb" parameterType="DjXzqZb">
+        insert into dj_xzq_zb
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null  and id != ''  ">id,</if>
+			<if test="jjbh != null  and jjbh != ''  ">jjbh,</if>
+			<if test="idEntity != null  and idEntity != ''  ">id_entity,</if>
+			<if test="ywdjlx != null  and ywdjlx != ''  ">ywdjlx,</if>
+			<if test="subywdjlx != null  and subywdjlx != ''  ">subywdjlx,</if>
+			<if test="qllx != null  and qllx != ''  ">qllx,</if>
+			<if test="ydah != null  and ydah != ''  ">ydah,</if>
+			<if test="xdah != null  and xdah != ''  ">xdah,</if>
+			<if test="xzbw != null  and xzbw != ''  ">xzbw,</if>
+			<if test="xzmj != null  ">xzmj,</if>
+			<if test="xzwjlx != null  and xzwjlx != ''  ">xzwjlx,</if>
+			<if test="xzwj != null  and xzwj != ''  ">xzwj,</if>
+			<if test="xzwh != null  and xzwh != ''  ">xzwh,</if>
+			<if test="xzsj != null  ">xzsj,</if>
+			<if test="xzsxkssj != null  ">xzsxkssj,</if>
+			<if test="xzsxjssj != null  ">xzsxjssj,</if>
+			<if test="xzdjly != null  and xzdjly != ''  ">xzdjly,</if>
+			<if test="fj != null  and fj != ''  ">fj,</if>
+			<if test="dbr != null  and dbr != ''  ">dbr,</if>
+			<if test="dbsj != null  ">dbsj,</if>
+			<if test="bz != null  and bz != ''  ">bz,</if>
+			<if test="sfyx != null  and sfyx != ''  ">sfyx,</if>
+			<if test="ext1 != null  and ext1 != ''  ">ext1,</if>
+			<if test="ext2 != null  and ext2 != ''  ">ext2,</if>
+			<if test="ext3 != null  and ext3 != ''  ">ext3,</if>
+			<if test="ext4 != null  and ext4 != ''  ">ext4,</if>
+			<if test="ext5 != null  and ext5 != ''  ">ext5,</if>
+			<if test="ext6 != null  and ext6 != ''  ">ext6,</if>
+			<if test="ext7 != null  and ext7 != ''  ">ext7,</if>
+			<if test="ext8 != null  and ext8 != ''  ">ext8,</if>
+			<if test="ext9 != null  and ext9 != ''  ">ext9,</if>
+			<if test="ext10 != null  and ext10 != ''  ">ext10,</if>
+			<if test="orgcode != null  and orgcode != ''  ">orgcode,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null  and id != ''  ">#{id},</if>
+			<if test="jjbh != null  and jjbh != ''  ">#{jjbh},</if>
+			<if test="idEntity != null  and idEntity != ''  ">#{idEntity},</if>
+			<if test="ywdjlx != null  and ywdjlx != ''  ">#{ywdjlx},</if>
+			<if test="subywdjlx != null  and subywdjlx != ''  ">#{subywdjlx},</if>
+			<if test="qllx != null  and qllx != ''  ">#{qllx},</if>
+			<if test="ydah != null  and ydah != ''  ">#{ydah},</if>
+			<if test="xdah != null  and xdah != ''  ">#{xdah},</if>
+			<if test="xzbw != null  and xzbw != ''  ">#{xzbw},</if>
+			<if test="xzmj != null  ">#{xzmj},</if>
+			<if test="xzwjlx != null  and xzwjlx != ''  ">#{xzwjlx},</if>
+			<if test="xzwj != null  and xzwj != ''  ">#{xzwj},</if>
+			<if test="xzwh != null  and xzwh != ''  ">#{xzwh},</if>
+			<if test="xzsj != null  ">#{xzsj},</if>
+			<if test="xzsxkssj != null  ">#{xzsxkssj},</if>
+			<if test="xzsxjssj != null  ">#{xzsxjssj},</if>
+			<if test="xzdjly != null  and xzdjly != ''  ">#{xzdjly},</if>
+			<if test="fj != null  and fj != ''  ">#{fj},</if>
+			<if test="dbr != null  and dbr != ''  ">#{dbr},</if>
+			<if test="dbsj != null  ">#{dbsj},</if>
+			<if test="bz != null  and bz != ''  ">#{bz},</if>
+			<if test="sfyx != null  and sfyx != ''  ">#{sfyx},</if>
+			<if test="ext1 != null  and ext1 != ''  ">#{ext1},</if>
+			<if test="ext2 != null  and ext2 != ''  ">#{ext2},</if>
+			<if test="ext3 != null  and ext3 != ''  ">#{ext3},</if>
+			<if test="ext4 != null  and ext4 != ''  ">#{ext4},</if>
+			<if test="ext5 != null  and ext5 != ''  ">#{ext5},</if>
+			<if test="ext6 != null  and ext6 != ''  ">#{ext6},</if>
+			<if test="ext7 != null  and ext7 != ''  ">#{ext7},</if>
+			<if test="ext8 != null  and ext8 != ''  ">#{ext8},</if>
+			<if test="ext9 != null  and ext9 != ''  ">#{ext9},</if>
+			<if test="ext10 != null  and ext10 != ''  ">#{ext10},</if>
+			<if test="orgcode != null  and orgcode != ''  ">#{orgcode},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateDjXzqZb" parameterType="DjXzqZb">
+        update dj_xzq_zb
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="jjbh != null  and jjbh != ''  ">jjbh = #{jjbh},</if>
+            <if test="idEntity != null  and idEntity != ''  ">id_entity = #{idEntity},</if>
+            <if test="ywdjlx != null  and ywdjlx != ''  ">ywdjlx = #{ywdjlx},</if>
+            <if test="subywdjlx != null  and subywdjlx != ''  ">subywdjlx = #{subywdjlx},</if>
+            <if test="qllx != null  and qllx != ''  ">qllx = #{qllx},</if>
+            <if test="ydah != null  and ydah != ''  ">ydah = #{ydah},</if>
+            <if test="xdah != null  and xdah != ''  ">xdah = #{xdah},</if>
+            <if test="xzbw != null  and xzbw != ''  ">xzbw = #{xzbw},</if>
+            <if test="xzmj != null  ">xzmj = #{xzmj},</if>
+            <if test="xzwjlx != null  and xzwjlx != ''  ">xzwjlx = #{xzwjlx},</if>
+            <if test="xzwj != null  and xzwj != ''  ">xzwj = #{xzwj},</if>
+            <if test="xzwh != null  and xzwh != ''  ">xzwh = #{xzwh},</if>
+            <if test="xzsj != null  ">xzsj = #{xzsj},</if>
+            <if test="xzsxkssj != null  ">xzsxkssj = #{xzsxkssj},</if>
+            <if test="xzsxjssj != null  ">xzsxjssj = #{xzsxjssj},</if>
+            <if test="xzdjly != null  and xzdjly != ''  ">xzdjly = #{xzdjly},</if>
+            <if test="fj != null  and fj != ''  ">fj = #{fj},</if>
+            <if test="dbr != null  and dbr != ''  ">dbr = #{dbr},</if>
+            <if test="dbsj != null  ">dbsj = #{dbsj},</if>
+            <if test="bz != null  and bz != ''  ">bz = #{bz},</if>
+            <if test="sfyx != null  and sfyx != ''  ">sfyx = #{sfyx},</if>
+            <if test="ext1 != null  and ext1 != ''  ">ext1 = #{ext1},</if>
+            <if test="ext2 != null  and ext2 != ''  ">ext2 = #{ext2},</if>
+            <if test="ext3 != null  and ext3 != ''  ">ext3 = #{ext3},</if>
+            <if test="ext4 != null  and ext4 != ''  ">ext4 = #{ext4},</if>
+            <if test="ext5 != null  and ext5 != ''  ">ext5 = #{ext5},</if>
+            <if test="ext6 != null  and ext6 != ''  ">ext6 = #{ext6},</if>
+            <if test="ext7 != null  and ext7 != ''  ">ext7 = #{ext7},</if>
+            <if test="ext8 != null  and ext8 != ''  ">ext8 = #{ext8},</if>
+            <if test="ext9 != null  and ext9 != ''  ">ext9 = #{ext9},</if>
+            <if test="ext10 != null  and ext10 != ''  ">ext10 = #{ext10},</if>
+            <if test="orgcode != null  and orgcode != ''  ">orgcode = #{orgcode},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+	<delete id="deleteDjXzqZbById" parameterType="String">
+        delete from dj_xzq_zb where id = #{id}
+    </delete>
+	
+    <delete id="deleteDjXzqZbByIds" parameterType="String">
+        delete from dj_xzq_zb where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

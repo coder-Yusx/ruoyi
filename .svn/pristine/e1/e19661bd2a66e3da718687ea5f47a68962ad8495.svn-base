@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('筛选结果')" />
+</head>
+<body class="gray-bg">
+
+     <div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="formId">
+					 <input  id="bindId" type="hidden" name="bindId" th:value="${bind.bindId}"/>
+                    <input id="owner" type="hidden" name="owner" th:value="${bind.owner}"/>
+                    <input id="tableName" type="hidden" name="tableName" th:value="${bind.tableName}"/>
+                    <input id="colName" type="hidden" name="colName" th:value="${bind.colName}"/>
+					 <input id="ruleKey" type="hidden" name="ruleKey" th:value="${bind.ruleKey}"/>
+				</form>
+			</div>
+
+	        <div class="btn-group-sm" id="toolbar" role="group">
+				<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="baseclean:tDataBinding:edit">
+					<i class="fa fa-edit"></i> 落库
+				</a>
+				<a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="baseclean:tDataBinding:export">
+						<i class="fa fa-download"></i> 导出
+				 </a>
+			</div>
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+    <div th:include="include :: footer"></div>
+    <script th:inline="javascript">
+        var editFlag = [[${@permission.hasPermi('baseclean:tDataBinding:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('baseclean:tDataBinding:remove')}]];
+        var prefix = ctx + "baseclean/tDataBinding";
+
+        $(function() {
+            var options = {
+                url: prefix + "/excRuleQuery",
+                /*createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+				exportUrl: prefix + "/export",*/
+                queryParams:queryParams,
+                modalName: "筛选结果",
+		        showExport: true,
+                columns: [{
+		            checkbox: true
+		        },
+				{
+					field : 'owner',
+					title : '用户名',
+					sortable: true
+				},
+				{
+					field : 'tableName',
+					title : '表名',
+					sortable: true
+				},
+				{
+					field : 'colName',
+					title : '列名',
+					sortable: true
+				},
+				{
+					field : 'colOriVal',
+					title : '列原始值',
+					sortable: true
+				},
+				{
+					field : 'colKey',
+					title : '列主键',
+					sortable: true
+				},
+				{
+					field : 'colKeyVal',
+					title : '列主键值',
+					sortable: true
+				},
+				{
+					title: '操作',
+					align: 'center',
+					formatter: function(value, row, index) {
+						var actions = [];
+						actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="excRuleQuery(\'' + row.bindId + '\')"><i class="fa fa-edit"></i>落库</a> ');
+						return actions.join('');
+					}
+		        }]
+            };
+            $.table.init(options);
+        });
+
+        function queryParams(params) {
+            return {
+				bindId:			$("#bindId").val(),
+				owner:			$("#owner").val(),
+                tableName:		$("#tableName").val(),
+				colName:		$("#colName").val(),
+				ruleKey:		$("#ruleKey").val(),
+
+                pageSize:       params.limit,
+                pageNum:        params.offset / params.limit + 1,
+                searchValue:    params.search,
+                orderByColumn:  params.sort,
+                isAsc:          params.order
+            };
+        }
+    </script>
+</body>
+</html>

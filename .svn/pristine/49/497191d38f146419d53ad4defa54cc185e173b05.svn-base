@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('公共户列表')" />
+</head>
+<body class="gray-bg">
+
+<div class="container-div">
+	<div class="row">
+		<div class="col-sm-12 search-collapse">
+			<form id="formId">
+				<div class="select-list">
+					<ul>
+						<li>
+							楼id：<input type="text" name="idLid"/>
+						</li>
+
+						<li>
+							房屋编号：<input type="text" name="fwbh"/>
+						</li>
+						<li>
+							是否有效：<input type="text" name="sfyx"/>
+						</li>
+						<li shiro:hasPermission="basp:ggfcHb:edit">
+							数据状态：<select name="ext10" >
+							<option value="">ALL</option>
+							<option value="0">已分配</option>
+							<option value="1">已处理</option>
+							<option value="2">审核通过</option>
+							<option value="3">审核不通过</option>
+						</select>
+						</li>
+						<!--<li>
+                            单元间号（户室）：<input type="text" name="dyjh"/>
+                        </li>
+
+                        <li>
+                            房屋座落：<input type="text" name="fwzl"/>
+                        </li>
+
+                        <li>
+                            政区码：<input type="text" name="zqm"/>
+                        </li>
+
+                        <li>
+                            街路巷：<input type="text" name="jlx"/>
+                        </li>
+
+                        <li>
+                            门牌号：<input type="text" name="mph"/>
+                        </li>
+
+                        <li>
+                            幢号：<input type="text" name="zh"/>
+                        </li>
+
+                        <li>
+                            单元：<input type="text" name="dy"/>
+                        </li>
+
+                        <li>
+                            房号：<input type="text" name="fh"/>
+                        </li>
+
+                        <li>
+                            朝向：<input type="text" name="cx"/>
+                        </li>
+
+                        <li>
+                            质量：<input type="text" name="zl"/>
+                        </li>
+
+                        <li>
+                            房籍号：<input type="text" name="fjh"/>
+                        </li>
+
+                        <li>
+                            户型：<input type="text" name="hx"/>
+                        </li>
+
+                        <li>
+                            地号：<input type="text" name="dh"/>
+                        </li>
+
+                        <li>
+                            层高：<input type="text" name="cg"/>
+                        </li>
+
+                        <li>
+                            四至_东临：<input type="text" name="szdl"/>
+                        </li>
+
+                        <li>
+                            四至_西临：<input type="text" name="szxl"/>
+                        </li>
+
+                        <li>
+                            四至_南临：<input type="text" name="sznl"/>
+                        </li>
+
+                        <li>
+                            四至_北临：<input type="text" name="szbl"/>
+                        </li>
+
+                        <li>
+                            逻辑楼层：<input type="text" name="ljcs"/>
+                        </li>
+
+                        <li>
+                            物理楼层：<input type="text" name="wlcs"/>
+                        </li>
+
+                        <li>
+                            所在楼总层数：<input type="text" name="zcs"/>
+                        </li>
+
+                        <li>
+                            建筑结构：<input type="text" name="jzjg"/>
+                        </li>
+
+                        <li>
+                            房屋类别：<input type="text" name="fwlb"/>
+                        </li>
+
+                        <li>
+                            房屋用途：<input type="text" name="fwyt"/>
+                        </li>
+
+                        <li>
+                            房屋性质：<input type="text" name="fwxz"/>
+                        </li>
+
+                        <li>
+                            建筑面积：<input type="text" name="jzmj"/>
+                        </li>
+
+                        <li>
+                            套内面积：<input type="text" name="tnmj"/>
+                        </li>
+
+                        <li>
+                            分摊面积：<input type="text" name="ftmj"/>
+                        </li>
+
+                        <li>
+                            阳台面积：<input type="text" name="ytmj"/>
+                        </li>
+
+                        <li>
+                            使用面积：<input type="text" name="symj"/>
+                        </li>
+
+                        <li>
+                            房屋状态：<input type="text" name="fwzt"/>
+                        </li>
+
+                        <li>
+                            建设状态：<input type="text" name="jszt"/>
+                        </li>
+
+                        <li>
+                            所有权利状态：<input type="text" name="syqlzt"/>
+                        </li>
+
+                        <li>
+                            法律限制状态：<input type="text" name="flxzzt"/>
+                        </li>
+
+                        <li>
+                            他项权利状态：<input type="text" name="txqlzt"/>
+                        </li>
+
+                        <li>
+                            拆迁冻结状态：<input type="text" name="cqdjzt"/>
+                        </li>
+
+                        <li>
+                            合同备案状态：<input type="text" name="htbazt"/>
+                        </li>
+
+                        <li>
+                            初始登记状态：<input type="text" name="csdjzt"/>
+                        </li>
+
+                        <li>
+                            预售预告状态：<input type="text" name="ysygzt"/>
+                        </li>
+
+                        <li>
+                            预售抵押预告状态：<input type="text" name="ysdyygzt"/>
+                        </li>
+
+                        <li>
+                            在建工程抵押状态：<input type="text" name="zjgcdyzt"/>
+                        </li>
+
+                        <li>
+                            地役权状态：<input type="text" name="dyqzt"/>
+                        </li>
+
+                        <li>
+                            产权面积状态 ：<input type="text" name="cqmjzt"/>
+                        </li>
+
+                        <li>
+                            行政限制状态 ：<input type="text" name="xzxzzt"/>
+                        </li>
+
+                        <li>
+                            异议登记状态 ：<input type="text" name="yydjzt"/>
+                        </li>
+
+                        <li>
+                            测绘变更状态：<input type="text" name="chbgzt"/>
+                        </li>
+
+                        <li>
+                            是否纳入规划状态：<input type="text" name="sfnrghzt"/>
+                        </li>
+
+                        <li>
+                            存量房转移预告状态：<input type="text" name="clfzyygzt"/>
+                        </li>
+
+                        <li>
+                            抵押预告状态：<input type="text" name="dyygzt"/>
+                        </li>
+
+                        <li>
+                            限制状态：<input type="text" name="xzzt"/>
+                        </li>
+
+                        <li>
+                            预售许可状态：<input type="text" name="ysxkzt"/>
+                        </li>
+
+                        <li>
+                            物业用房状态：<input type="text" name="wyyfzt"/>
+                        </li>
+
+                        <li>
+                            拆迁安置状态：<input type="text" name="cqazzt"/>
+                        </li>
+
+                        <li>
+                            人防工程状态：<input type="text" name="rfgczt"/>
+                        </li>
+
+                        <li>
+                            问题卷标识：<input type="text" name="wtjbs"/>
+                        </li>
+
+                        <li>
+                            数据来源 ：<input type="text" name="sjly"/>
+                        </li>
+
+                        <li>
+                            发布时间：<input type="text" name="cjsj"/>
+                        </li>
+
+                        <li>
+                            分摊系数：<input type="text" name="ftxs"/>
+                        </li>
+
+                        <li>
+                            [SZQY] 所在区域 ：<input type="text" name="szqy"/>
+                        </li>
+
+                        <li>
+                            测绘类型：<input type="text" name="chlx"/>
+                        </li>
+
+                        <li>
+                            分层分户图ID：<input type="text" name="fcfhid"/>
+                        </li>
+
+                        <li>
+                            测绘变更标识：<input type="text" name="chbgbs"/>
+                        </li>
+
+                        <li>
+                            房屋备注：<input type="text" name="bz"/>
+                        </li>
+
+
+
+                        <li>
+                            ???：<input type="text" name="ext1"/>
+                        </li>
+
+                        <li>
+                            ${column.columnComment}：<input type="text" name="ext2"/>
+                        </li>
+
+                        <li>
+                            ??????????3??????0?：<input type="text" name="ext3"/>
+                        </li>
+
+                        <li>
+                            ${column.columnComment}：<input type="text" name="ext4"/>
+                        </li>
+
+                        <li>
+                            ${column.columnComment}：<input type="text" name="ext5"/>
+                        </li>
+
+                        <li>
+                            ${column.columnComment}：<input type="text" name="bdcdybh"/>
+                        </li>
+
+                        <li>
+                            ????????1???2???：<input type="text" name="ext6"/>
+                        </li>
+
+                        <li>
+                            ${column.columnComment}：<input type="text" name="ext7"/>
+                        </li>
+
+                        <li>
+                            ${column.columnComment}：<input type="text" name="ext8"/>
+                        </li>
+
+                        <li>
+                            ${column.columnComment}：<input type="text" name="ext9"/>
+                        </li>
+
+                        <li>
+                            ${column.columnComment}：<input type="text" name="ext10"/>
+                        </li>-->
+
+						<li>
+							<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+
+		<div class="btn-group-sm" id="toolbar" role="group">
+			<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="basp:ggfcHb:edit">
+				<i class="fa fa-edit"></i> 修改
+			</a>
+			<a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="basp:ggfcHb:export">
+				<i class="fa fa-download"></i> 导出
+			</a>
+			<a class="btn btn-info" onclick="$.operate.distribute()" shiro:hasPermission="basp:ggfcHb:distribute">
+				<i class="fa fa-distribute"></i> 分配
+			</a>
+			<a class="btn btn-success" onclick="$.operate.examine()" shiro:hasPermission="basp:ggfcHb:examine">
+				<i class="fa fa-examine"></i> 审核
+			</a>
+		</div>
+		<div class="col-sm-12 select-table table-striped">
+			<table id="bootstrap-table" data-mobile-responsive="true"></table>
+		</div>
+	</div>
+</div>
+<div th:include="include :: footer"></div>
+<script th:inline="javascript">
+    var editFlag = [[${@permission.hasPermi('basp:ggfcHb:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('basp:ggfcHb:remove')}]];
+    var prefix = ctx + "basp/ggfcHb";
+    var prefix2 = ctx + "basp/tDataDistribution";
+    $(function() {
+        var options = {
+            url: prefix + "/list",
+            createUrl: prefix + "/add",
+            updateUrl: prefix + "/edit/{id}",
+            examineUrl: prefix + "/examine",
+            examineQlr: prefix + "/examineQlr",
+            removeUrl: prefix + "/remove",
+            exportUrl: prefix + "/export",
+            distributeUrl:prefix2 + "/add",
+            modalName: "公共户",
+            showExport: true,
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field : 'id',
+                    title : '代理主键',
+                    visible: true
+                },
+                {
+                    field : 'idLid',
+                    title : '楼id',
+                    sortable: true
+                },
+                {
+                    field : 'fwbh',
+                    title : '房屋编号',
+                    sortable: true
+                },
+                {
+                    field : 'dyjh',
+                    title : '单元间号（户室）',
+                    sortable: true
+                },
+                {
+                    field : 'fwzl',
+                    title : '房屋座落',
+                    sortable: true
+                },
+                {
+                    field : 'zqm',
+                    title : '政区码',
+                    sortable: true
+                },
+                {
+                    field : 'jlx',
+                    title : '街路巷',
+                    sortable: true
+                },
+                {
+                    field : 'mph',
+                    title : '门牌号',
+                    sortable: true
+                },
+                {
+                    field : 'zh',
+                    title : '幢号',
+                    sortable: true
+                },
+                {
+                    field : 'dy',
+                    title : '单元',
+                    sortable: true
+                },
+                {
+                    field : 'fh',
+                    title : '房号',
+                    sortable: true
+                },
+                {
+                    field : 'cx',
+                    title : '朝向',
+                    sortable: true
+                },
+                {
+                    field : 'zl',
+                    title : '质量',
+                    sortable: true
+                },
+                {
+                    field : 'fjh',
+                    title : '房籍号',
+                    sortable: true
+                },
+                {
+                    field : 'hx',
+                    title : '户型',
+                    sortable: true
+                },
+                {
+                    field : 'dh',
+                    title : '地号',
+                    sortable: true
+                },
+                {
+                    field : 'cg',
+                    title : '层高',
+                    sortable: true
+                },
+                {
+                    field : 'szdl',
+                    title : '四至_东临',
+                    sortable: true
+                },
+                {
+                    field : 'szxl',
+                    title : '四至_西临',
+                    sortable: true
+                },
+                {
+                    field : 'sznl',
+                    title : '四至_南临',
+                    sortable: true
+                },
+                {
+                    field : 'szbl',
+                    title : '四至_北临',
+                    sortable: true
+                },
+                {
+                    field : 'ljcs',
+                    title : '逻辑楼层',
+                    sortable: true
+                },
+                {
+                    field : 'wlcs',
+                    title : '物理楼层',
+                    sortable: true
+                },
+                {
+                    field : 'zcs',
+                    title : '所在楼总层数',
+                    sortable: true
+                },
+                {
+                    field : 'jzjg',
+                    title : '建筑结构',
+                    sortable: true
+                },
+                {
+                    field : 'fwlb',
+                    title : '房屋类别',
+                    sortable: true
+                },
+                {
+                    field : 'fwyt',
+                    title : '房屋用途',
+                    sortable: true
+                },
+                {
+                    field : 'fwxz',
+                    title : '房屋性质',
+                    sortable: true
+                },
+                {
+                    field : 'jzmj',
+                    title : '建筑面积',
+                    sortable: true
+                },
+                {
+                    field : 'tnmj',
+                    title : '套内面积',
+                    sortable: true
+                },
+                {
+                    field : 'ftmj',
+                    title : '分摊面积',
+                    sortable: true
+                },
+                {
+                    field : 'ytmj',
+                    title : '阳台面积',
+                    sortable: true
+                },
+                {
+                    field : 'symj',
+                    title : '使用面积',
+                    sortable: true
+                },
+                {
+                    field : 'fwzt',
+                    title : '房屋状态',
+                    sortable: true
+                },
+                {
+                    field : 'jszt',
+                    title : '建设状态',
+                    sortable: true
+                },
+                {
+                    field : 'syqlzt',
+                    title : '所有权利状态',
+                    sortable: true
+                },
+                {
+                    field : 'flxzzt',
+                    title : '法律限制状态',
+                    sortable: true
+                },
+                {
+                    field : 'txqlzt',
+                    title : '他项权利状态',
+                    sortable: true
+                },
+                {
+                    field : 'cqdjzt',
+                    title : '拆迁冻结状态',
+                    sortable: true
+                },
+                {
+                    field : 'htbazt',
+                    title : '合同备案状态',
+                    sortable: true
+                },
+                {
+                    field : 'csdjzt',
+                    title : '初始登记状态',
+                    sortable: true
+                },
+                {
+                    field : 'ysygzt',
+                    title : '预售预告状态',
+                    sortable: true
+                },
+                {
+                    field : 'ysdyygzt',
+                    title : '预售抵押预告状态',
+                    sortable: true
+                },
+                {
+                    field : 'zjgcdyzt',
+                    title : '在建工程抵押状态',
+                    sortable: true
+                },
+                {
+                    field : 'dyqzt',
+                    title : '地役权状态',
+                    sortable: true
+                },
+                {
+                    field : 'cqmjzt',
+                    title : '产权面积状态 ',
+                    sortable: true
+                },
+                {
+                    field : 'xzxzzt',
+                    title : '行政限制状态',
+                    sortable: true
+                },
+                {
+                    field : 'yydjzt',
+                    title : '异议登记状态 ',
+                    sortable: true
+                },
+                {
+                    field : 'chbgzt',
+                    title : '测绘变更状态',
+                    sortable: true
+                },
+                {
+                    field : 'sfnrghzt',
+                    title : '是否纳入规划状态',
+                    sortable: true
+                },
+                {
+                    field : 'clfzyygzt',
+                    title : '存量房转移预告状态',
+                    sortable: true
+                },
+                {
+                    field : 'dyygzt',
+                    title : '抵押预告状态',
+                    sortable: true
+                },
+                {
+                    field : 'xzzt',
+                    title : '限制状态',
+                    sortable: true
+                },
+                {
+                    field : 'ysxkzt',
+                    title : '预售许可状态',
+                    sortable: true
+                },
+                {
+                    field : 'wyyfzt',
+                    title : '物业用房状态',
+                    sortable: true
+                },
+                {
+                    field : 'cqazzt',
+                    title : '拆迁安置状态',
+                    sortable: true
+                },
+                {
+                    field : 'rfgczt',
+                    title : '人防工程状态',
+                    sortable: true
+                },
+                {
+                    field : 'wtjbs',
+                    title : '问题卷标识',
+                    sortable: true
+                },
+                {
+                    field : 'sjly',
+                    title : '数据来源 ',
+                    sortable: true
+                },
+                {
+                    field : 'cjsj',
+                    title : '发布时间',
+                    sortable: true
+                },
+                {
+                    field : 'ftxs',
+                    title : '分摊系数',
+                    sortable: true
+                },
+                {
+                    field : 'szqy',
+                    title : '所在区域 ',
+                    sortable: true
+                },
+                {
+                    field : 'chlx',
+                    title : '测绘类型',
+                    sortable: true
+                },
+                {
+                    field : 'fcfhid',
+                    title : '分层分户图ID',
+                    sortable: true
+                },
+                {
+                    field : 'chbgbs',
+                    title : '测绘变更标识',
+                    sortable: true
+                },
+                {
+                    field : 'bz',
+                    title : '房屋备注',
+                    sortable: true
+                },
+                {
+                    field : 'sfyx',
+                    title : '是否有效',
+                    sortable: true
+                },{
+                    field : 'ext10',
+                    title : '处理状态',
+                    sortable: true
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                       	return actions.join('');
+                    }
+                }]
+        };
+        $.table.init(options);
+    });
+</script>
+</body>
+</html>

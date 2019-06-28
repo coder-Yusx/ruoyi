@@ -1,0 +1,187 @@
+package com.ruoyi.web.controller.baseclean;
+
+import java.util.HashMap;
+import java.util.List;
+
+import com.ruoyi.baseclean.domain.DataResult;
+import com.ruoyi.baseclean.domain.TDataBinding;
+import com.ruoyi.baseclean.domain.TDataRule;
+import com.ruoyi.baseclean.service.ITDataBindingService;
+import com.ruoyi.baseclean.service.ITDataRuleService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.ruoyi.common.annotation.Log;
+import com.ruoyi.common.enums.BusinessType;
+import com.ruoyi.baseclean.domain.TDataResult;
+import com.ruoyi.baseclean.service.ITDataResultService;
+import com.ruoyi.common.core.controller.BaseController;
+import com.ruoyi.common.core.page.TableDataInfo;
+import com.ruoyi.common.core.domain.AjaxResult;
+import com.ruoyi.common.utils.poi.ExcelUtil;
+
+/**
+ * 校验结果 信息操作处理
+ * 
+ * @author ruoyi
+ * @date 2019-06-11
+ */
+@Controller
+@RequestMapping("/baseclean/tDataResult")
+public class TDataResultController extends BaseController
+{
+    private String prefix = "baseclean/tDataResult";
+	
+	@Autowired
+	private ITDataResultService tDataResultService;
+	
+	@RequiresPermissions("baseclean:tDataResult:view")
+	@GetMapping()
+	public String tDataResult()
+	{
+	    return prefix + "/tDataResult";
+	}
+	
+	/**
+	 * 查询校验结果列表
+	 */
+	@RequiresPermissions("baseclean:tDataResult:list")
+	@PostMapping("/list")
+	@ResponseBody
+	public TableDataInfo list(TDataResult tDataResult)
+	{
+		startPage();
+        List<TDataResult> list = tDataResultService.selectTDataResultList(tDataResult);
+		return getDataTable(list);
+	}
+	
+	
+	/**
+	 * 导出校验结果列表
+	 */
+	@RequiresPermissions("baseclean:tDataResult:export")
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export(TDataResult tDataResult)
+    {
+    	List<TDataResult> list = tDataResultService.selectTDataResultList(tDataResult);
+        ExcelUtil<TDataResult> util = new ExcelUtil<TDataResult>(TDataResult.class);
+        return util.exportExcel(list, "tDataResult");
+    }
+	
+	/**
+	 * 新增校验结果
+	 */
+	@GetMapping("/add")
+	public String add()
+	{
+	    return prefix + "/add";
+	}
+	
+	/**
+	 * 新增保存校验结果
+	 */
+	@RequiresPermissions("baseclean:tDataResult:add")
+	@Log(title = "校验结果", businessType = BusinessType.INSERT)
+	@PostMapping("/add")
+	@ResponseBody
+	public AjaxResult addSave(TDataResult tDataResult)
+	{		
+		return toAjax(tDataResultService.insertTDataResult(tDataResult));
+	}
+
+	/**
+	 * 修改校验结果
+	 */
+	@GetMapping("/edit/{resultId}")
+	public String edit(@PathVariable("resultId") Integer resultId, ModelMap mmap)
+	{
+		TDataResult tDataResult = tDataResultService.selectTDataResultById(resultId);
+		mmap.put("tDataResult", tDataResult);
+	    return prefix + "/edit";
+	}
+	
+	/**
+	 * 修改保存校验结果
+	 */
+	@RequiresPermissions("baseclean:tDataResult:edit")
+	@Log(title = "校验结果", businessType = BusinessType.UPDATE)
+	@PostMapping("/edit")
+	@ResponseBody
+	public AjaxResult editSave(TDataResult tDataResult)
+	{
+		String owner = tDataResult.getOwner();
+		String tableName = tDataResult.getTableName();
+		String colName = tDataResult.getColName();
+		String colNowVal = tDataResult.getColNowVal();
+		String colKey = tDataResult.getColKey();
+		String colKeyVal = tDataResult.getColKeyVal();
+
+		String updateSql = "update "+owner+","+tableName+
+				"set "+colName+" ="+colNowVal+" where 1=1 ";
+
+		String conditionSql = "and "+colKey+"="+colKeyVal;
+
+		updateSql = updateSql+conditionSql;
+
+
+
+		return toAjax(tDataResultService.updateTDataResult(tDataResult));
+	}
+	
+	/**
+	 * 删除校验结果
+	 */
+	@RequiresPermissions("baseclean:tDataResult:remove")
+	@Log(title = "校验结果", businessType = BusinessType.DELETE)
+	@PostMapping( "/remove")
+	@ResponseBody
+	public AjaxResult remove(String ids)
+	{		
+		return toAjax(tDataResultService.deleteTDataResultByIds(ids));
+	}
+
+
+
+	@PostMapping("/reduce")
+	@ResponseBody
+	public AjaxResult reduce(Integer resultId){
+
+		TDataResult tDataResult = tDataResultService.selectTDataResultById(resultId);
+
+		String owner = tDataResult.getOwner();
+		String tableName = tDataResult.getTableName();
+		String colName = tDataResult.getColName();
+		String colNowVal = tDataResult.getColNowVal();
+		String colKey = tDataResult.getColKey();
+		String colKeyVal = tDataResult.getColKeyVal();
+
+		String updatSql = "update "+owner+"."+tableName+
+				" set "+colName+"='"+colNowVal+"'"+
+				" where "+colKey+"='"+colKeyVal+"'";
+
+		int i = tDataResultService.reduceResult(updatSql);
+
+		List<TDataResult> tDataResults = tDataResultService.selectMaxResult(tDataResult);
+
+		TDataResult tDataResult1 = null;
+		if(tDataResults != null && tDataResults.size()>0){
+			tDataResult1 = tDataResults.get(0);
+		}
+
+		tDataResult.setResultId(null);
+		tDataResult.setColOriVal(tDataResult1.getColNowVal());
+		tDataResult.setColNowVal(tDataResult.getColOriVal());
+
+		if(i > 0){
+			return toAjax(tDataResultService.insertTDataResult(tDataResult));
+		}
+		return AjaxResult.error("还原失败");
+	}
+}

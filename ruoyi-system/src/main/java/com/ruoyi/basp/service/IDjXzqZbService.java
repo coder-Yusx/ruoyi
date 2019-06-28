@@ -1,0 +1,54 @@
+package com.ruoyi.basp.service;
+
+import com.ruoyi.basp.domain.DjXzqZb;
+import java.util.List;
+
+/**
+ * ?????_??? 服务层
+ * 
+ * @author ruoyi
+ * @date 2019-05-31
+ */
+public interface IDjXzqZbService 
+{
+	/**
+     * 查询?????_???信息
+     * 
+     * @param id ?????_???ID
+     * @return ?????_???信息
+     */
+	public DjXzqZb selectDjXzqZbById(String id);
+	
+	/**
+     * 查询?????_???列表
+     * 
+     * @param djXzqZb ?????_???信息
+     * @return ?????_???集合
+     */
+	public List<DjXzqZb> selectDjXzqZbList(DjXzqZb djXzqZb);
+	
+	/**
+     * 新增?????_???
+     * 
+     * @param djXzqZb ?????_???信息
+     * @return 结果
+     */
+	public int insertDjXzqZb(DjXzqZb djXzqZb);
+	
+	/**
+     * 修改?????_???
+     * 
+     * @param djXzqZb ?????_???信息
+     * @return 结果
+     */
+	public int updateDjXzqZb(DjXzqZb djXzqZb);
+		
+	/**
+     * 删除?????_???信息
+     * 
+     * @param ids 需要删除的数据ID
+     * @return 结果
+     */
+	public int deleteDjXzqZbByIds(String ids);
+	
+}

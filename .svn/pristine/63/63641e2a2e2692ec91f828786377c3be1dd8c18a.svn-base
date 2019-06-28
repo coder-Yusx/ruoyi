@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('校验结果列表')" />
+</head>
+<body class="gray-bg">
+    
+     <div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="formId">
+					<input id="owner" type="hidden" name="owner" th:value="${tDataResult.owner}"/>
+					<input id="tableName" type="hidden" name="tableName" th:value="${tDataResult.tableName}"/>
+					<input id="colName" type="hidden" name="colName" th:value="${tDataResult.colName}"/>
+					<div class="select-list">
+						<ul>
+							<li>
+								列值：<input type="text" name="colOriVal"/>
+							</li>
+
+							<li>
+								校验规则：<select id="ext1" name="ext1" th:with="rules=${@TDataRuleServiceImpl.selectTDataRuleList2()}">
+								<option value="-1">不选中</option>
+								<option th:each="rule : ${rules}" th:text="${rule.ruleName}" th:value="${rule.ruleId}"></option>
+							</select>
+							</li>
+							<!--<li>
+								用户名：<input type="text" name="owner"/>
+							</li>
+
+							<li>
+								表名：<input type="text" name="tableName"/>
+							</li>
+
+							<li>
+								列名：<input type="text" name="colName"/>
+							</li>
+
+							<li>
+								列原始值：<input type="text" name="colOriVal"/>
+							</li>
+
+							<li>
+								列当前值：<input type="text" name="colNowVal"/>
+							</li>
+
+							<li>
+								列主键：<input type="text" name="colKey"/>
+							</li>
+
+							<li>
+								列主键值：<input type="text" name="colKeyVal"/>
+							</li>
+
+							<li>
+								修改次数：<input type="text" name="modifyTimes"/>
+							</li>
+
+							<li>
+								扩展1：<input type="text" name="ext1"/>
+							</li>
+
+							<li>
+								扩展2：<input type="text" name="ext2"/>
+							</li>
+
+							<li>
+								扩展3：<input type="text" name="ext3"/>
+							</li>
+
+							<li>
+								扩展4：<input type="text" name="ext4"/>
+							</li>
+
+							<li>
+								状态：<input type="text" name="status"/>
+							</li>
+
+							<li>
+								创建者：<input type="text" name="createBy"/>
+							</li>
+
+							<li>
+								创建时间：<input type="text" name="createTime"/>
+							</li>
+
+							<li>
+								更新者：<input type="text" name="updateBy"/>
+							</li>
+
+							<li>
+								更新时间：<input type="text" name="updateTime"/>
+							</li>-->
+
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+			
+	        <div class="btn-group-sm" id="toolbar" role="group">
+				<!--<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="baseclean:tDataResult:add">
+					<i class="fa fa-plus"></i> 添加
+				</a>
+				<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="baseclean:tDataResult:edit">
+					<i class="fa fa-edit"></i> 修改
+				</a>
+				<a class="btn btn-danger btn-del btn-del disabled" onclick="$.operate.removeAll()" shiro:hasPermission="baseclean:tDataResult:remove">
+					<i class="fa fa-remove"></i> 删除
+				</a>-->
+				<a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="baseclean:tDataResult:export">
+						<i class="fa fa-download"></i> 导出
+				 </a>
+			</div>
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+    <div th:include="include :: footer"></div>
+    <script th:inline="javascript">
+        var editFlag = [[${@permission.hasPermi('baseclean:tableclean:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('baseclean:tableclean:remove')}]];
+        var prefix = ctx + "baseclean/tableclean";
+
+        $(function() {
+            var options = {
+                url: prefix + "/getColVal",
+                /*createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",*/
+				exportUrl: prefix + "/exportColVal",
+				queryParams:queryParams,
+                modalName: "校验结果",
+		        showExport: true,
+                columns: [{
+		            checkbox: true
+		        },
+				{
+					field : 'owner',
+					title : '用户名',
+					sortable: false
+				},
+				{
+					field : 'tableName',
+					title : '表名',
+					sortable: false
+				},
+				{
+					field : 'resultId', 
+					title : '结果id',
+					visible: false
+				},
+				{
+					field : 'colName', 
+					title : '列名',
+					sortable: true
+				},
+				{
+					field : 'colOriVal', 
+					title : '列值',
+					sortable: true
+				},
+				/*{
+					field : 'colNowVal', 
+					title : '列当前值',
+					sortable: true
+				},*/
+				{
+					field : 'colKey', 
+					title : '列主键',
+					sortable: true
+				},
+				{
+					field : 'colKeyVal', 
+					title : '列主键值',
+					sortable: true
+				},
+				/*{
+					field : 'modifyTimes', 
+					title : '修改次数',
+					sortable: true
+				},
+				{
+					field : 'ext1', 
+					title : '扩展1',
+					sortable: true
+				},
+				{
+					field : 'ext2', 
+					title : '扩展2',
+					sortable: true
+				},
+				{
+					field : 'ext3', 
+					title : '扩展3',
+					sortable: true
+				},
+				{
+					field : 'ext4', 
+					title : '扩展4',
+					sortable: true
+				},
+				{
+					field : 'status', 
+					title : '状态',
+					sortable: true
+				},
+				{
+					field : 'createBy', 
+					title : '创建者',
+					sortable: true
+				},
+				{
+					field : 'createTime', 
+					title : '创建时间',
+					sortable: true
+				},
+				{
+					field : 'updateBy', 
+					title : '更新者',
+					sortable: true
+				},
+				{
+					field : 'updateTime', 
+					title : '更新时间',
+					sortable: true
+				},*/
+		        {
+		            title: '操作',
+		            align: 'center',
+		            formatter: function(value, row, index) {
+		            	var actions = [];
+		            	actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="updateColVal(\'' + row.owner + '\',\''+row.tableName+'\',\''+row.colName+'\',\''+row.colOriVal+'\',\''+row.colKey+'\',\''+row.colKeyVal+'\')"><i class="fa fa-edit"></i>编辑</a> ');
+						/*actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.resultId + '\')"><i class="fa fa-remove"></i>删除</a>');*/
+						return actions.join('');
+		            }
+		        }]
+            };
+            $.table.init(options);
+        });
+
+        function updateColVal(owner,tableName,colName,colOriVal,colKey,colKeyVal){
+			var url = prefix+"/updateColVal/"+owner+'/'+tableName+'/'+colName+'/'+colKey+'/'+colKeyVal+'/'+colOriVal;
+			$.modal.openFull("修改列数据", url);
+		}
+
+		function queryParams(params) {
+			return {
+				owner:			$("#owner").val(),
+				tableName:		$("#tableName").val(),
+				colName:		$("#colName").val(),
+				ext1:			$("#ext1").val(),
+				pageSize:       params.limit,
+				pageNum:        params.offset / params.limit + 1,
+				searchValue:    params.search,
+				orderByColumn:  params.sort,
+				isAsc:          params.order
+			};
+		}
+    </script>
+</body>
+</html>

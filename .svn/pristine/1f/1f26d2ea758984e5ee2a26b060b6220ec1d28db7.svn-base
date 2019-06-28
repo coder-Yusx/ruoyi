@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('测试')" />
+</head>
+<body class="gray-bg">
+    <form id="basetest">
+        <input type="hidden" id="owner" name="owner" th:value="OWNFGJ">
+        <input type="hidden" id="tableName" name="tableName" th:value="SYS_PERSON">
+
+        用户名：<input type="text" name="user_name"/>
+        性别：<input type="text" name="sex"/>
+    </form>
+     <!--<div class="container-div">
+		 <table border="1">
+             <thead th:with="colComments=${@baseTestServiceImpl.selectColsComments('OWNFGJ','SYS_PERSON')}">
+                 <td nowrap="nowrap" th:each="colComment : ${colComments}">[[${colComment.comments}]]</td>
+             </thead>
+        </table>
+
+         <table border="1">
+             &lt;!&ndash;<tbody th:each="map:${listMap}">
+                <tr th:each="entry:${map}">
+                    <td>[[$entry.value]]</td>
+                </tr>
+             </tbody>&ndash;&gt;
+         </table>
+	</div>-->
+     <div th:include="include :: footer"></div>
+    <script th:inline="javascript">
+
+        var mapList = [];
+
+        var prefix = ctx + "baseclean/basetest";
+
+        var param=$('#basetest').serializeJSON();
+        console.log(JSON.stringify(param));
+
+        $(function() {
+            $.ajax({
+                type : "POST",
+                url : prefix+"/listPerson",
+                dataType : "json",
+                contentType:"application/json;charset=UTF-8",
+                data : JSON.stringify(param),
+                error : function(request) {
+                    $.modal.alertError("系统错误");
+                },
+                success : function(data) {
+                   console.log(data);
+                   mapList = data.data;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

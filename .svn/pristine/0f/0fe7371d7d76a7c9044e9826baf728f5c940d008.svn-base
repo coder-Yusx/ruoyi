@@ -1,0 +1,15 @@
+package com.ruoyi.baseclean.mapper;
+
+import com.ruoyi.baseclean.domain.ColComments;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+public interface BaseTestMapper {
+
+    List<ColComments> selectColsComments(Map<String,String> map);
+
+    List<LinkedHashMap<String,Object>> selectPersonsMap(@Param("map") Map<String,Object> map);
+}

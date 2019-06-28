@@ -1,0 +1,236 @@
+package com.ruoyi.basp.domain;
+
+import com.ruoyi.common.annotation.Excel;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+import com.ruoyi.common.core.domain.BaseEntity;
+import java.util.Date;
+
+/**
+ * 数据校验修改记录表 ownfgj.t_data_check
+ * 
+ * @author ruoyi
+ * @date 2019-06-04
+ */
+public class TDataCheck extends BaseEntity
+{
+	private static final long serialVersionUID = 1L;
+	
+	/** 主键 */
+	@Excel(name = "序号", prompt = "编号")
+	private String id;
+
+	/** 检查用户名 */
+	@Excel(name = "用户名", prompt = "用户名")
+	private String checkOsuser;
+
+	/** 检查表名，格式 用户.表名   格式 用户.表名 */
+	@Excel(name = "表名", prompt = "表名")
+	private String checkTable;
+
+	/** 检查字段名 */
+	@Excel(name = "字段名", prompt = "字段名")
+	private String checkCol;
+
+	/** 检查表的主键名称 */
+	@Excel(name = "主键名", prompt = "主键名")
+	private String checkIdname;
+
+	/** 检查表主键值 */
+	@Excel(name = "主键值", prompt = "主键值")
+	private String checkId;
+
+	/** 原始值 */
+	@Excel(name = "原始值", prompt = "原始值")
+	private String oldval;
+
+	/** 修改后的值 */
+	@Excel(name = "修改后的值", prompt = "修改后的值")
+	private String newval;
+
+	/** 操作员 */
+	@Excel(name = "操作员", prompt = "操作员")
+	private String osuser;
+
+	/** 操作时间 */
+	@Excel(name = "操作时间", prompt = "操作时间")
+	private Date osdate;
+
+	/** 0:未修改  1:已修改未审核  2:已审核   3:审核不通过 0:未修改  1:已修改未审核  2:已审核   3:审核不通过 */
+	private String checkStat;
+	/** 0:当前数据库数据  1:上一还原点 */
+	private String restStat;
+	/** 扩展字段 */
+	private String ext1;
+	/** 扩展字段 */
+	private String ext2;
+	/** 扩展字段 */
+	private String ext3;
+
+	private String tableId;
+
+	public String getTableId() {
+		return tableId;
+	}
+
+	public void setTableId(String tableId) {
+		this.tableId = tableId;
+	}
+
+
+	public void setId(String id) 
+	{
+		this.id = id;
+	}
+
+	public String getId() 
+	{
+		return id;
+	}
+	public void setCheckOsuser(String checkOsuser) 
+	{
+		this.checkOsuser = checkOsuser;
+	}
+
+	public String getCheckOsuser() 
+	{
+		return checkOsuser;
+	}
+	public void setCheckTable(String checkTable) 
+	{
+		this.checkTable = checkTable;
+	}
+
+	public String getCheckTable() 
+	{
+		return checkTable;
+	}
+	public void setCheckCol(String checkCol) 
+	{
+		this.checkCol = checkCol;
+	}
+
+	public String getCheckCol() 
+	{
+		return checkCol;
+	}
+	public void setCheckIdname(String checkIdname) 
+	{
+		this.checkIdname = checkIdname;
+	}
+
+	public String getCheckIdname() 
+	{
+		return checkIdname;
+	}
+	public void setCheckId(String checkId) 
+	{
+		this.checkId = checkId;
+	}
+
+	public String getCheckId() 
+	{
+		return checkId;
+	}
+	public void setOldval(String oldval) 
+	{
+		this.oldval = oldval;
+	}
+
+	public String getOldval() 
+	{
+		return oldval;
+	}
+	public void setNewval(String newval) 
+	{
+		this.newval = newval;
+	}
+
+	public String getNewval() 
+	{
+		return newval;
+	}
+	public void setOsuser(String osuser) 
+	{
+		this.osuser = osuser;
+	}
+
+	public String getOsuser() 
+	{
+		return osuser;
+	}
+	public void setOsdate(Date osdate) 
+	{
+		this.osdate = osdate;
+	}
+
+	public Date getOsdate() 
+	{
+		return osdate;
+	}
+	public void setCheckStat(String checkStat) 
+	{
+		this.checkStat = checkStat;
+	}
+
+	public String getCheckStat() 
+	{
+		return checkStat;
+	}
+	public void setRestStat(String restStat) 
+	{
+		this.restStat = restStat;
+	}
+
+	public String getRestStat() 
+	{
+		return restStat;
+	}
+	public void setExt1(String ext1) 
+	{
+		this.ext1 = ext1;
+	}
+
+	public String getExt1() 
+	{
+		return ext1;
+	}
+	public void setExt2(String ext2) 
+	{
+		this.ext2 = ext2;
+	}
+
+	public String getExt2() 
+	{
+		return ext2;
+	}
+	public void setExt3(String ext3) 
+	{
+		this.ext3 = ext3;
+	}
+
+	public String getExt3() 
+	{
+		return ext3;
+	}
+
+    public String toString() {
+        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
+            .append("id", getId())
+            .append("checkOsuser", getCheckOsuser())
+            .append("checkTable", getCheckTable())
+            .append("checkCol", getCheckCol())
+            .append("checkIdname", getCheckIdname())
+            .append("checkId", getCheckId())
+            .append("oldval", getOldval())
+            .append("newval", getNewval())
+            .append("osuser", getOsuser())
+            .append("osdate", getOsdate())
+            .append("checkStat", getCheckStat())
+            .append("restStat", getRestStat())
+            .append("ext1", getExt1())
+            .append("ext2", getExt2())
+            .append("ext3", getExt3())
+            .toString();
+    }
+}

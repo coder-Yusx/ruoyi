@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.baseclean.mapper.TDataBindingMapper">
+    
+    <resultMap type="TDataBinding" id="TDataBindingResult">
+        <result property="bindId"    column="bind_id"    />
+        <result property="owner"    column="owner"    />
+        <result property="tableName"    column="table_name"    />
+        <result property="colName"    column="col_name"    />
+        <result property="colComments"    column="col_comments"    />
+        <result property="ruleKey"    column="rule_key"    />
+        <result property="bindStatus"    column="bind_status"    />
+        <result property="ext1"    column="ext1"    />
+        <result property="ext2"    column="ext2"    />
+        <result property="ext3"    column="ext3"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+	
+	<sql id="selectTDataBindingVo">
+        select bind_id, owner, table_name, col_name, col_comments, rule_key, bind_status, ext1, ext2, ext3, create_by, create_time, update_by, update_time from t_data_binding
+    </sql>
+	
+    <select id="selectTDataBindingList" parameterType="TDataBinding" resultMap="TDataBindingResult">
+        <include refid="selectTDataBindingVo"/>
+        <where>  
+            <if test="bindId != null "> and bind_id = #{bindId}</if>
+             <if test="owner != null  and owner != '' "> and owner = #{owner}</if>
+             <if test="tableName != null  and tableName != '' "> and table_name = #{tableName}</if>
+             <if test="colName != null  and colName != '' "> and col_name = #{colName}</if>
+             <if test="colComments != null  and colComments != '' "> and col_comments = #{colComments}</if>
+             <if test="ruleKey != null  and ruleKey != '' "> and rule_key = #{ruleKey}</if>
+             <if test="bindStatus != null  and bindStatus != '' "> and bind_status = #{bindStatus}</if>
+             <if test="ext1 != null  and ext1 != '' "> and ext1 = #{ext1}</if>
+             <if test="ext2 != null  and ext2 != '' "> and ext2 = #{ext2}</if>
+             <if test="ext3 != null  and ext3 != '' "> and ext3 = #{ext3}</if>
+             <if test="createBy != null  and createBy != '' "> and create_by = #{createBy}</if>
+             <if test="createTime != null "> and create_time = #{createTime}</if>
+             <if test="updateBy != null  and updateBy != '' "> and update_by = #{updateBy}</if>
+             <if test="updateTime != null "> and update_time = #{updateTime}</if>
+         </where>
+    </select>
+    
+    <select id="selectTDataBindingById" parameterType="Integer" resultMap="TDataBindingResult">
+        <include refid="selectTDataBindingVo"/>
+        where bind_id = #{bindId}
+    </select>
+        
+    <insert id="insertTDataBinding" parameterType="TDataBinding" useGeneratedKeys="true" keyProperty="bindId">
+        <selectKey keyProperty="bindId" order="BEFORE" resultType="INTEGER">
+            select seq_t_data_binding.nextval as bindId from DUAL
+        </selectKey>
+        insert into t_data_binding
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bindId != null  ">bind_id,</if>
+			<if test="owner != null  and owner != ''  ">owner,</if>
+			<if test="tableName != null  and tableName != ''  ">table_name,</if>
+			<if test="colName != null  and colName != ''  ">col_name,</if>
+			<if test="colComments != null  and colComments != ''  ">col_comments,</if>
+			<if test="ruleKey != null  and ruleKey != ''  ">rule_key,</if>
+			<if test="bindStatus != null  and bindStatus != ''  ">bind_status,</if>
+			<if test="ext1 != null  and ext1 != ''  ">ext1,</if>
+			<if test="ext2 != null  and ext2 != ''  ">ext2,</if>
+			<if test="ext3 != null  and ext3 != ''  ">ext3,</if>
+			<if test="createBy != null  and createBy != ''  ">create_by,</if>
+			<if test="createTime != null  ">create_time,</if>
+			<if test="updateBy != null  and updateBy != ''  ">update_by,</if>
+			<if test="updateTime != null  ">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="bindId != null  ">#{bindId},</if>
+			<if test="owner != null  and owner != ''  ">#{owner},</if>
+			<if test="tableName != null  and tableName != ''  ">#{tableName},</if>
+			<if test="colName != null  and colName != ''  ">#{colName},</if>
+			<if test="colComments != null  and colComments != ''  ">#{colComments},</if>
+			<if test="ruleKey != null  and ruleKey != ''  ">#{ruleKey},</if>
+			<if test="bindStatus != null  and bindStatus != ''  ">#{bindStatus},</if>
+			<if test="ext1 != null  and ext1 != ''  ">#{ext1},</if>
+			<if test="ext2 != null  and ext2 != ''  ">#{ext2},</if>
+			<if test="ext3 != null  and ext3 != ''  ">#{ext3},</if>
+			<if test="createBy != null  and createBy != ''  ">#{createBy},</if>
+			<if test="createTime != null  ">#{createTime},</if>
+			<if test="updateBy != null  and updateBy != ''  ">#{updateBy},</if>
+			<if test="updateTime != null  ">#{updateTime},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateTDataBinding" parameterType="TDataBinding">
+        update t_data_binding
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="owner != null  and owner != ''  ">owner = #{owner},</if>
+            <if test="tableName != null  and tableName != ''  ">table_name = #{tableName},</if>
+            <if test="colName != null  and colName != ''  ">col_name = #{colName},</if>
+            <if test="colComments != null  and colComments != ''  ">col_comments = #{colComments},</if>
+            <if test="ruleKey != null  and ruleKey != ''  ">rule_key = #{ruleKey},</if>
+            <if test="bindStatus != null  and bindStatus != ''  ">bind_status = #{bindStatus},</if>
+            <if test="ext1 != null  and ext1 != ''  ">ext1 = #{ext1},</if>
+            <if test="ext2 != null  and ext2 != ''  ">ext2 = #{ext2},</if>
+            <if test="ext3 != null  and ext3 != ''  ">ext3 = #{ext3},</if>
+            <if test="createBy != null  and createBy != ''  ">create_by = #{createBy},</if>
+            <if test="createTime != null  ">create_time = #{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''  ">update_by = #{updateBy},</if>
+            <if test="updateTime != null  ">update_time = #{updateTime},</if>
+        </trim>
+        where bind_id = #{bindId}
+    </update>
+
+	<delete id="deleteTDataBindingById" parameterType="Integer">
+        delete from t_data_binding where bind_id = #{bindId}
+    </delete>
+	
+    <delete id="deleteTDataBindingByIds" parameterType="String">
+        delete from t_data_binding where bind_id in 
+        <foreach item="bindId" collection="array" open="(" separator="," close=")">
+            #{bindId}
+        </foreach>
+    </delete>
+
+    <select id="selectPrimaryKey" parameterType="String" resultType="String">
+        select col.column_name
+          from all_constraints con, all_cons_columns col
+         where con.constraint_name = col.constraint_name
+           and con.constraint_type = 'P'
+           and col.table_name = upper(#{_parameter})
+    </select>
+
+    <select id="selectQueryRuleResult" parameterType="String" resultType="TDataResult">
+        ${_parameter}
+    </select>
+</mapper>

@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.basp.mapper.GgfcHbMapper">
+    
+    <resultMap type="GgfcHb" id="GgfcHbResult">
+        <result property="id"    column="id"    />
+        <result property="idLid"    column="id_lid"    />
+        <result property="fwbh"    column="fwbh"    />
+        <result property="dyjh"    column="dyjh"    />
+        <result property="fwzl"    column="fwzl"    />
+        <result property="zqm"    column="zqm"    />
+        <result property="jlx"    column="jlx"    />
+        <result property="mph"    column="mph"    />
+        <result property="zh"    column="zh"    />
+        <result property="dy"    column="dy"    />
+        <result property="fh"    column="fh"    />
+        <result property="cx"    column="cx"    />
+        <result property="zl"    column="zl"    />
+        <result property="fjh"    column="fjh"    />
+        <result property="hx"    column="hx"    />
+        <result property="dh"    column="dh"    />
+        <result property="cg"    column="cg"    />
+        <result property="szdl"    column="szdl"    />
+        <result property="szxl"    column="szxl"    />
+        <result property="sznl"    column="sznl"    />
+        <result property="szbl"    column="szbl"    />
+        <result property="ljcs"    column="ljcs"    />
+        <result property="wlcs"    column="wlcs"    />
+        <result property="zcs"    column="zcs"    />
+        <result property="jzjg"    column="jzjg"    />
+        <result property="fwlb"    column="fwlb"    />
+        <result property="fwyt"    column="fwyt"    />
+        <result property="fwxz"    column="fwxz"    />
+        <result property="jzmj"    column="jzmj"    />
+        <result property="tnmj"    column="tnmj"    />
+        <result property="ftmj"    column="ftmj"    />
+        <result property="ytmj"    column="ytmj"    />
+        <result property="symj"    column="symj"    />
+        <result property="fwzt"    column="fwzt"    />
+        <result property="jszt"    column="jszt"    />
+        <result property="syqlzt"    column="syqlzt"    />
+        <result property="flxzzt"    column="flxzzt"    />
+        <result property="txqlzt"    column="txqlzt"    />
+        <result property="cqdjzt"    column="cqdjzt"    />
+        <result property="htbazt"    column="htbazt"    />
+        <result property="csdjzt"    column="csdjzt"    />
+        <result property="ysygzt"    column="ysygzt"    />
+        <result property="ysdyygzt"    column="ysdyygzt"    />
+        <result property="zjgcdyzt"    column="zjgcdyzt"    />
+        <result property="dyqzt"    column="dyqzt"    />
+        <result property="cqmjzt"    column="cqmjzt"    />
+        <result property="xzxzzt"    column="xzxzzt"    />
+        <result property="yydjzt"    column="yydjzt"    />
+        <result property="chbgzt"    column="chbgzt"    />
+        <result property="sfnrghzt"    column="sfnrghzt"    />
+        <result property="clfzyygzt"    column="clfzyygzt"    />
+        <result property="dyygzt"    column="dyygzt"    />
+        <result property="xzzt"    column="xzzt"    />
+        <result property="ysxkzt"    column="ysxkzt"    />
+        <result property="wyyfzt"    column="wyyfzt"    />
+        <result property="cqazzt"    column="cqazzt"    />
+        <result property="rfgczt"    column="rfgczt"    />
+        <result property="wtjbs"    column="wtjbs"    />
+        <result property="sjly"    column="sjly"    />
+        <result property="cjsj"    column="cjsj"    />
+        <result property="ftxs"    column="ftxs"    />
+        <result property="szqy"    column="szqy"    />
+        <result property="chlx"    column="chlx"    />
+        <result property="fcfhid"    column="fcfhid"    />
+        <result property="chbgbs"    column="chbgbs"    />
+        <result property="bz"    column="bz"    />
+        <result property="sfyx"    column="sfyx"    />
+        <result property="ext1"    column="ext1"    />
+        <result property="ext2"    column="ext2"    />
+        <result property="ext3"    column="ext3"    />
+        <result property="ext4"    column="ext4"    />
+        <result property="ext5"    column="ext5"    />
+        <result property="bdcdybh"    column="bdcdybh"    />
+        <result property="ext6"    column="ext6"    />
+        <result property="ext7"    column="ext7"    />
+        <result property="ext8"    column="ext8"    />
+        <result property="ext9"    column="ext9"    />
+        <result property="ext10"    column="ext10"    />
+    </resultMap>
+	
+	<sql id="selectGgfcHbVo">
+        select id, id_lid, fwbh, dyjh, fwzl, zqm, jlx, mph, zh, dy, fh, cx, zl, fjh, hx, dh, cg, szdl, szxl, sznl, szbl, ljcs, wlcs, zcs, jzjg, fwlb, fwyt, fwxz, jzmj, tnmj, ftmj, ytmj, symj, fwzt, jszt, syqlzt, flxzzt, txqlzt, cqdjzt, htbazt, csdjzt, ysygzt, ysdyygzt, zjgcdyzt, dyqzt, cqmjzt, xzxzzt, yydjzt, chbgzt, sfnrghzt, clfzyygzt, dyygzt, xzzt, ysxkzt, wyyfzt, cqazzt, rfgczt, wtjbs, sjly,cjsj, ftxs, szqy, chlx, fcfhid, chbgbs, bz, sfyx, ext1, ext2, ext3, ext4, ext5, bdcdybh, ext6, ext7, ext8, ext9, ext10 from basp.ggfc_hb
+    </sql>
+	
+    <select id="selectGgfcHbList" parameterType="GgfcHb" resultMap="GgfcHbResult">
+        <include refid="selectGgfcHbVo"/>
+        <where>
+            <if test="ext10 == null ">ext10 is null</if>
+            <if test="id != null  and id != '' "> and id = #{id}</if>
+             <if test="idLid != null  and idLid != '' "> and id_lid = #{idLid}</if>
+             <if test="fwbh != null  and fwbh != '' "> and fwbh = #{fwbh}</if>
+             <if test="dyjh != null  and dyjh != '' "> and dyjh = #{dyjh}</if>
+             <if test="fwzl != null  and fwzl != '' "> and fwzl = #{fwzl}</if>
+             <if test="zqm != null  and zqm != '' "> and zqm = #{zqm}</if>
+             <if test="jlx != null  and jlx != '' "> and jlx = #{jlx}</if>
+             <if test="mph != null  and mph != '' "> and mph = #{mph}</if>
+             <if test="zh != null  and zh != '' "> and zh = #{zh}</if>
+             <if test="dy != null  and dy != '' "> and dy = #{dy}</if>
+             <if test="fh != null  and fh != '' "> and fh = #{fh}</if>
+             <if test="cx != null  and cx != '' "> and cx = #{cx}</if>
+             <if test="zl != null  and zl != '' "> and zl = #{zl}</if>
+             <if test="fjh != null  and fjh != '' "> and fjh = #{fjh}</if>
+             <if test="hx != null  and hx != '' "> and hx = #{hx}</if>
+             <if test="dh != null  and dh != '' "> and dh = #{dh}</if>
+             <if test="cg != null "> and cg = #{cg}</if>
+             <if test="szdl != null  and szdl != '' "> and szdl = #{szdl}</if>
+             <if test="szxl != null  and szxl != '' "> and szxl = #{szxl}</if>
+             <if test="sznl != null  and sznl != '' "> and sznl = #{sznl}</if>
+             <if test="szbl != null  and szbl != '' "> and szbl = #{szbl}</if>
+             <if test="ljcs != null  and ljcs != '' "> and ljcs = #{ljcs}</if>
+             <if test="wlcs != null  and wlcs != '' "> and wlcs = #{wlcs}</if>
+             <if test="zcs != null  and zcs != '' "> and zcs = #{zcs}</if>
+             <if test="jzjg != null  and jzjg != '' "> and jzjg = #{jzjg}</if>
+             <if test="fwlb != null  and fwlb != '' "> and fwlb = #{fwlb}</if>
+             <if test="fwyt != null  and fwyt != '' "> and fwyt = #{fwyt}</if>
+             <if test="fwxz != null  and fwxz != '' "> and fwxz = #{fwxz}</if>
+             <if test="jzmj != null "> and jzmj = #{jzmj}</if>
+             <if test="tnmj != null "> and tnmj = #{tnmj}</if>
+             <if test="ftmj != null "> and ftmj = #{ftmj}</if>
+             <if test="ytmj != null "> and ytmj = #{ytmj}</if>
+             <if test="symj != null "> and symj = #{symj}</if>
+             <if test="fwzt != null  and fwzt != '' "> and fwzt = #{fwzt}</if>
+             <if test="jszt != null  and jszt != '' "> and jszt = #{jszt}</if>
+             <if test="syqlzt != null  and syqlzt != '' "> and syqlzt = #{syqlzt}</if>
+             <if test="flxzzt != null  and flxzzt != '' "> and flxzzt = #{flxzzt}</if>
+             <if test="txqlzt != null  and txqlzt != '' "> and txqlzt = #{txqlzt}</if>
+             <if test="cqdjzt != null  and cqdjzt != '' "> and cqdjzt = #{cqdjzt}</if>
+             <if test="htbazt != null  and htbazt != '' "> and htbazt = #{htbazt}</if>
+             <if test="csdjzt != null  and csdjzt != '' "> and csdjzt = #{csdjzt}</if>
+             <if test="ysygzt != null  and ysygzt != '' "> and ysygzt = #{ysygzt}</if>
+             <if test="ysdyygzt != null  and ysdyygzt != '' "> and ysdyygzt = #{ysdyygzt}</if>
+             <if test="zjgcdyzt != null  and zjgcdyzt != '' "> and zjgcdyzt = #{zjgcdyzt}</if>
+             <if test="dyqzt != null  and dyqzt != '' "> and dyqzt = #{dyqzt}</if>
+             <if test="cqmjzt != null  and cqmjzt != '' "> and cqmjzt = #{cqmjzt}</if>
+             <if test="xzxzzt != null  and xzxzzt != '' "> and xzxzzt = #{xzxzzt}</if>
+             <if test="yydjzt != null  and yydjzt != '' "> and yydjzt = #{yydjzt}</if>
+             <if test="chbgzt != null  and chbgzt != '' "> and chbgzt = #{chbgzt}</if>
+             <if test="sfnrghzt != null  and sfnrghzt != '' "> and sfnrghzt = #{sfnrghzt}</if>
+             <if test="clfzyygzt != null  and clfzyygzt != '' "> and clfzyygzt = #{clfzyygzt}</if>
+             <if test="dyygzt != null  and dyygzt != '' "> and dyygzt = #{dyygzt}</if>
+             <if test="xzzt != null  and xzzt != '' "> and xzzt = #{xzzt}</if>
+             <if test="ysxkzt != null  and ysxkzt != '' "> and ysxkzt = #{ysxkzt}</if>
+             <if test="wyyfzt != null  and wyyfzt != '' "> and wyyfzt = #{wyyfzt}</if>
+             <if test="cqazzt != null  and cqazzt != '' "> and cqazzt = #{cqazzt}</if>
+             <if test="rfgczt != null  and rfgczt != '' "> and rfgczt = #{rfgczt}</if>
+             <if test="wtjbs != null  and wtjbs != '' "> and wtjbs = #{wtjbs}</if>
+             <if test="sjly != null  and sjly != '' "> and sjly = #{sjly}</if>
+             <if test="cjsj != null "> and cjsj = #{cjsj}</if>
+             <if test="ftxs != null "> and ftxs = #{ftxs}</if>
+             <if test="szqy != null  and szqy != '' "> and szqy = #{szqy}</if>
+             <if test="chlx != null  and chlx != '' "> and chlx = #{chlx}</if>
+             <if test="fcfhid != null  and fcfhid != '' "> and fcfhid = #{fcfhid}</if>
+             <if test="chbgbs != null  and chbgbs != '' "> and chbgbs = #{chbgbs}</if>
+             <if test="bz != null  and bz != '' "> and bz = #{bz}</if>
+             <if test="sfyx != null  and sfyx != '' "> and sfyx = #{sfyx}</if>
+             <if test="ext1 != null  and ext1 != '' "> and ext1 = #{ext1}</if>
+             <if test="ext2 != null  and ext2 != '' "> and ext2 = #{ext2}</if>
+             <if test="ext3 != null  and ext3 != '' "> and ext3 = #{ext3}</if>
+             <if test="ext4 != null  and ext4 != '' "> and ext4 = #{ext4}</if>
+             <if test="ext5 != null  and ext5 != '' "> and ext5 = #{ext5}</if>
+             <if test="bdcdybh != null  and bdcdybh != '' "> and bdcdybh = #{bdcdybh}</if>
+             <if test="ext6 != null  and ext6 != '' "> and ext6 = #{ext6}</if>
+             <if test="ext7 != null  and ext7 != '' "> and ext7 = #{ext7}</if>
+             <if test="ext8 != null  and ext8 != '' "> and ext8 = #{ext8}</if>
+             <if test="ext9 != null  and ext9 != '' "> and ext9 = #{ext9}</if>
+             <if test="ext10 != null  and ext10 != '' "> and ext10 = #{ext10}</if>
+         </where>
+    </select>
+
+    <select id="selectGgfcHbListUser" parameterType="GgfcHb" resultMap="GgfcHbResult">
+        <include refid="selectGgfcHbVo"/>
+       <where>
+           id IN (${dataid})
+            <if test="id != null  and id != '' "> and id = #{id}</if>
+            <if test="idLid != null  and idLid != '' "> and id_lid = #{idLid}</if>
+            <if test="fwbh != null  and fwbh != '' "> and fwbh = #{fwbh}</if>
+            <if test="dyjh != null  and dyjh != '' "> and dyjh = #{dyjh}</if>
+            <if test="fwzl != null  and fwzl != '' "> and fwzl = #{fwzl}</if>
+            <if test="zqm != null  and zqm != '' "> and zqm = #{zqm}</if>
+            <if test="jlx != null  and jlx != '' "> and jlx = #{jlx}</if>
+            <if test="mph != null  and mph != '' "> and mph = #{mph}</if>
+            <if test="zh != null  and zh != '' "> and zh = #{zh}</if>
+            <if test="dy != null  and dy != '' "> and dy = #{dy}</if>
+            <if test="fh != null  and fh != '' "> and fh = #{fh}</if>
+            <if test="cx != null  and cx != '' "> and cx = #{cx}</if>
+            <if test="zl != null  and zl != '' "> and zl = #{zl}</if>
+            <if test="fjh != null  and fjh != '' "> and fjh = #{fjh}</if>
+            <if test="hx != null  and hx != '' "> and hx = #{hx}</if>
+            <if test="dh != null  and dh != '' "> and dh = #{dh}</if>
+            <if test="cg != null "> and cg = #{cg}</if>
+            <if test="szdl != null  and szdl != '' "> and szdl = #{szdl}</if>
+            <if test="szxl != null  and szxl != '' "> and szxl = #{szxl}</if>
+            <if test="sznl != null  and sznl != '' "> and sznl = #{sznl}</if>
+            <if test="szbl != null  and szbl != '' "> and szbl = #{szbl}</if>
+            <if test="ljcs != null  and ljcs != '' "> and ljcs = #{ljcs}</if>
+            <if test="wlcs != null  and wlcs != '' "> and wlcs = #{wlcs}</if>
+            <if test="zcs != null  and zcs != '' "> and zcs = #{zcs}</if>
+            <if test="jzjg != null  and jzjg != '' "> and jzjg = #{jzjg}</if>
+            <if test="fwlb != null  and fwlb != '' "> and fwlb = #{fwlb}</if>
+            <if test="fwyt != null  and fwyt != '' "> and fwyt = #{fwyt}</if>
+            <if test="fwxz != null  and fwxz != '' "> and fwxz = #{fwxz}</if>
+            <if test="jzmj != null "> and jzmj = #{jzmj}</if>
+            <if test="tnmj != null "> and tnmj = #{tnmj}</if>
+            <if test="ftmj != null "> and ftmj = #{ftmj}</if>
+            <if test="ytmj != null "> and ytmj = #{ytmj}</if>
+            <if test="symj != null "> and symj = #{symj}</if>
+            <if test="fwzt != null  and fwzt != '' "> and fwzt = #{fwzt}</if>
+            <if test="jszt != null  and jszt != '' "> and jszt = #{jszt}</if>
+            <if test="syqlzt != null  and syqlzt != '' "> and syqlzt = #{syqlzt}</if>
+            <if test="flxzzt != null  and flxzzt != '' "> and flxzzt = #{flxzzt}</if>
+            <if test="txqlzt != null  and txqlzt != '' "> and txqlzt = #{txqlzt}</if>
+            <if test="cqdjzt != null  and cqdjzt != '' "> and cqdjzt = #{cqdjzt}</if>
+            <if test="htbazt != null  and htbazt != '' "> and htbazt = #{htbazt}</if>
+            <if test="csdjzt != null  and csdjzt != '' "> and csdjzt = #{csdjzt}</if>
+            <if test="ysygzt != null  and ysygzt != '' "> and ysygzt = #{ysygzt}</if>
+            <if test="ysdyygzt != null  and ysdyygzt != '' "> and ysdyygzt = #{ysdyygzt}</if>
+            <if test="zjgcdyzt != null  and zjgcdyzt != '' "> and zjgcdyzt = #{zjgcdyzt}</if>
+            <if test="dyqzt != null  and dyqzt != '' "> and dyqzt = #{dyqzt}</if>
+            <if test="cqmjzt != null  and cqmjzt != '' "> and cqmjzt = #{cqmjzt}</if>
+            <if test="xzxzzt != null  and xzxzzt != '' "> and xzxzzt = #{xzxzzt}</if>
+            <if test="yydjzt != null  and yydjzt != '' "> and yydjzt = #{yydjzt}</if>
+            <if test="chbgzt != null  and chbgzt != '' "> and chbgzt = #{chbgzt}</if>
+            <if test="sfnrghzt != null  and sfnrghzt != '' "> and sfnrghzt = #{sfnrghzt}</if>
+            <if test="clfzyygzt != null  and clfzyygzt != '' "> and clfzyygzt = #{clfzyygzt}</if>
+            <if test="dyygzt != null  and dyygzt != '' "> and dyygzt = #{dyygzt}</if>
+            <if test="xzzt != null  and xzzt != '' "> and xzzt = #{xzzt}</if>
+            <if test="ysxkzt != null  and ysxkzt != '' "> and ysxkzt = #{ysxkzt}</if>
+            <if test="wyyfzt != null  and wyyfzt != '' "> and wyyfzt = #{wyyfzt}</if>
+            <if test="cqazzt != null  and cqazzt != '' "> and cqazzt = #{cqazzt}</if>
+            <if test="rfgczt != null  and rfgczt != '' "> and rfgczt = #{rfgczt}</if>
+            <if test="wtjbs != null  and wtjbs != '' "> and wtjbs = #{wtjbs}</if>
+            <if test="sjly != null  and sjly != '' "> and sjly = #{sjly}</if>
+            <if test="cjsj != null "> and cjsj = #{cjsj}</if>
+            <if test="ftxs != null "> and ftxs = #{ftxs}</if>
+            <if test="szqy != null  and szqy != '' "> and szqy = #{szqy}</if>
+            <if test="chlx != null  and chlx != '' "> and chlx = #{chlx}</if>
+            <if test="fcfhid != null  and fcfhid != '' "> and fcfhid = #{fcfhid}</if>
+            <if test="chbgbs != null  and chbgbs != '' "> and chbgbs = #{chbgbs}</if>
+            <if test="bz != null  and bz != '' "> and bz = #{bz}</if>
+            <if test="sfyx != null  and sfyx != '' "> and sfyx = #{sfyx}</if>
+            <if test="ext1 != null  and ext1 != '' "> and ext1 = #{ext1}</if>
+            <if test="ext2 != null  and ext2 != '' "> and ext2 = #{ext2}</if>
+            <if test="ext3 != null  and ext3 != '' "> and ext3 = #{ext3}</if>
+            <if test="ext4 != null  and ext4 != '' "> and ext4 = #{ext4}</if>
+            <if test="ext5 != null  and ext5 != '' "> and ext5 = #{ext5}</if>
+            <if test="bdcdybh != null  and bdcdybh != '' "> and bdcdybh = #{bdcdybh}</if>
+            <if test="ext6 != null  and ext6 != '' "> and ext6 = #{ext6}</if>
+            <if test="ext7 != null  and ext7 != '' "> and ext7 = #{ext7}</if>
+            <if test="ext8 != null  and ext8 != '' "> and ext8 = #{ext8}</if>
+            <if test="ext9 != null  and ext9 != '' "> and ext9 = #{ext9}</if>
+            <if test="ext10 != null  and ext10 != '' "> and ext10 = #{ext10}</if>
+        </where>
+    </select>
+
+   <!-- 通用列表-->
+    <select id="selectGgfcHbListown" parameterType="GgfcHb" resultMap="GgfcHbResult">
+        <include refid="selectGgfcHbVo"/>
+        <where>
+            <if test="ext10 == null ">ext10 is null</if>
+            <if test="id != null  and id != '' "> and id = #{id}</if>
+            <if test="idLid != null  and idLid != '' "> and id_lid = #{idLid}</if>
+            <if test="fwbh != null  and fwbh != '' "> and fwbh = #{fwbh}</if>
+            <if test="dyjh != null  and dyjh != '' "> and dyjh = #{dyjh}</if>
+            <if test="fwzl != null  and fwzl != '' "> and fwzl = #{fwzl}</if>
+            <if test="zqm != null  and zqm != '' "> and zqm = #{zqm}</if>
+            <if test="jlx != null  and jlx != '' "> and jlx = #{jlx}</if>
+            <if test="mph != null  and mph != '' "> and mph = #{mph}</if>
+            <if test="zh != null  and zh != '' "> and zh = #{zh}</if>
+            <if test="dy != null  and dy != '' "> and dy = #{dy}</if>
+            <if test="fh != null  and fh != '' "> and fh = #{fh}</if>
+            <if test="cx != null  and cx != '' "> and cx = #{cx}</if>
+            <if test="zl != null  and zl != '' "> and zl = #{zl}</if>
+            <if test="fjh != null  and fjh != '' "> and fjh = #{fjh}</if>
+            <if test="hx != null  and hx != '' "> and hx = #{hx}</if>
+            <if test="dh != null  and dh != '' "> and dh = #{dh}</if>
+            <if test="cg != null "> and cg = #{cg}</if>
+            <if test="szdl != null  and szdl != '' "> and szdl = #{szdl}</if>
+            <if test="szxl != null  and szxl != '' "> and szxl = #{szxl}</if>
+            <if test="sznl != null  and sznl != '' "> and sznl = #{sznl}</if>
+            <if test="szbl != null  and szbl != '' "> and szbl = #{szbl}</if>
+            <if test="ljcs != null  and ljcs != '' "> and ljcs = #{ljcs}</if>
+            <if test="wlcs != null  and wlcs != '' "> and wlcs = #{wlcs}</if>
+            <if test="zcs != null  and zcs != '' "> and zcs = #{zcs}</if>
+            <if test="jzjg != null  and jzjg != '' "> and jzjg = #{jzjg}</if>
+            <if test="fwlb != null  and fwlb != '' "> and fwlb = #{fwlb}</if>
+            <if test="fwyt != null  and fwyt != '' "> and fwyt = #{fwyt}</if>
+            <if test="fwxz != null  and fwxz != '' "> and fwxz = #{fwxz}</if>
+            <if test="jzmj != null "> and jzmj = #{jzmj}</if>
+            <if test="tnmj != null "> and tnmj = #{tnmj}</if>
+            <if test="ftmj != null "> and ftmj = #{ftmj}</if>
+            <if test="ytmj != null "> and ytmj = #{ytmj}</if>
+            <if test="symj != null "> and symj = #{symj}</if>
+            <if test="fwzt != null  and fwzt != '' "> and fwzt = #{fwzt}</if>
+            <if test="jszt != null  and jszt != '' "> and jszt = #{jszt}</if>
+            <if test="syqlzt != null  and syqlzt != '' "> and syqlzt = #{syqlzt}</if>
+            <if test="flxzzt != null  and flxzzt != '' "> and flxzzt = #{flxzzt}</if>
+            <if test="txqlzt != null  and txqlzt != '' "> and txqlzt = #{txqlzt}</if>
+            <if test="cqdjzt != null  and cqdjzt != '' "> and cqdjzt = #{cqdjzt}</if>
+            <if test="htbazt != null  and htbazt != '' "> and htbazt = #{htbazt}</if>
+            <if test="csdjzt != null  and csdjzt != '' "> and csdjzt = #{csdjzt}</if>
+            <if test="ysygzt != null  and ysygzt != '' "> and ysygzt = #{ysygzt}</if>
+            <if test="ysdyygzt != null  and ysdyygzt != '' "> and ysdyygzt = #{ysdyygzt}</if>
+            <if test="zjgcdyzt != null  and zjgcdyzt != '' "> and zjgcdyzt = #{zjgcdyzt}</if>
+            <if test="dyqzt != null  and dyqzt != '' "> and dyqzt = #{dyqzt}</if>
+            <if test="cqmjzt != null  and cqmjzt != '' "> and cqmjzt = #{cqmjzt}</if>
+            <if test="xzxzzt != null  and xzxzzt != '' "> and xzxzzt = #{xzxzzt}</if>
+            <if test="yydjzt != null  and yydjzt != '' "> and yydjzt = #{yydjzt}</if>
+            <if test="chbgzt != null  and chbgzt != '' "> and chbgzt = #{chbgzt}</if>
+            <if test="sfnrghzt != null  and sfnrghzt != '' "> and sfnrghzt = #{sfnrghzt}</if>
+            <if test="clfzyygzt != null  and clfzyygzt != '' "> and clfzyygzt = #{clfzyygzt}</if>
+            <if test="dyygzt != null  and dyygzt != '' "> and dyygzt = #{dyygzt}</if>
+            <if test="xzzt != null  and xzzt != '' "> and xzzt = #{xzzt}</if>
+            <if test="ysxkzt != null  and ysxkzt != '' "> and ysxkzt = #{ysxkzt}</if>
+            <if test="wyyfzt != null  and wyyfzt != '' "> and wyyfzt = #{wyyfzt}</if>
+            <if test="cqazzt != null  and cqazzt != '' "> and cqazzt = #{cqazzt}</if>
+            <if test="rfgczt != null  and rfgczt != '' "> and rfgczt = #{rfgczt}</if>
+            <if test="wtjbs != null  and wtjbs != '' "> and wtjbs = #{wtjbs}</if>
+            <if test="sjly != null  and sjly != '' "> and sjly = #{sjly}</if>
+            <if test="cjsj != null "> and cjsj = #{cjsj}</if>
+            <if test="ftxs != null "> and ftxs = #{ftxs}</if>
+            <if test="szqy != null  and szqy != '' "> and szqy = #{szqy}</if>
+            <if test="chlx != null  and chlx != '' "> and chlx = #{chlx}</if>
+            <if test="fcfhid != null  and fcfhid != '' "> and fcfhid = #{fcfhid}</if>
+            <if test="chbgbs != null  and chbgbs != '' "> and chbgbs = #{chbgbs}</if>
+            <if test="bz != null  and bz != '' "> and bz = #{bz}</if>
+            <if test="sfyx != null  and sfyx != '' "> and sfyx = #{sfyx}</if>
+            <if test="ext1 != null  and ext1 != '' "> and ext1 = #{ext1}</if>
+            <if test="ext2 != null  and ext2 != '' "> and ext2 = #{ext2}</if>
+            <if test="ext3 != null  and ext3 != '' "> and ext3 = #{ext3}</if>
+            <if test="ext4 != null  and ext4 != '' "> and ext4 = #{ext4}</if>
+            <if test="ext5 != null  and ext5 != '' "> and ext5 = #{ext5}</if>
+            <if test="bdcdybh != null  and bdcdybh != '' "> and bdcdybh = #{bdcdybh}</if>
+            <if test="ext6 != null  and ext6 != '' "> and ext6 = #{ext6}</if>
+            <if test="ext7 != null  and ext7 != '' "> and ext7 = #{ext7}</if>
+            <if test="ext8 != null  and ext8 != '' "> and ext8 = #{ext8}</if>
+            <if test="ext9 != null  and ext9 != '' "> and ext9 = #{ext9}</if>
+            <if test="ext10 != null  and ext10 != '' "> and ext10 = #{ext10}</if>
+        </where>
+    </select>
+    
+    <select id="selectGgfcHbById" parameterType="String" resultMap="GgfcHbResult">
+        <include refid="selectGgfcHbVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertGgfcHb" parameterType="GgfcHb">
+        insert into basp.ggfc_hb
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null  and id != ''  ">id,</if>
+			<if test="idLid != null  and idLid != ''  ">id_lid,</if>
+			<if test="fwbh != null  and fwbh != ''  ">fwbh,</if>
+			<if test="dyjh != null  and dyjh != ''  ">dyjh,</if>
+			<if test="fwzl != null  and fwzl != ''  ">fwzl,</if>
+			<if test="zqm != null  and zqm != ''  ">zqm,</if>
+			<if test="jlx != null  and jlx != ''  ">jlx,</if>
+			<if test="mph != null  and mph != ''  ">mph,</if>
+			<if test="zh != null  and zh != ''  ">zh,</if>
+			<if test="dy != null  and dy != ''  ">dy,</if>
+			<if test="fh != null  and fh != ''  ">fh,</if>
+			<if test="cx != null  and cx != ''  ">cx,</if>
+			<if test="zl != null  and zl != ''  ">zl,</if>
+			<if test="fjh != null  and fjh != ''  ">fjh,</if>
+			<if test="hx != null  and hx != ''  ">hx,</if>
+			<if test="dh != null  and dh != ''  ">dh,</if>
+			<if test="cg != null  ">cg,</if>
+			<if test="szdl != null  and szdl != ''  ">szdl,</if>
+			<if test="szxl != null  and szxl != ''  ">szxl,</if>
+			<if test="sznl != null  and sznl != ''  ">sznl,</if>
+			<if test="szbl != null  and szbl != ''  ">szbl,</if>
+			<if test="ljcs != null  and ljcs != ''  ">ljcs,</if>
+			<if test="wlcs != null  and wlcs != ''  ">wlcs,</if>
+			<if test="zcs != null  and zcs != ''  ">zcs,</if>
+			<if test="jzjg != null  and jzjg != ''  ">jzjg,</if>
+			<if test="fwlb != null  and fwlb != ''  ">fwlb,</if>
+			<if test="fwyt != null  and fwyt != ''  ">fwyt,</if>
+			<if test="fwxz != null  and fwxz != ''  ">fwxz,</if>
+			<if test="jzmj != null  ">jzmj,</if>
+			<if test="tnmj != null  ">tnmj,</if>
+			<if test="ftmj != null  ">ftmj,</if>
+			<if test="ytmj != null  ">ytmj,</if>
+			<if test="symj != null  ">symj,</if>
+			<if test="fwzt != null  and fwzt != ''  ">fwzt,</if>
+			<if test="jszt != null  and jszt != ''  ">jszt,</if>
+			<if test="syqlzt != null  and syqlzt != ''  ">syqlzt,</if>
+			<if test="flxzzt != null  and flxzzt != ''  ">flxzzt,</if>
+			<if test="txqlzt != null  and txqlzt != ''  ">txqlzt,</if>
+			<if test="cqdjzt != null  and cqdjzt != ''  ">cqdjzt,</if>
+			<if test="htbazt != null  and htbazt != ''  ">htbazt,</if>
+			<if test="csdjzt != null  and csdjzt != ''  ">csdjzt,</if>
+			<if test="ysygzt != null  and ysygzt != ''  ">ysygzt,</if>
+			<if test="ysdyygzt != null  and ysdyygzt != ''  ">ysdyygzt,</if>
+			<if test="zjgcdyzt != null  and zjgcdyzt != ''  ">zjgcdyzt,</if>
+			<if test="dyqzt != null  and dyqzt != ''  ">dyqzt,</if>
+			<if test="cqmjzt != null  and cqmjzt != ''  ">cqmjzt,</if>
+			<if test="xzxzzt != null  and xzxzzt != ''  ">xzxzzt,</if>
+			<if test="yydjzt != null  and yydjzt != ''  ">yydjzt,</if>
+			<if test="chbgzt != null  and chbgzt != ''  ">chbgzt,</if>
+			<if test="sfnrghzt != null  and sfnrghzt != ''  ">sfnrghzt,</if>
+			<if test="clfzyygzt != null  and clfzyygzt != ''  ">clfzyygzt,</if>
+			<if test="dyygzt != null  and dyygzt != ''  ">dyygzt,</if>
+			<if test="xzzt != null  and xzzt != ''  ">xzzt,</if>
+			<if test="ysxkzt != null  and ysxkzt != ''  ">ysxkzt,</if>
+			<if test="wyyfzt != null  and wyyfzt != ''  ">wyyfzt,</if>
+			<if test="cqazzt != null  and cqazzt != ''  ">cqazzt,</if>
+			<if test="rfgczt != null  and rfgczt != ''  ">rfgczt,</if>
+			<if test="wtjbs != null  and wtjbs != ''  ">wtjbs,</if>
+			<if test="sjly != null  and sjly != ''  ">sjly,</if>
+			<if test="cjsj != null  ">cjsj,</if>
+			<if test="ftxs != null  ">ftxs,</if>
+			<if test="szqy != null  and szqy != ''  ">szqy,</if>
+			<if test="chlx != null  and chlx != ''  ">chlx,</if>
+			<if test="fcfhid != null  and fcfhid != ''  ">fcfhid,</if>
+			<if test="chbgbs != null  and chbgbs != ''  ">chbgbs,</if>
+			<if test="bz != null  and bz != ''  ">bz,</if>
+			<if test="sfyx != null  and sfyx != ''  ">sfyx,</if>
+			<if test="ext1 != null  and ext1 != ''  ">ext1,</if>
+			<if test="ext2 != null  and ext2 != ''  ">ext2,</if>
+			<if test="ext3 != null  and ext3 != ''  ">ext3,</if>
+			<if test="ext4 != null  and ext4 != ''  ">ext4,</if>
+			<if test="ext5 != null  and ext5 != ''  ">ext5,</if>
+			<if test="bdcdybh != null  and bdcdybh != ''  ">bdcdybh,</if>
+			<if test="ext6 != null  and ext6 != ''  ">ext6,</if>
+			<if test="ext7 != null  and ext7 != ''  ">ext7,</if>
+			<if test="ext8 != null  and ext8 != ''  ">ext8,</if>
+			<if test="ext9 != null  and ext9 != ''  ">ext9,</if>
+			<if test="ext10 != null  and ext10 != ''  ">ext10,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null  and id != ''  ">#{id},</if>
+			<if test="idLid != null  and idLid != ''  ">#{idLid},</if>
+			<if test="fwbh != null  and fwbh != ''  ">#{fwbh},</if>
+			<if test="dyjh != null  and dyjh != ''  ">#{dyjh},</if>
+			<if test="fwzl != null  and fwzl != ''  ">#{fwzl},</if>
+			<if test="zqm != null  and zqm != ''  ">#{zqm},</if>
+			<if test="jlx != null  and jlx != ''  ">#{jlx},</if>
+			<if test="mph != null  and mph != ''  ">#{mph},</if>
+			<if test="zh != null  and zh != ''  ">#{zh},</if>
+			<if test="dy != null  and dy != ''  ">#{dy},</if>
+			<if test="fh != null  and fh != ''  ">#{fh},</if>
+			<if test="cx != null  and cx != ''  ">#{cx},</if>
+			<if test="zl != null  and zl != ''  ">#{zl},</if>
+			<if test="fjh != null  and fjh != ''  ">#{fjh},</if>
+			<if test="hx != null  and hx != ''  ">#{hx},</if>
+			<if test="dh != null  and dh != ''  ">#{dh},</if>
+			<if test="cg != null  ">#{cg},</if>
+			<if test="szdl != null  and szdl != ''  ">#{szdl},</if>
+			<if test="szxl != null  and szxl != ''  ">#{szxl},</if>
+			<if test="sznl != null  and sznl != ''  ">#{sznl},</if>
+			<if test="szbl != null  and szbl != ''  ">#{szbl},</if>
+			<if test="ljcs != null  and ljcs != ''  ">#{ljcs},</if>
+			<if test="wlcs != null  and wlcs != ''  ">#{wlcs},</if>
+			<if test="zcs != null  and zcs != ''  ">#{zcs},</if>
+			<if test="jzjg != null  and jzjg != ''  ">#{jzjg},</if>
+			<if test="fwlb != null  and fwlb != ''  ">#{fwlb},</if>
+			<if test="fwyt != null  and fwyt != ''  ">#{fwyt},</if>
+			<if test="fwxz != null  and fwxz != ''  ">#{fwxz},</if>
+			<if test="jzmj != null  ">#{jzmj},</if>
+			<if test="tnmj != null  ">#{tnmj},</if>
+			<if test="ftmj != null  ">#{ftmj},</if>
+			<if test="ytmj != null  ">#{ytmj},</if>
+			<if test="symj != null  ">#{symj},</if>
+			<if test="fwzt != null  and fwzt != ''  ">#{fwzt},</if>
+			<if test="jszt != null  and jszt != ''  ">#{jszt},</if>
+			<if test="syqlzt != null  and syqlzt != ''  ">#{syqlzt},</if>
+			<if test="flxzzt != null  and flxzzt != ''  ">#{flxzzt},</if>
+			<if test="txqlzt != null  and txqlzt != ''  ">#{txqlzt},</if>
+			<if test="cqdjzt != null  and cqdjzt != ''  ">#{cqdjzt},</if>
+			<if test="htbazt != null  and htbazt != ''  ">#{htbazt},</if>
+			<if test="csdjzt != null  and csdjzt != ''  ">#{csdjzt},</if>
+			<if test="ysygzt != null  and ysygzt != ''  ">#{ysygzt},</if>
+			<if test="ysdyygzt != null  and ysdyygzt != ''  ">#{ysdyygzt},</if>
+			<if test="zjgcdyzt != null  and zjgcdyzt != ''  ">#{zjgcdyzt},</if>
+			<if test="dyqzt != null  and dyqzt != ''  ">#{dyqzt},</if>
+			<if test="cqmjzt != null  and cqmjzt != ''  ">#{cqmjzt},</if>
+			<if test="xzxzzt != null  and xzxzzt != ''  ">#{xzxzzt},</if>
+			<if test="yydjzt != null  and yydjzt != ''  ">#{yydjzt},</if>
+			<if test="chbgzt != null  and chbgzt != ''  ">#{chbgzt},</if>
+			<if test="sfnrghzt != null  and sfnrghzt != ''  ">#{sfnrghzt},</if>
+			<if test="clfzyygzt != null  and clfzyygzt != ''  ">#{clfzyygzt},</if>
+			<if test="dyygzt != null  and dyygzt != ''  ">#{dyygzt},</if>
+			<if test="xzzt != null  and xzzt != ''  ">#{xzzt},</if>
+			<if test="ysxkzt != null  and ysxkzt != ''  ">#{ysxkzt},</if>
+			<if test="wyyfzt != null  and wyyfzt != ''  ">#{wyyfzt},</if>
+			<if test="cqazzt != null  and cqazzt != ''  ">#{cqazzt},</if>
+			<if test="rfgczt != null  and rfgczt != ''  ">#{rfgczt},</if>
+			<if test="wtjbs != null  and wtjbs != ''  ">#{wtjbs},</if>
+			<if test="sjly != null  and sjly != ''  ">#{sjly},</if>
+			<if test="cjsj != null  ">#{cjsj},</if>
+			<if test="ftxs != null  ">#{ftxs},</if>
+			<if test="szqy != null  and szqy != ''  ">#{szqy},</if>
+			<if test="chlx != null  and chlx != ''  ">#{chlx},</if>
+			<if test="fcfhid != null  and fcfhid != ''  ">#{fcfhid},</if>
+			<if test="chbgbs != null  and chbgbs != ''  ">#{chbgbs},</if>
+			<if test="bz != null  and bz != ''  ">#{bz},</if>
+			<if test="sfyx != null  and sfyx != ''  ">#{sfyx},</if>
+			<if test="ext1 != null  and ext1 != ''  ">#{ext1},</if>
+			<if test="ext2 != null  and ext2 != ''  ">#{ext2},</if>
+			<if test="ext3 != null  and ext3 != ''  ">#{ext3},</if>
+			<if test="ext4 != null  and ext4 != ''  ">#{ext4},</if>
+			<if test="ext5 != null  and ext5 != ''  ">#{ext5},</if>
+			<if test="bdcdybh != null  and bdcdybh != ''  ">#{bdcdybh},</if>
+			<if test="ext6 != null  and ext6 != ''  ">#{ext6},</if>
+			<if test="ext7 != null  and ext7 != ''  ">#{ext7},</if>
+			<if test="ext8 != null  and ext8 != ''  ">#{ext8},</if>
+			<if test="ext9 != null  and ext9 != ''  ">#{ext9},</if>
+			<if test="ext10 != null  and ext10 != ''  ">#{ext10},</if>
+         </trim>
+    </insert>
+
+    <update id="updateGgfcHb" parameterType="GgfcHb">
+        update basp.ggfc_hb
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="idLid != null  and idLid != ''  ">id_lid = #{idLid},</if>
+            <if test="fwbh != null  and fwbh != ''  ">fwbh = #{fwbh},</if>
+            <if test="dyjh != null  and dyjh != ''  ">dyjh = #{dyjh},</if>
+            <if test="fwzl != null  and fwzl != ''  ">fwzl = #{fwzl},</if>
+            <if test="zqm != null  and zqm != ''  ">zqm = #{zqm},</if>
+            <if test="jlx != null  and jlx != ''  ">jlx = #{jlx},</if>
+            <if test="mph != null  and mph != ''  ">mph = #{mph},</if>
+            <if test="zh != null  and zh != ''  ">zh = #{zh},</if>
+            <if test="dy != null  and dy != ''  ">dy = #{dy},</if>
+            <if test="fh != null  and fh != ''  ">fh = #{fh},</if>
+            <if test="cx != null  and cx != ''  ">cx = #{cx},</if>
+            <if test="zl != null  and zl != ''  ">zl = #{zl},</if>
+            <if test="fjh != null  and fjh != ''  ">fjh = #{fjh},</if>
+            <if test="hx != null  and hx != ''  ">hx = #{hx},</if>
+            <if test="dh != null  and dh != ''  ">dh = #{dh},</if>
+            <if test="cg != null  ">cg = #{cg},</if>
+            <if test="szdl != null  and szdl != ''  ">szdl = #{szdl},</if>
+            <if test="szxl != null  and szxl != ''  ">szxl = #{szxl},</if>
+            <if test="sznl != null  and sznl != ''  ">sznl = #{sznl},</if>
+            <if test="szbl != null  and szbl != ''  ">szbl = #{szbl},</if>
+            <if test="ljcs != null  and ljcs != ''  ">ljcs = #{ljcs},</if>
+            <if test="wlcs != null  and wlcs != ''  ">wlcs = #{wlcs},</if>
+            <if test="zcs != null  and zcs != ''  ">zcs = #{zcs},</if>
+            <if test="jzjg != null  and jzjg != ''  ">jzjg = #{jzjg},</if>
+            <if test="fwlb != null  and fwlb != ''  ">fwlb = #{fwlb},</if>
+            <if test="fwyt != null  and fwyt != ''  ">fwyt = #{fwyt},</if>
+            <if test="fwxz != null  and fwxz != ''  ">fwxz = #{fwxz},</if>
+            <if test="jzmj != null  ">jzmj = #{jzmj},</if>
+            <if test="tnmj != null  ">tnmj = #{tnmj},</if>
+            <if test="ftmj != null  ">ftmj = #{ftmj},</if>
+            <if test="ytmj != null  ">ytmj = #{ytmj},</if>
+            <if test="symj != null  ">symj = #{symj},</if>
+            <if test="fwzt != null  and fwzt != ''  ">fwzt = #{fwzt},</if>
+            <if test="jszt != null  and jszt != ''  ">jszt = #{jszt},</if>
+            <if test="syqlzt != null  and syqlzt != ''  ">syqlzt = #{syqlzt},</if>
+            <if test="flxzzt != null  and flxzzt != ''  ">flxzzt = #{flxzzt},</if>
+            <if test="txqlzt != null  and txqlzt != ''  ">txqlzt = #{txqlzt},</if>
+            <if test="cqdjzt != null  and cqdjzt != ''  ">cqdjzt = #{cqdjzt},</if>
+            <if test="htbazt != null  and htbazt != ''  ">htbazt = #{htbazt},</if>
+            <if test="csdjzt != null  and csdjzt != ''  ">csdjzt = #{csdjzt},</if>
+            <if test="ysygzt != null  and ysygzt != ''  ">ysygzt = #{ysygzt},</if>
+            <if test="ysdyygzt != null  and ysdyygzt != ''  ">ysdyygzt = #{ysdyygzt},</if>
+            <if test="zjgcdyzt != null  and zjgcdyzt != ''  ">zjgcdyzt = #{zjgcdyzt},</if>
+            <if test="dyqzt != null  and dyqzt != ''  ">dyqzt = #{dyqzt},</if>
+            <if test="cqmjzt != null  and cqmjzt != ''  ">cqmjzt = #{cqmjzt},</if>
+            <if test="xzxzzt != null  and xzxzzt != ''  ">xzxzzt = #{xzxzzt},</if>
+            <if test="yydjzt != null  and yydjzt != ''  ">yydjzt = #{yydjzt},</if>
+            <if test="chbgzt != null  and chbgzt != ''  ">chbgzt = #{chbgzt},</if>
+            <if test="sfnrghzt != null  and sfnrghzt != ''  ">sfnrghzt = #{sfnrghzt},</if>
+            <if test="clfzyygzt != null  and clfzyygzt != ''  ">clfzyygzt = #{clfzyygzt},</if>
+            <if test="dyygzt != null  and dyygzt != ''  ">dyygzt = #{dyygzt},</if>
+            <if test="xzzt != null  and xzzt != ''  ">xzzt = #{xzzt},</if>
+            <if test="ysxkzt != null  and ysxkzt != ''  ">ysxkzt = #{ysxkzt},</if>
+            <if test="wyyfzt != null  and wyyfzt != ''  ">wyyfzt = #{wyyfzt},</if>
+            <if test="cqazzt != null  and cqazzt != ''  ">cqazzt = #{cqazzt},</if>
+            <if test="rfgczt != null  and rfgczt != ''  ">rfgczt = #{rfgczt},</if>
+            <if test="wtjbs != null  and wtjbs != ''  ">wtjbs = #{wtjbs},</if>
+            <if test="sjly != null  and sjly != ''  ">sjly = #{sjly},</if>
+            <if test="cjsj != null  ">cjsj = #{cjsj},</if>
+            <if test="ftxs != null  ">ftxs = #{ftxs},</if>
+            <if test="szqy != null  and szqy != ''  ">szqy = #{szqy},</if>
+            <if test="chlx != null  and chlx != ''  ">chlx = #{chlx},</if>
+            <if test="fcfhid != null  and fcfhid != ''  ">fcfhid = #{fcfhid},</if>
+            <if test="chbgbs != null  and chbgbs != ''  ">chbgbs = #{chbgbs},</if>
+            <if test="bz != null  and bz != ''  ">bz = #{bz},</if>
+            <if test="sfyx != null  and sfyx != ''  ">sfyx = #{sfyx},</if>
+            <if test="ext1 != null  and ext1 != ''  ">ext1 = #{ext1},</if>
+            <if test="ext2 != null  and ext2 != ''  ">ext2 = #{ext2},</if>
+            <if test="ext3 != null  and ext3 != ''  ">ext3 = #{ext3},</if>
+            <if test="ext4 != null  and ext4 != ''  ">ext4 = #{ext4},</if>
+            <if test="ext5 != null  and ext5 != ''  ">ext5 = #{ext5},</if>
+            <if test="bdcdybh != null  and bdcdybh != ''  ">bdcdybh = #{bdcdybh},</if>
+            <if test="ext6 != null  and ext6 != ''  ">ext6 = #{ext6},</if>
+            <if test="ext7 != null  and ext7 != ''  ">ext7 = #{ext7},</if>
+            <if test="ext8 != null  and ext8 != ''  ">ext8 = #{ext8},</if>
+            <if test="ext9 != null  and ext9 != ''  ">ext9 = #{ext9},</if>
+            <if test="ext10 != null  and ext10 != ''  ">ext10 = #{ext10},</if>
+        </trim>
+        where id = #{id}
+    </update>
+	 
+    <update id="examineGgfcHb" parameterType="GgfcHb">
+        update basp.ggfc_hb
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="ext10 != null  and ext10 != ''  ">ext10 = #{ext10},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+	<delete id="deleteGgfcHbById" parameterType="String">
+        delete from basp.ggfc_hb where id = #{id}
+    </delete>
+	
+    <update id="deleteGgfcHbByIds" parameterType="String">
+        UPDATE basp.ggfc_hb
+        SET EXT10 = '0'
+        WHERE id in(${ids})
+    </update>
+</mapper>

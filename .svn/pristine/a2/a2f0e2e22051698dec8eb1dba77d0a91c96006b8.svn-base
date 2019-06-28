@@ -1,0 +1,14 @@
+package com.ruoyi.baseclean.service;
+
+import com.ruoyi.baseclean.domain.ColComments;
+
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+public interface IBaseTestService {
+
+    public List<ColComments> selectColsComments(String owner, String tableName) ;
+
+    List<LinkedHashMap<String,Object>> selectPersonsMap(Map<String,Object> map);
+}

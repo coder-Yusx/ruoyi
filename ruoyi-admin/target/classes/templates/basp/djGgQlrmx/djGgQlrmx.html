@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('权利人明细_簿载层列表')" />
+	<style type="text/css">
+		.titleP{
+			float: right;
+		}
+		</style>
+</head>
+<body class="gray-bg">
+    
+     <div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="formId">
+					<div class="select-list">
+						<ul>
+							<li>
+								用户：
+								<input type="text" id="owner" name="owner"/>
+							</li>
+
+							<li>
+								表名：
+								<input type="text" id="tablename" name="tablename"/>
+							</li>
+
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="loadtable()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+								<a class="btn btn-default btn-rounded btn-sm" onclick="$.table.exportExcel()"><i class="fa fa-download"></i> 导出</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+
+			<div class="col-sm-12 select-table table-striped">
+				<span class="titleP">共<span id="pages" style="line-height:40px"></span>条记录。</span>
+				<table class="table table-bordered" id="bootstrap-table" data-mobile-responsive="true"></table>
+				<ul id="btu_bootstrapPage"></ul>
+			</div>
+		</div>
+	</div>
+    <div th:include="include :: footer"></div>
+	 <script src="../../../static/js/jquery.min.js" th:src="@{/js/bootstrap-paginator.js}"></script>
+    <script th:inline="javascript">
+        var prefix = ctx + "basp/djGgQlrmx";
+        //分页参数
+        //页面查询参数
+		var isFirst = true;
+        $(function() {
+            loadtable();
+            //1.初始化Table
+            var oTable = new TableInit();
+            oTable.Init();
+        })
+
+		//查询条件
+        function loadtable(){
+            isFirst = true;
+        //    params = $.parseJSON(getFromDataToSerialize()) ;
+            params = getFromDataToSerialize() ;
+            params.pageNum=1;
+            params.pageSize=10;
+            //销毁bootstrapTable
+            $("#bootstrap-table").bootstrapTable('destroy');
+            //重新加载bootstrapTable
+            var oTable = new TableInit();
+            oTable.Init();
+        }
+
+        var TableInit = function () {
+            var oTableInit = new Object();
+            //初始化Table
+            oTableInit.Init = function () {
+            $.ajax({
+                url: prefix + "/list",
+                type : 'POST',
+                dataType : 'json',
+               // data : JSON.stringify(mydata),
+                data:JSON.stringify(params),
+                contentType : 'application/json',
+                success : function(data) {
+                	console.log(data);
+                    $("#bootstrap-table").empty();
+                    var trHtml = "<tr>";
+                    var tdHtml = "";
+                    obj=data.rows;
+                    number=data.pagenum;
+                    if (number==0) {
+                        number=1;
+                    }
+                    if (isFirst) {
+                        bootstrapPage(number);
+                        //总记录数
+                       $("#pages").text(data.total);
+                        isFirst = false;
+                    }
+                    for(var i in data.rows){
+                        tdHtml += "<tr>";
+                        for(var key in data.rows[i]){
+                            if(i==0){
+                                trHtml += "<th>" + key + "</th>";
+                            }
+                            tdHtml += "<td>";
+                            tdHtml += data.rows[i][key];
+                            tdHtml += "</td>";
+                        }
+                        trHtml += "</tr>";
+                    }
+                    $("#bootstrap-table").append(trHtml);
+                    $("#bootstrap-table").append(tdHtml);
+                }
+            });
+            };
+
+            //得到查询的参数
+            oTableInit.queryParams = function (params) {
+                var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+                    limit: params.limit,   //页面大小
+                    offset: params.offset,  //页码
+                    departmentname: $("#txt_search_departmentname").val(),
+                    statu: $("#txt_search_statu").val(),
+                    isAsc:          params.order
+                };
+                return temp;
+            };
+            return oTableInit;
+        };
+
+        //分页函数
+        var bootstrapPage = function(number) {
+            var options = {
+                size:"small",
+                alignment:'right',
+                currentPage: 1,
+                numberOfPages: 5,
+                totalPages:number,
+                itemTexts: function(type, page, current) { //修改显示文字
+                    switch (type) {
+                        case "first":
+                            return "第一页";
+                        case "prev":
+                            return "上一页";
+                        case "next":
+                            return "下一页";
+                        case "last":
+                            return "最后一页";
+                        case "page":
+                            return page;
+                    }
+                },
+                onPageClicked:onPageClickeds
+            };
+			console.log(options);
+            $("#btu_bootstrapPage").bootstrapPaginator(options);
+
+        }
+        //分页回调函数——点击事件
+        var onPageClickeds = function(event, originalEvent, type, page){
+            //分页参数
+            //页面表单查询参数
+         //   params = $.parseJSON( getFromDataToSerialize() ) ;
+            params = getFromDataToSerialize();
+            params.pageNum=page;
+            params.pageSize=10;
+            //销毁bootstrapTable
+            $("#bootstrap-table").bootstrapTable('destroy');
+            //重新加载bootstrapTable
+            var oTable = new TableInit();
+            oTable.Init();
+        }
+        //分页回调函数——改变事件
+        var onPageChangeds = function(event, oldPage, newPage){
+            alert(">>>>>>>>>>");
+        }
+
+        //获取表单并序列化表单数据，返回json
+        function getFromDataToSerialize() {
+            //json字符串
+            var o = {};
+            //json对象
+            var a = $("form").serializeArray();
+            $.each(a, function () {
+                if (o[this.name] !== undefined) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+          //  var data = JSON.stringify(o)
+            return o;
+        }
+    </script>
+</body>
+</html>

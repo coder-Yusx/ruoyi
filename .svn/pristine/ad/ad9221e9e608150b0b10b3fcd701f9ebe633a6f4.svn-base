@@ -1,0 +1,265 @@
+package com.ruoyi.web.controller.baseclean;
+
+import java.util.*;
+
+import com.ruoyi.baseclean.domain.DataResult;
+import com.ruoyi.baseclean.domain.TDataResult;
+import com.ruoyi.baseclean.domain.TDataRule;
+import com.ruoyi.baseclean.service.ITDataResultService;
+import com.ruoyi.baseclean.service.ITDataRuleService;
+import net.bytebuddy.asm.Advice;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.ruoyi.common.annotation.Log;
+import com.ruoyi.common.enums.BusinessType;
+import com.ruoyi.baseclean.domain.TDataBinding;
+import com.ruoyi.baseclean.service.ITDataBindingService;
+import com.ruoyi.common.core.controller.BaseController;
+import com.ruoyi.common.core.page.TableDataInfo;
+import com.ruoyi.common.core.domain.AjaxResult;
+import com.ruoyi.common.utils.poi.ExcelUtil;
+
+/**
+ * 列-规则绑定 信息操作处理
+ * 
+ * @author ruoyi
+ * @date 2019-06-04
+ */
+@Controller
+@RequestMapping("/baseclean/tDataBinding")
+public class TDataBindingController extends BaseController
+{
+    private String prefix = "baseclean/tDataBinding";
+	
+	@Autowired
+	private ITDataBindingService tDataBindingService;
+	@Autowired
+	private ITDataRuleService tDataRuleService;
+	@Autowired
+	private ITDataResultService tDataResultService;
+	
+	@RequiresPermissions("baseclean:tDataBinding:view")
+	@GetMapping()
+	public String tDataBinding()
+	{
+	    return prefix + "/tDataBinding";
+	}
+	
+	/**
+	 * 查询列-规则绑定列表
+	 */
+	@RequiresPermissions("baseclean:tDataBinding:list")
+	@PostMapping("/list")
+	@ResponseBody
+	public TableDataInfo list(TDataBinding tDataBinding)
+	{
+		startPage();
+        List<TDataBinding> list = tDataBindingService.selectTDataBindingList(tDataBinding);
+		return getDataTable(list);
+	}
+	
+	
+	/**
+	 * 导出列-规则绑定列表
+	 */
+	@RequiresPermissions("baseclean:tDataBinding:export")
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export(TDataBinding tDataBinding)
+    {
+    	List<TDataBinding> list = tDataBindingService.selectTDataBindingList(tDataBinding);
+        ExcelUtil<TDataBinding> util = new ExcelUtil<TDataBinding>(TDataBinding.class);
+        return util.exportExcel(list, "tDataBinding");
+    }
+	
+	/**
+	 * 新增列-规则绑定
+	 */
+	@GetMapping("/add")
+	public String add()
+	{
+	    return prefix + "/add";
+	}
+	
+	/**
+	 * 新增保存列-规则绑定
+	 */
+	@RequiresPermissions("baseclean:tDataBinding:add")
+	@Log(title = "列-规则绑定", businessType = BusinessType.INSERT)
+	@PostMapping("/add")
+	@ResponseBody
+	public AjaxResult addSave(TDataBinding tDataBinding)
+	{		
+		return toAjax(tDataBindingService.insertTDataBinding(tDataBinding));
+	}
+
+	/**
+	 * 修改列-规则绑定
+	 */
+	@GetMapping("/edit/{bindId}")
+	public String edit(@PathVariable("bindId") Integer bindId, ModelMap mmap)
+	{
+		TDataBinding tDataBinding = tDataBindingService.selectTDataBindingById(bindId);
+		mmap.put("tDataBinding", tDataBinding);
+		if(tDataBinding!=null && tDataBinding.getRuleKey()!=null){
+			List<String> ruleList = Arrays.asList(tDataBinding.getRuleKey().split(","));
+			mmap.put("ruleList", ruleList);
+		}
+	    return prefix + "/edit";
+	}
+	
+	/**
+	 * 修改保存列-规则绑定
+	 */
+	@RequiresPermissions("baseclean:tDataBinding:edit")
+	@Log(title = "列-规则绑定", businessType = BusinessType.UPDATE)
+	@PostMapping("/edit")
+	@ResponseBody
+	public AjaxResult editSave(TDataBinding tDataBinding)
+	{		
+		return toAjax(tDataBindingService.updateTDataBinding(tDataBinding));
+	}
+	
+	/**
+	 * 删除列-规则绑定
+	 */
+	@RequiresPermissions("baseclean:tDataBinding:remove")
+	@Log(title = "列-规则绑定", businessType = BusinessType.DELETE)
+	@PostMapping( "/remove")
+	@ResponseBody
+	public AjaxResult remove(String ids)
+	{		
+		return toAjax(tDataBindingService.deleteTDataBindingByIds(ids));
+	}
+
+	@RequiresPermissions("baseclean:tDataBinding:add")
+	@Log(title = "列-规则绑定", businessType = BusinessType.INSERT)
+	@PostMapping( "/addRuleQueryData")
+	@ResponseBody
+	public AjaxResult addRuleQueryData(Integer bindId)
+	{
+		//取绑定关系
+		TDataBinding tDataBinding = tDataBindingService.selectTDataBindingById(bindId);
+
+		//构造查询条件，查询绑定的规则
+		TDataRule tDataRule = new TDataRule();
+		tDataRule.setRuleCode(tDataBinding.getRuleKey());
+
+		//得到绑定的规则
+		List<TDataRule> tDataRules = tDataRuleService.selectTDataRuleList(tDataRule);
+
+		//由于是一对一关系，所以只会存在一个
+		TDataRule rule = null;
+		if(tDataRules != null && tDataRules.size() > 0){
+			rule=tDataRules.get(0);
+		}
+
+		//拼接sql条件语句
+		String conditionStr = "";
+		if(rule != null){
+			if("reg".equals(rule.getRuleType())){
+				conditionStr = " and "+rule.getExt1().replace("{0}",tDataBinding.getColName());
+			}
+			if("rel".equals(rule.getRuleType())){
+				conditionStr = " and "+tDataBinding.getColName()+" "+rule.getExt1();
+			}
+		}
+		//获取表的主键字段
+		String[] ids = tDataBindingService.selectPrimaryKey(tDataBinding.getTableName());
+
+		//获取绑定关系字段
+		String owner = tDataBinding.getOwner();
+		String tableName = tDataBinding.getTableName();
+		String colName = tDataBinding.getColName();
+		String colKey = ids[0];
+
+		//拼接sql查询语句
+		String queryStr = "select " +
+				"seq_t_data_result.nextval result_id," +
+				"upper('"+owner+"') owner," +
+				"upper('"+tableName+"') table_name," +
+				"upper('"+colName+"') col_name," +
+				colName+" col_ori_val," +
+				colName+" col_now_val," +
+				"upper('"+colKey+"') col_key," +
+				colKey+" col_key_val " +
+				"from " +owner+"."+ tableName+
+				" where 1=1 ";
+
+		//拼接sql插入语句
+		String insertStr = "insert into t_data_result(result_id,owner,table_name,col_name,col_ori_val,col_now_val,col_key,col_key_val) ";
+
+		insertStr = insertStr+queryStr+conditionStr;
+
+		return toAjax(tDataResultService.insertQueryRuleData(insertStr));
+	}
+
+	/*@RequiresPermissions("baseclean:tDataBinding:view")
+	@GetMapping("/excRuleQuery/{bindId}")
+	public String tDataBinding(@PathVariable("bindId") Integer bindId,ModelMap mmap)
+	{
+		TDataBinding dataBinding = tDataBindingService.selectTDataBindingById(bindId);
+
+		mmap.put("bind",dataBinding);
+
+        return prefix + "/ruleQueryResult";
+	}
+
+	@RequiresPermissions("baseclean:tDataBinding:list")
+	@PostMapping("/excRuleQuery")
+	@ResponseBody
+	public TableDataInfo ruleQueryResult(TDataBinding tDataBinding)
+	{
+		startPage();
+		TDataRule tDataRule = new TDataRule();
+		tDataRule.setRuleCode(tDataBinding.getRuleKey());
+
+		List<TDataRule> tDataRules = tDataRuleService.selectTDataRuleList(tDataRule);
+
+		TDataRule rule = null;
+		if(tDataRules != null && tDataRules.size() > 0){
+            rule=tDataRules.get(0);
+		}
+
+		String conditionStr = "";
+		if(rule != null){
+		    if("reg".equals(rule.getRuleType())){
+				conditionStr = " and "+rule.getExt1().replace("{0}",tDataBinding.getColName());
+            }
+		    if("rel".equals(rule.getRuleType())){
+				conditionStr = " and "+tDataBinding.getColName()+" "+rule.getExt1();
+            }
+        }
+        String[] ids = tDataBindingService.selectPrimaryKey(tDataBinding.getTableName());
+
+		String owner = tDataBinding.getOwner();
+		String tableName = tDataBinding.getTableName();
+		String colName = tDataBinding.getColName();
+		String colKey = ids[0];
+
+		String queryStr = "";
+		queryStr = "select upper('"+owner+"') owner," +
+				"upper('"+tableName+"') tableName," +
+				"upper('"+colName+"') colName," +
+				colName+" colOriVal," +
+				"upper('"+colKey+"') colKey," +
+				colKey+" colKeyVal " +
+				"from " + tableName+
+				" where 1=1 ";
+
+		queryStr = queryStr+conditionStr;
+
+		System.out.println(queryStr);
+
+		List<TDataResult> tDataResults = tDataBindingService.selectQueryRuleResult(queryStr);
+
+        return getDataTable(tDataResults);
+	}*/
+}

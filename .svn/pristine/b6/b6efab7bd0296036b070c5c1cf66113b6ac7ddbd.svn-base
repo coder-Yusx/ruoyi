@@ -1,0 +1,237 @@
+package com.ruoyi.web.controller.basp;
+
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import com.ruoyi.basp.domain.*;
+import com.ruoyi.basp.service.*;
+import com.ruoyi.common.json.JSON;
+import com.ruoyi.common.utils.ServletUtils;
+import com.ruoyi.framework.util.ShiroUtils;
+import com.ruoyi.system.domain.SysPerson;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.ruoyi.common.annotation.Log;
+import com.ruoyi.common.enums.BusinessType;
+import com.ruoyi.common.core.controller.BaseController;
+import com.ruoyi.common.core.page.TableDataInfo;
+import com.ruoyi.common.core.domain.AjaxResult;
+import com.ruoyi.common.utils.poi.ExcelUtil;
+
+/**
+ * 公共户 信息操作处理
+ * 
+ * @author ruoyi
+ * @date 2019-05-29
+ */
+@Controller
+@RequestMapping("/basp/ggfcHb")
+public class GgfcHbController extends BaseController
+{
+    private String prefix = "basp/ggfcHb";
+	
+	@Autowired
+	private IGgfcHbService ggfcHbService;
+
+	@Autowired
+	private ICyztCyjgKfsService cyztCyjgKfsService;
+
+	@Autowired
+	private IXmglXmXmjbxxbService xmglXmXmjbxxbService;
+
+	@Autowired
+	private IDjGgHmxService djGgHmxService;
+
+	@Autowired
+	private IDjGgQlrmxService djGgQlrmxService;
+
+	@Autowired
+	private IGgfcLbService ggfcLbService;
+
+	@Autowired
+	private IFilemanagerDirectoryService filemanagerDirectoryService;
+
+	@Autowired
+	private IFilemanagerFileService filemanagerFileService;
+
+	@Autowired
+	private ITDataCheckService tDataCheckService;
+	
+	@RequiresPermissions("basp:ggfcHb:view")
+	@GetMapping()
+	public String ggfcHb()
+	{
+	    return prefix + "/ggfcHb";
+	}
+	
+	/**
+	 * 查询公共户列表
+	 */
+	@RequiresPermissions("basp:ggfcHb:list")
+	@PostMapping("/list")
+	@ResponseBody
+	public TableDataInfo list(GgfcHb ggfcHb)
+	{
+		startPage();
+		SysPerson user = ShiroUtils.getSysUser();
+		List<GgfcHb> list=null;
+		System.out.println(user.getRoles().get(0).getRoleId());
+		if (user.getRoles().get(0).getRoleId()==1){//判断是否有管理员权限
+			//有权限
+			list= ggfcHbService.selectGgfcHbList(ggfcHb);
+		}else{
+			//无权限
+			ggfcHb.setDataid(user.getUserId().toString());
+			list= ggfcHbService.selectGgfcHbListUser(ggfcHb);
+		}
+		return getDataTable(list);
+	}
+	
+	
+	/**
+	 * 导出公共户列表
+	 */
+	@RequiresPermissions("basp:ggfcHb:export")
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export(GgfcHb ggfcHb)
+    {
+    	List<GgfcHb> list = ggfcHbService.selectGgfcHbList(ggfcHb);
+        ExcelUtil<GgfcHb> util = new ExcelUtil<GgfcHb>(GgfcHb.class);
+        return util.exportExcel(list, "ggfcHb");
+    }
+	
+	/**
+	 * 新增公共户
+	 */
+	@GetMapping("/add")
+	public String add()
+	{
+	    return prefix + "/add";
+	}
+	
+	/**
+	 * 新增保存公共户
+	 */
+	@RequiresPermissions("basp:ggfcHb:add")
+	@Log(title = "公共户", businessType = BusinessType.INSERT)
+	@PostMapping("/add")
+	@ResponseBody
+	public AjaxResult addSave(GgfcHb ggfcHb)
+	{		
+		return toAjax(ggfcHbService.insertGgfcHb(ggfcHb));
+	}
+
+	/**
+	 * 修改公共户
+	 */
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") String id, ModelMap mmap)
+	{
+		GgfcHb ggfcHb = ggfcHbService.selectGgfcHbById(id);					//公共户表
+		List<CyztCyjgKfs> cyztCyjgKfs = cyztCyjgKfsService.selectCyztCyjgKfsByHbId(id);			//从业主体_开发商表
+		List<XmglXmXmjbxxb> xmglXmXmjbxxb = xmglXmXmjbxxbService.selectXmglXmXmjbxxbByHbId(id);		//项目基本信息表
+		List<GgfcLb> ggfcLb = ggfcLbService.selectGgfcLbByHbId(id);			//公共楼表
+		List<DjGgHmx> djGgHmx = djGgHmxService.selectDjGgHmxByHbId(id);		//户明细表
+		List<DjGgQlrmx> djGgQlrmx = djGgQlrmxService.selectDjGgQlrmxByHbId(id);		//户明细表
+		List<FilemanagerDirectory> filemanagerDirectory = filemanagerDirectoryService.selectFilemanagerDirectoryByHbId(id);		//附件目录表
+
+		mmap.put("ggfcHb", ggfcHb);
+		mmap.put("cyztCyjgKfs", cyztCyjgKfs);
+		mmap.put("xmglXmXmjbxxb", xmglXmXmjbxxb);
+		mmap.put("ggfcLb", ggfcLb);
+		mmap.put("djGgHmx", djGgHmx);
+		mmap.put("djGgQlrmx", djGgQlrmx);
+		mmap.put("filemanagerDirectory", filemanagerDirectory);
+	    return prefix + "/edit";
+	}
+	
+	/**
+	 * 修改保存公共户
+	 */
+	@RequiresPermissions("basp:ggfcHb:edit")
+	@Log(title = "公共户", businessType = BusinessType.UPDATE)
+	@PostMapping("/edit")
+	@ResponseBody
+	public AjaxResult editSave(GgfcHb ggfcHb)
+	{
+		return toAjax(ggfcHbService.updateGgfcHb(ggfcHb));
+	}
+
+	/**
+	 * 数据清理修改保存
+	 */
+	@RequiresPermissions("basp:ggfcHb:edit")
+	@Log(title = "公共户", businessType = BusinessType.UPDATE)
+	@PostMapping("/editDataClean")
+	@ResponseBody
+	public AjaxResult editDataCleanSave(GgfcHb ggfcHb) throws Exception {
+		String oldParams = JSON.marshal(ggfcHbService.selectGgfcHbById(ggfcHb.getId()));
+		Map<String, String[]> map = ServletUtils.getRequest().getParameterMap();
+		String newParams = JSON.marshal(map);
+
+		SysPerson currentUser = ShiroUtils.getSysUser();
+		TDataCheck tDataCheck = new TDataCheck();
+		tDataCheck.setId(UUID.randomUUID().toString().substring(32));
+		tDataCheck.setOldval(oldParams);
+		tDataCheck.setNewval(newParams);
+		tDataCheck.setOsuser(currentUser.getLoginName());
+		tDataCheckService.insertTDataCheck(tDataCheck);
+		return toAjax(ggfcHbService.updateGgfcHb(ggfcHb));
+	}
+
+
+	/**
+	 * 删除公共户
+	 */
+	@RequiresPermissions("basp:ggfcHb:remove")
+	@Log(title = "公共户", businessType = BusinessType.DELETE)
+	@PostMapping( "/remove")
+	@ResponseBody
+	public AjaxResult remove(String ids)
+	{		
+		return toAjax(ggfcHbService.deleteGgfcHbByIds(ids));
+	}
+
+	/**
+	 * 分配公共户
+	 */
+	@RequiresPermissions("basp:ggfcHb:distribute")
+	@Log(title = "分配公共户", businessType = BusinessType.OTHER)
+	@PostMapping( "/distribute")
+	@ResponseBody
+	public AjaxResult distribute(String ids)
+	{
+		return toAjax(ggfcHbService.deleteGgfcHbByIds(ids));
+	}
+
+	/**
+	 * 查看附件图片路径
+	 */
+	@PostMapping("/filemanager")
+	@ResponseBody
+	public AjaxResult filemanager(String id) {
+		return AjaxResult.success("0",filemanagerFileService.selectFilemanagerFileByHbId(id));
+	}
+
+	/**
+	 * 审核分配公共户
+	 */
+	@RequiresPermissions("basp:ggfcHb:examine")
+	@Log(title = "审核公共户", businessType = BusinessType.OTHER)
+	@PostMapping( "/examine")
+	@ResponseBody
+	public AjaxResult examine(GgfcHb ggfcHb)
+	{
+		return toAjax(ggfcHbService.examineGgfcHb(ggfcHb));
+	}
+
+}

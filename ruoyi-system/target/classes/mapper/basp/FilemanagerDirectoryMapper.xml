@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.basp.mapper.FilemanagerDirectoryMapper">
+    
+    <resultMap type="FilemanagerDirectory" id="FilemanagerDirectoryResult">
+        <result property="id"    column="id"    />
+        <result property="parentid"    column="parentid"    />
+        <result property="xtajbh"    column="xtajbh"    />
+        <result property="dirname"    column="dirname"    />
+        <result property="dirdesc"    column="dirdesc"    />
+        <result property="dirlevel"    column="dirlevel"    />
+        <result property="dirtype"    column="dirtype"    />
+        <result property="userid"    column="userid"    />
+        <result property="seq"    column="seq"    />
+        <result property="filenum"    column="filenum"    />
+        <result property="reqnum"    column="reqnum"    />
+    </resultMap>
+	
+	<sql id="selectFilemanagerDirectoryVo">
+        select id, parentid, xtajbh, dirname, dirdesc, dirlevel, dirtype, userid, seq, filenum, reqnum from filemanager_directory
+    </sql>
+	
+    <select id="selectFilemanagerDirectoryList" parameterType="FilemanagerDirectory" resultMap="FilemanagerDirectoryResult">
+        <include refid="selectFilemanagerDirectoryVo"/>
+        <where>  
+            <if test="id != null  and id != '' "> and id = #{id}</if>
+             <if test="parentid != null  and parentid != '' "> and parentid = #{parentid}</if>
+             <if test="xtajbh != null  and xtajbh != '' "> and xtajbh = #{xtajbh}</if>
+             <if test="dirname != null  and dirname != '' "> and dirname = #{dirname}</if>
+             <if test="dirdesc != null  and dirdesc != '' "> and dirdesc = #{dirdesc}</if>
+             <if test="dirlevel != null "> and dirlevel = #{dirlevel}</if>
+             <if test="dirtype != null  and dirtype != '' "> and dirtype = #{dirtype}</if>
+             <if test="userid != null  and userid != '' "> and userid = #{userid}</if>
+             <if test="seq != null "> and seq = #{seq}</if>
+             <if test="filenum != null "> and filenum = #{filenum}</if>
+             <if test="reqnum != null "> and reqnum = #{reqnum}</if>
+         </where>
+    </select>
+    
+    <select id="selectFilemanagerDirectoryById" parameterType="String" resultMap="FilemanagerDirectoryResult">
+        <include refid="selectFilemanagerDirectoryVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertFilemanagerDirectory" parameterType="FilemanagerDirectory">
+        insert into filemanager_directory
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null  and id != ''  ">id,</if>
+			<if test="parentid != null  and parentid != ''  ">parentid,</if>
+			<if test="xtajbh != null  and xtajbh != ''  ">xtajbh,</if>
+			<if test="dirname != null  and dirname != ''  ">dirname,</if>
+			<if test="dirdesc != null  and dirdesc != ''  ">dirdesc,</if>
+			<if test="dirlevel != null  ">dirlevel,</if>
+			<if test="dirtype != null  and dirtype != ''  ">dirtype,</if>
+			<if test="userid != null  and userid != ''  ">userid,</if>
+			<if test="seq != null  ">seq,</if>
+			<if test="filenum != null  ">filenum,</if>
+			<if test="reqnum != null  ">reqnum,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null  and id != ''  ">#{id},</if>
+			<if test="parentid != null  and parentid != ''  ">#{parentid},</if>
+			<if test="xtajbh != null  and xtajbh != ''  ">#{xtajbh},</if>
+			<if test="dirname != null  and dirname != ''  ">#{dirname},</if>
+			<if test="dirdesc != null  and dirdesc != ''  ">#{dirdesc},</if>
+			<if test="dirlevel != null  ">#{dirlevel},</if>
+			<if test="dirtype != null  and dirtype != ''  ">#{dirtype},</if>
+			<if test="userid != null  and userid != ''  ">#{userid},</if>
+			<if test="seq != null  ">#{seq},</if>
+			<if test="filenum != null  ">#{filenum},</if>
+			<if test="reqnum != null  ">#{reqnum},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateFilemanagerDirectory" parameterType="FilemanagerDirectory">
+        update filemanager_directory
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="parentid != null  and parentid != ''  ">parentid = #{parentid},</if>
+            <if test="xtajbh != null  and xtajbh != ''  ">xtajbh = #{xtajbh},</if>
+            <if test="dirname != null  and dirname != ''  ">dirname = #{dirname},</if>
+            <if test="dirdesc != null  and dirdesc != ''  ">dirdesc = #{dirdesc},</if>
+            <if test="dirlevel != null  ">dirlevel = #{dirlevel},</if>
+            <if test="dirtype != null  and dirtype != ''  ">dirtype = #{dirtype},</if>
+            <if test="userid != null  and userid != ''  ">userid = #{userid},</if>
+            <if test="seq != null  ">seq = #{seq},</if>
+            <if test="filenum != null  ">filenum = #{filenum},</if>
+            <if test="reqnum != null  ">reqnum = #{reqnum},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+	<delete id="deleteFilemanagerDirectoryById" parameterType="String">
+        delete from filemanager_directory where id = #{id}
+    </delete>
+	
+    <delete id="deleteFilemanagerDirectoryByIds" parameterType="String">
+        delete from filemanager_directory where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+    <select id="selectFilemanagerDirectoryByHbId" parameterType="String" resultMap="FilemanagerDirectoryResult">
+        select distinct wjj.* from  BASP.BASP_FILEMANAGER_DIRECTORY wjj
+        left join BASP.DJ_GG_QLRMX qlrmx on qlrmx.jjbh = wjj.xtajbh
+        where qlrmx.id in (select qlrmx.id from BASP.DJ_GG_QLRMX qlrmx where qlrmx.id_zb in
+              (select hmx.id_zb from BASP.DJ_GG_HMX hmx where hmx.id_bz = #{id} ))
+    </select>
+    
+</mapper>

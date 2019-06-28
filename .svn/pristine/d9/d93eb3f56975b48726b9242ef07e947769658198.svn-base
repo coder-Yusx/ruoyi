@@ -1,0 +1,73 @@
+package com.ruoyi.web.controller.baseclean;
+
+import com.ruoyi.baseclean.domain.ColComments;
+import com.ruoyi.baseclean.domain.TableClean;
+import com.ruoyi.baseclean.service.IBaseTestService;
+import com.ruoyi.baseclean.service.ITableCleanService;
+import com.ruoyi.baseclean.service.impl.TableCleanServiceImpl;
+import com.ruoyi.common.core.domain.AjaxResult;
+import com.ruoyi.common.core.page.TableDataInfo;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+@Controller
+@RequestMapping("/baseclean/basetest")
+public class BaseTestController {
+
+    private String prefix = "baseclean/basetest";
+
+    @Autowired
+    private ITableCleanService tableCleanService;
+
+    @Autowired
+    private IBaseTestService baseTestService;
+
+    @RequiresPermissions("baseclean:tableclean:list")
+    @PostMapping("/tableList")
+    @ResponseBody
+    public AjaxResult list(TableClean tableClean)
+    {
+        List<TableClean> list = tableCleanService.selectTableByUser(tableClean);
+        return AjaxResult.success("成功",list);
+    }
+
+    @RequiresPermissions("baseclean:basetest:view")
+    @GetMapping()
+    public String toViewPage(){
+        return prefix + "/basetest1";
+    }
+
+    @RequiresPermissions("baseclean:basetest:list")
+    @PostMapping("/listPerson")
+    @ResponseBody
+    public AjaxResult listPerson(@RequestBody Map<String,Object> param){
+
+        Map<String,Object> map = new HashMap<>();
+        map.put("owner","OWNFGJ");
+        map.put("tableName","SYS_PERSON");
+
+        /*Map<String,Object> params = new HashMap<>();
+        params.put("user_type","00");
+        params.put("sex","0");
+        map.put("params",params);*/
+
+        List<LinkedHashMap<String, Object>> maps = baseTestService.selectPersonsMap(param);
+        return AjaxResult.success("成功",maps);
+    }
+
+    @GetMapping("/listColName/{owner}/{tableName}")
+    @ResponseBody
+    public AjaxResult listColName(@PathVariable("owner") String owner,@PathVariable("tableName") String tableName, ModelMap mmap){
+
+        List<ColComments> colComments = baseTestService.selectColsComments(owner, tableName);
+        return AjaxResult.success("成功",colComments);
+    }
+}

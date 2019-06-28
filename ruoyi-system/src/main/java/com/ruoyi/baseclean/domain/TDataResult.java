@@ -1,0 +1,276 @@
+package com.ruoyi.baseclean.domain;
+
+import com.ruoyi.common.annotation.Excel;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+import com.ruoyi.common.core.domain.BaseEntity;
+import java.util.Date;
+
+/**
+ * 校验结果表 t_data_result
+ * 
+ * @author ruoyi
+ * @date 2019-06-11
+ */
+public class TDataResult extends BaseEntity
+{
+	private static final long serialVersionUID = 1L;
+	
+	/** 结果id */
+	@Excel(name = "结果id", prompt = "结果id")
+	private Integer resultId;
+
+	/** 用户名 */
+	@Excel(name = "用户名", prompt = "用户名")
+	private String owner;
+
+	/** 表名 */
+	@Excel(name = "表名", prompt = "表名")
+	private String tableName;
+
+	/** 列名 */
+	@Excel(name = "列名", prompt = "列名")
+	private String colName;
+
+	/** 列原始值 */
+	@Excel(name = "列原始值", prompt = "列原始值")
+	private String colOriVal;
+
+	/** 列当前值 */
+	@Excel(name = "列当前值", prompt = "列当前值")
+	private String colNowVal;
+
+	/** 列主键 */
+	@Excel(name = "列主键", prompt = "列主键")
+	private String colKey;
+
+	/** 列主键值 */
+	@Excel(name = "列主键值", prompt = "列主键值")
+	private String colKeyVal;
+
+	/** 修改次数 */
+	@Excel(name = "修改次数", prompt = "修改次数")
+	private Integer modifyTimes;
+
+	/** 扩展1 */
+	@Excel(name = "扩展1", prompt = "扩展1")
+	private String ext1;
+
+	/** 扩展2 */
+	@Excel(name = "扩展2", prompt = "扩展2")
+	private String ext2;
+
+	/** 扩展3 */
+	@Excel(name = "扩展3", prompt = "扩展3")
+	private String ext3;
+
+	/** 扩展4 */
+	@Excel(name = "扩展4", prompt = "扩展4")
+	private String ext4;
+
+	/** 状态 */
+	@Excel(name = "状态", prompt = "状态")
+	private String status;
+
+	/** 创建者 */
+	@Excel(name = "创建者", prompt = "创建者")
+	private String createBy;
+
+	/** 创建时间 */
+	@Excel(name = "创建时间", prompt = "创建时间")
+	private Date createTime;
+
+	/** 更新者 */
+	@Excel(name = "更新者", prompt = "更新者")
+	private String updateBy;
+
+	/** 更新时间 */
+	@Excel(name = "更新时间", prompt = "更新时间")
+	private Date updateTime;
+
+	public void setResultId(Integer resultId) 
+	{
+		this.resultId = resultId;
+	}
+
+	public Integer getResultId() 
+	{
+		return resultId;
+	}
+	public void setOwner(String owner) 
+	{
+		this.owner = owner;
+	}
+
+	public String getOwner() 
+	{
+		return owner;
+	}
+	public void setTableName(String tableName) 
+	{
+		this.tableName = tableName;
+	}
+
+	public String getTableName() 
+	{
+		return tableName;
+	}
+	public void setColName(String colName) 
+	{
+		this.colName = colName;
+	}
+
+	public String getColName() 
+	{
+		return colName;
+	}
+	public void setColOriVal(String colOriVal) 
+	{
+		this.colOriVal = colOriVal;
+	}
+
+	public String getColOriVal() 
+	{
+		return colOriVal;
+	}
+	public void setColNowVal(String colNowVal) 
+	{
+		this.colNowVal = colNowVal;
+	}
+
+	public String getColNowVal() 
+	{
+		return colNowVal;
+	}
+	public void setColKey(String colKey) 
+	{
+		this.colKey = colKey;
+	}
+
+	public String getColKey() 
+	{
+		return colKey;
+	}
+	public void setColKeyVal(String colKeyVal) 
+	{
+		this.colKeyVal = colKeyVal;
+	}
+
+	public String getColKeyVal() 
+	{
+		return colKeyVal;
+	}
+	public void setModifyTimes(Integer modifyTimes) 
+	{
+		this.modifyTimes = modifyTimes;
+	}
+
+	public Integer getModifyTimes() 
+	{
+		return modifyTimes;
+	}
+	public void setExt1(String ext1) 
+	{
+		this.ext1 = ext1;
+	}
+
+	public String getExt1() 
+	{
+		return ext1;
+	}
+	public void setExt2(String ext2) 
+	{
+		this.ext2 = ext2;
+	}
+
+	public String getExt2() 
+	{
+		return ext2;
+	}
+	public void setExt3(String ext3) 
+	{
+		this.ext3 = ext3;
+	}
+
+	public String getExt3() 
+	{
+		return ext3;
+	}
+	public void setExt4(String ext4) 
+	{
+		this.ext4 = ext4;
+	}
+
+	public String getExt4() 
+	{
+		return ext4;
+	}
+	public void setStatus(String status) 
+	{
+		this.status = status;
+	}
+
+	public String getStatus() 
+	{
+		return status;
+	}
+	public void setCreateBy(String createBy) 
+	{
+		this.createBy = createBy;
+	}
+
+	public String getCreateBy() 
+	{
+		return createBy;
+	}
+	public void setCreateTime(Date createTime) 
+	{
+		this.createTime = createTime;
+	}
+
+	public Date getCreateTime() 
+	{
+		return createTime;
+	}
+	public void setUpdateBy(String updateBy) 
+	{
+		this.updateBy = updateBy;
+	}
+
+	public String getUpdateBy() 
+	{
+		return updateBy;
+	}
+	public void setUpdateTime(Date updateTime) 
+	{
+		this.updateTime = updateTime;
+	}
+
+	public Date getUpdateTime() 
+	{
+		return updateTime;
+	}
+
+    public String toString() {
+        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
+            .append("resultId", getResultId())
+            .append("owner", getOwner())
+            .append("tableName", getTableName())
+            .append("colName", getColName())
+            .append("colOriVal", getColOriVal())
+            .append("colNowVal", getColNowVal())
+            .append("colKey", getColKey())
+            .append("colKeyVal", getColKeyVal())
+            .append("modifyTimes", getModifyTimes())
+            .append("ext1", getExt1())
+            .append("ext2", getExt2())
+            .append("ext3", getExt3())
+            .append("ext4", getExt4())
+            .append("status", getStatus())
+            .append("createBy", getCreateBy())
+            .append("createTime", getCreateTime())
+            .append("updateBy", getUpdateBy())
+            .append("updateTime", getUpdateTime())
+            .toString();
+    }
+}

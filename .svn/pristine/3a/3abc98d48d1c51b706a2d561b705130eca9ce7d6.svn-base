@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.basp.mapper.DjDyqZbMapper">
+    
+    <resultMap type="DjDyqZb" id="DjDyqZbResult">
+        <result property="id"    column="id"    />
+        <result property="jjbh"    column="jjbh"    />
+        <result property="idEntity"    column="id_entity"    />
+        <result property="ywdjlx"    column="ywdjlx"    />
+        <result property="subywdjlx"    column="subywdjlx"    />
+        <result property="qllx"    column="qllx"    />
+        <result property="ydah"    column="ydah"    />
+        <result property="xdah"    column="xdah"    />
+        <result property="dydkyt"    column="dydkyt"    />
+        <result property="dydkxz"    column="dydkxz"    />
+        <result property="dyfwzlms"    column="dyfwzlms"    />
+        <result property="dybw"    column="dybw"    />
+        <result property="dbfw"    column="dbfw"    />
+        <result property="jzmj"    column="jzmj"    />
+        <result property="dymj"    column="dymj"    />
+        <result property="dywjz"    column="dywjz"    />
+        <result property="jkje"    column="jkje"    />
+        <result property="zwqxkssj"    column="zwqxkssj"    />
+        <result property="zwqxjssj"    column="zwqxjssj"    />
+        <result property="zgeqxkssj"    column="zgeqxkssj"    />
+        <result property="zgeqxjssj"    column="zgeqxjssj"    />
+        <result property="fj"    column="fj"    />
+        <result property="dbr"    column="dbr"    />
+        <result property="dbsj"    column="dbsj"    />
+        <result property="bz"    column="bz"    />
+        <result property="sfyx"    column="sfyx"    />
+        <result property="ext1"    column="ext1"    />
+        <result property="ext2"    column="ext2"    />
+        <result property="ext3"    column="ext3"    />
+        <result property="ext4"    column="ext4"    />
+        <result property="ext5"    column="ext5"    />
+    </resultMap>
+	
+	<sql id="selectDjDyqZbVo">
+        select id, jjbh, id_entity, ywdjlx, subywdjlx, qllx, ydah, xdah, dydkyt, dydkxz, dyfwzlms, dybw, dbfw, jzmj, dymj, dywjz, jkje, zwqxkssj, zwqxjssj, zgeqxkssj, zgeqxjssj, fj, dbr, dbsj, bz, sfyx, ext1, ext2, ext3, ext4, ext5 from dj_dyq_zb
+    </sql>
+	
+    <select id="selectDjDyqZbList" parameterType="DjDyqZb" resultMap="DjDyqZbResult">
+        <include refid="selectDjDyqZbVo"/>
+        <where>  
+            <if test="id != null  and id != '' "> and id = #{id}</if>
+             <if test="jjbh != null  and jjbh != '' "> and jjbh = #{jjbh}</if>
+             <if test="idEntity != null  and idEntity != '' "> and id_entity = #{idEntity}</if>
+             <if test="ywdjlx != null  and ywdjlx != '' "> and ywdjlx = #{ywdjlx}</if>
+             <if test="subywdjlx != null  and subywdjlx != '' "> and subywdjlx = #{subywdjlx}</if>
+             <if test="qllx != null  and qllx != '' "> and qllx = #{qllx}</if>
+             <if test="ydah != null  and ydah != '' "> and ydah = #{ydah}</if>
+             <if test="xdah != null  and xdah != '' "> and xdah = #{xdah}</if>
+             <if test="dydkyt != null  and dydkyt != '' "> and dydkyt = #{dydkyt}</if>
+             <if test="dydkxz != null  and dydkxz != '' "> and dydkxz = #{dydkxz}</if>
+             <if test="dyfwzlms != null  and dyfwzlms != '' "> and dyfwzlms = #{dyfwzlms}</if>
+             <if test="dybw != null  and dybw != '' "> and dybw = #{dybw}</if>
+             <if test="dbfw != null  and dbfw != '' "> and dbfw = #{dbfw}</if>
+             <if test="jzmj != null "> and jzmj = #{jzmj}</if>
+             <if test="dymj != null "> and dymj = #{dymj}</if>
+             <if test="dywjz != null "> and dywjz = #{dywjz}</if>
+             <if test="jkje != null "> and jkje = #{jkje}</if>
+             <if test="zwqxkssj != null "> and zwqxkssj = #{zwqxkssj}</if>
+             <if test="zwqxjssj != null "> and zwqxjssj = #{zwqxjssj}</if>
+             <if test="zgeqxkssj != null "> and zgeqxkssj = #{zgeqxkssj}</if>
+             <if test="zgeqxjssj != null "> and zgeqxjssj = #{zgeqxjssj}</if>
+             <if test="fj != null  and fj != '' "> and fj = #{fj}</if>
+             <if test="dbr != null  and dbr != '' "> and dbr = #{dbr}</if>
+             <if test="dbsj != null "> and dbsj = #{dbsj}</if>
+             <if test="bz != null  and bz != '' "> and bz = #{bz}</if>
+             <if test="sfyx != null  and sfyx != '' "> and sfyx = #{sfyx}</if>
+             <if test="ext1 != null  and ext1 != '' "> and ext1 = #{ext1}</if>
+             <if test="ext2 != null  and ext2 != '' "> and ext2 = #{ext2}</if>
+             <if test="ext3 != null  and ext3 != '' "> and ext3 = #{ext3}</if>
+             <if test="ext4 != null  and ext4 != '' "> and ext4 = #{ext4}</if>
+             <if test="ext5 != null  and ext5 != '' "> and ext5 = #{ext5}</if>
+         </where>
+    </select>
+    
+    <select id="selectDjDyqZbById" parameterType="String" resultMap="DjDyqZbResult">
+        <include refid="selectDjDyqZbVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertDjDyqZb" parameterType="DjDyqZb">
+        insert into dj_dyq_zb
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null  and id != ''  ">id,</if>
+			<if test="jjbh != null  and jjbh != ''  ">jjbh,</if>
+			<if test="idEntity != null  and idEntity != ''  ">id_entity,</if>
+			<if test="ywdjlx != null  and ywdjlx != ''  ">ywdjlx,</if>
+			<if test="subywdjlx != null  and subywdjlx != ''  ">subywdjlx,</if>
+			<if test="qllx != null  and qllx != ''  ">qllx,</if>
+			<if test="ydah != null  and ydah != ''  ">ydah,</if>
+			<if test="xdah != null  and xdah != ''  ">xdah,</if>
+			<if test="dydkyt != null  and dydkyt != ''  ">dydkyt,</if>
+			<if test="dydkxz != null  and dydkxz != ''  ">dydkxz,</if>
+			<if test="dyfwzlms != null  and dyfwzlms != ''  ">dyfwzlms,</if>
+			<if test="dybw != null  and dybw != ''  ">dybw,</if>
+			<if test="dbfw != null  and dbfw != ''  ">dbfw,</if>
+			<if test="jzmj != null  ">jzmj,</if>
+			<if test="dymj != null  ">dymj,</if>
+			<if test="dywjz != null  ">dywjz,</if>
+			<if test="jkje != null  ">jkje,</if>
+			<if test="zwqxkssj != null  ">zwqxkssj,</if>
+			<if test="zwqxjssj != null  ">zwqxjssj,</if>
+			<if test="zgeqxkssj != null  ">zgeqxkssj,</if>
+			<if test="zgeqxjssj != null  ">zgeqxjssj,</if>
+			<if test="fj != null  and fj != ''  ">fj,</if>
+			<if test="dbr != null  and dbr != ''  ">dbr,</if>
+			<if test="dbsj != null  ">dbsj,</if>
+			<if test="bz != null  and bz != ''  ">bz,</if>
+			<if test="sfyx != null  and sfyx != ''  ">sfyx,</if>
+			<if test="ext1 != null  and ext1 != ''  ">ext1,</if>
+			<if test="ext2 != null  and ext2 != ''  ">ext2,</if>
+			<if test="ext3 != null  and ext3 != ''  ">ext3,</if>
+			<if test="ext4 != null  and ext4 != ''  ">ext4,</if>
+			<if test="ext5 != null  and ext5 != ''  ">ext5,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null  and id != ''  ">#{id},</if>
+			<if test="jjbh != null  and jjbh != ''  ">#{jjbh},</if>
+			<if test="idEntity != null  and idEntity != ''  ">#{idEntity},</if>
+			<if test="ywdjlx != null  and ywdjlx != ''  ">#{ywdjlx},</if>
+			<if test="subywdjlx != null  and subywdjlx != ''  ">#{subywdjlx},</if>
+			<if test="qllx != null  and qllx != ''  ">#{qllx},</if>
+			<if test="ydah != null  and ydah != ''  ">#{ydah},</if>
+			<if test="xdah != null  and xdah != ''  ">#{xdah},</if>
+			<if test="dydkyt != null  and dydkyt != ''  ">#{dydkyt},</if>
+			<if test="dydkxz != null  and dydkxz != ''  ">#{dydkxz},</if>
+			<if test="dyfwzlms != null  and dyfwzlms != ''  ">#{dyfwzlms},</if>
+			<if test="dybw != null  and dybw != ''  ">#{dybw},</if>
+			<if test="dbfw != null  and dbfw != ''  ">#{dbfw},</if>
+			<if test="jzmj != null  ">#{jzmj},</if>
+			<if test="dymj != null  ">#{dymj},</if>
+			<if test="dywjz != null  ">#{dywjz},</if>
+			<if test="jkje != null  ">#{jkje},</if>
+			<if test="zwqxkssj != null  ">#{zwqxkssj},</if>
+			<if test="zwqxjssj != null  ">#{zwqxjssj},</if>
+			<if test="zgeqxkssj != null  ">#{zgeqxkssj},</if>
+			<if test="zgeqxjssj != null  ">#{zgeqxjssj},</if>
+			<if test="fj != null  and fj != ''  ">#{fj},</if>
+			<if test="dbr != null  and dbr != ''  ">#{dbr},</if>
+			<if test="dbsj != null  ">#{dbsj},</if>
+			<if test="bz != null  and bz != ''  ">#{bz},</if>
+			<if test="sfyx != null  and sfyx != ''  ">#{sfyx},</if>
+			<if test="ext1 != null  and ext1 != ''  ">#{ext1},</if>
+			<if test="ext2 != null  and ext2 != ''  ">#{ext2},</if>
+			<if test="ext3 != null  and ext3 != ''  ">#{ext3},</if>
+			<if test="ext4 != null  and ext4 != ''  ">#{ext4},</if>
+			<if test="ext5 != null  and ext5 != ''  ">#{ext5},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateDjDyqZb" parameterType="DjDyqZb">
+        update dj_dyq_zb
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="jjbh != null  and jjbh != ''  ">jjbh = #{jjbh},</if>
+            <if test="idEntity != null  and idEntity != ''  ">id_entity = #{idEntity},</if>
+            <if test="ywdjlx != null  and ywdjlx != ''  ">ywdjlx = #{ywdjlx},</if>
+            <if test="subywdjlx != null  and subywdjlx != ''  ">subywdjlx = #{subywdjlx},</if>
+            <if test="qllx != null  and qllx != ''  ">qllx = #{qllx},</if>
+            <if test="ydah != null  and ydah != ''  ">ydah = #{ydah},</if>
+            <if test="xdah != null  and xdah != ''  ">xdah = #{xdah},</if>
+            <if test="dydkyt != null  and dydkyt != ''  ">dydkyt = #{dydkyt},</if>
+            <if test="dydkxz != null  and dydkxz != ''  ">dydkxz = #{dydkxz},</if>
+            <if test="dyfwzlms != null  and dyfwzlms != ''  ">dyfwzlms = #{dyfwzlms},</if>
+            <if test="dybw != null  and dybw != ''  ">dybw = #{dybw},</if>
+            <if test="dbfw != null  and dbfw != ''  ">dbfw = #{dbfw},</if>
+            <if test="jzmj != null  ">jzmj = #{jzmj},</if>
+            <if test="dymj != null  ">dymj = #{dymj},</if>
+            <if test="dywjz != null  ">dywjz = #{dywjz},</if>
+            <if test="jkje != null  ">jkje = #{jkje},</if>
+            <if test="zwqxkssj != null  ">zwqxkssj = #{zwqxkssj},</if>
+            <if test="zwqxjssj != null  ">zwqxjssj = #{zwqxjssj},</if>
+            <if test="zgeqxkssj != null  ">zgeqxkssj = #{zgeqxkssj},</if>
+            <if test="zgeqxjssj != null  ">zgeqxjssj = #{zgeqxjssj},</if>
+            <if test="fj != null  and fj != ''  ">fj = #{fj},</if>
+            <if test="dbr != null  and dbr != ''  ">dbr = #{dbr},</if>
+            <if test="dbsj != null  ">dbsj = #{dbsj},</if>
+            <if test="bz != null  and bz != ''  ">bz = #{bz},</if>
+            <if test="sfyx != null  and sfyx != ''  ">sfyx = #{sfyx},</if>
+            <if test="ext1 != null  and ext1 != ''  ">ext1 = #{ext1},</if>
+            <if test="ext2 != null  and ext2 != ''  ">ext2 = #{ext2},</if>
+            <if test="ext3 != null  and ext3 != ''  ">ext3 = #{ext3},</if>
+            <if test="ext4 != null  and ext4 != ''  ">ext4 = #{ext4},</if>
+            <if test="ext5 != null  and ext5 != ''  ">ext5 = #{ext5},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+	<delete id="deleteDjDyqZbById" parameterType="String">
+        delete from dj_dyq_zb where id = #{id}
+    </delete>
+	
+    <delete id="deleteDjDyqZbByIds" parameterType="String">
+        delete from dj_dyq_zb where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

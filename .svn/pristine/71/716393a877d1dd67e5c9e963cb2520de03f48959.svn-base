@@ -1,0 +1,137 @@
+package com.ruoyi.web.controller.baseclean;
+
+import java.util.List;
+
+import com.ruoyi.common.utils.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.ruoyi.common.annotation.Log;
+import com.ruoyi.common.enums.BusinessType;
+import com.ruoyi.baseclean.domain.TDataRule;
+import com.ruoyi.baseclean.service.ITDataRuleService;
+import com.ruoyi.common.core.controller.BaseController;
+import com.ruoyi.common.core.page.TableDataInfo;
+import com.ruoyi.common.core.domain.AjaxResult;
+import com.ruoyi.common.utils.poi.ExcelUtil;
+
+/**
+ * 校验规则 信息操作处理
+ * 
+ * @author ruoyi
+ * @date 2019-05-31
+ */
+@Controller
+@RequestMapping("/baseclean/tDataRule")
+public class TDataRuleController extends BaseController
+{
+    private String prefix = "baseclean/tDataRule";
+	
+	@Autowired
+	private ITDataRuleService tDataRuleService;
+	
+	@RequiresPermissions("baseclean:tDataRule:view")
+	@GetMapping()
+	public String tDataRule()
+	{
+	    return prefix + "/tDataRule";
+	}
+	
+	/**
+	 * 查询校验规则列表
+	 */
+	@RequiresPermissions("baseclean:tDataRule:list")
+	@PostMapping("/list")
+	@ResponseBody
+	public TableDataInfo list(TDataRule tDataRule)
+	{
+		startPage();
+        List<TDataRule> list = tDataRuleService.selectTDataRuleList(tDataRule);
+		return getDataTable(list);
+	}
+	
+	
+	/**
+	 * 导出校验规则列表
+	 */
+	@RequiresPermissions("baseclean:tDataRule:export")
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export(TDataRule tDataRule)
+    {
+    	List<TDataRule> list = tDataRuleService.selectTDataRuleList(tDataRule);
+        ExcelUtil<TDataRule> util = new ExcelUtil<TDataRule>(TDataRule.class);
+        return util.exportExcel(list, "tDataRule");
+    }
+	
+	/**
+	 * 新增校验规则
+	 */
+	@GetMapping("/add")
+	public String add()
+	{
+	    return prefix + "/add";
+	}
+	
+	/**
+	 * 新增保存校验规则
+	 */
+	@RequiresPermissions("baseclean:tDataRule:add")
+	@Log(title = "校验规则", businessType = BusinessType.INSERT)
+	@PostMapping("/add")
+	@ResponseBody
+	public AjaxResult addSave(TDataRule tDataRule)
+	{
+		if(tDataRule != null && tDataRule.getRuleCode() != null){
+			TDataRule tDataRule1 = new TDataRule();
+			tDataRule1.setRuleCode(tDataRule.getRuleCode());
+
+			List<TDataRule> tDataRules = tDataRuleService.selectTDataRuleList(tDataRule1);
+			if(tDataRules != null && tDataRules.size()>0){
+				return AjaxResult.error("规则编码已存在");
+			}
+		}
+		return toAjax(tDataRuleService.insertTDataRule(tDataRule));
+	}
+
+	/**
+	 * 修改校验规则
+	 */
+	@GetMapping("/edit/{ruleId}")
+	public String edit(@PathVariable("ruleId") Integer ruleId, ModelMap mmap)
+	{
+		TDataRule tDataRule = tDataRuleService.selectTDataRuleById(ruleId);
+		mmap.put("tDataRule", tDataRule);
+	    return prefix + "/edit";
+	}
+	
+	/**
+	 * 修改保存校验规则
+	 */
+	@RequiresPermissions("baseclean:tDataRule:edit")
+	@Log(title = "校验规则", businessType = BusinessType.UPDATE)
+	@PostMapping("/edit")
+	@ResponseBody
+	public AjaxResult editSave(TDataRule tDataRule)
+	{		
+		return toAjax(tDataRuleService.updateTDataRule(tDataRule));
+	}
+	
+	/**
+	 * 删除校验规则
+	 */
+	@RequiresPermissions("baseclean:tDataRule:remove")
+	@Log(title = "校验规则", businessType = BusinessType.DELETE)
+	@PostMapping( "/remove")
+	@ResponseBody
+	public AjaxResult remove(String ids)
+	{		
+		return toAjax(tDataRuleService.deleteTDataRuleByIds(ids));
+	}
+}

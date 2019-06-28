@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.baseclean.mapper.TDataResultMapper">
+    
+    <resultMap type="TDataResult" id="TDataResultResult">
+        <result property="resultId"    column="result_id"    />
+        <result property="owner"    column="owner"    />
+        <result property="tableName"    column="table_name"    />
+        <result property="colName"    column="col_name"    />
+        <result property="colOriVal"    column="col_ori_val"    />
+        <result property="colNowVal"    column="col_now_val"    />
+        <result property="colKey"    column="col_key"    />
+        <result property="colKeyVal"    column="col_key_val"    />
+        <result property="modifyTimes"    column="modify_times"    />
+        <result property="ext1"    column="ext1"    />
+        <result property="ext2"    column="ext2"    />
+        <result property="ext3"    column="ext3"    />
+        <result property="ext4"    column="ext4"    />
+        <result property="status"    column="status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+	
+	<sql id="selectTDataResultVo">
+        select result_id, owner, table_name, col_name, col_ori_val, col_now_val, col_key, col_key_val, modify_times, ext1, ext2, ext3, ext4, status, create_by, create_time, update_by, update_time from t_data_result
+    </sql>
+	
+    <select id="selectTDataResultList" parameterType="TDataResult" resultMap="TDataResultResult">
+        <include refid="selectTDataResultVo"/>
+        <where>  
+            <if test="resultId != null "> and result_id = #{resultId}</if>
+             <if test="owner != null  and owner != '' "> and owner = #{owner}</if>
+             <if test="tableName != null  and tableName != '' "> and table_name = #{tableName}</if>
+             <if test="colName != null  and colName != '' "> and col_name = #{colName}</if>
+             <if test="colOriVal != null  and colOriVal != '' "> and col_ori_val = #{colOriVal}</if>
+             <if test="colNowVal != null  and colNowVal != '' "> and col_now_val = #{colNowVal}</if>
+             <if test="colKey != null  and colKey != '' "> and col_key = #{colKey}</if>
+             <if test="colKeyVal != null  and colKeyVal != '' "> and col_key_val = #{colKeyVal}</if>
+             <if test="modifyTimes != null "> and modify_times = #{modifyTimes}</if>
+             <if test="ext1 != null  and ext1 != '' "> and ext1 = #{ext1}</if>
+             <if test="ext2 != null  and ext2 != '' "> and ext2 = #{ext2}</if>
+             <if test="ext3 != null  and ext3 != '' "> and ext3 = #{ext3}</if>
+             <if test="ext4 != null  and ext4 != '' "> and ext4 = #{ext4}</if>
+             <if test="status != null  and status != '' "> and status = #{status}</if>
+             <if test="createBy != null  and createBy != '' "> and create_by = #{createBy}</if>
+             <if test="createTime != null "> and create_time = #{createTime}</if>
+             <if test="updateBy != null  and updateBy != '' "> and update_by = #{updateBy}</if>
+             <if test="updateTime != null "> and update_time = #{updateTime}</if>
+         </where>
+    </select>
+    
+    <select id="selectTDataResultById" parameterType="Integer" resultMap="TDataResultResult">
+        <include refid="selectTDataResultVo"/>
+        where result_id = #{resultId}
+    </select>
+        
+    <insert id="insertTDataResult" parameterType="TDataResult" useGeneratedKeys="true" keyProperty="resultId">
+        <selectKey keyProperty="resultId" order="BEFORE" resultType="INTEGER">
+            select seq_t_data_result.nextval as resultId from DUAL
+        </selectKey>
+        insert into t_data_result
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="resultId != null  ">result_id,</if>
+			<if test="owner != null  and owner != ''  ">owner,</if>
+			<if test="tableName != null  and tableName != ''  ">table_name,</if>
+			<if test="colName != null  and colName != ''  ">col_name,</if>
+			<if test="colOriVal != null  and colOriVal != ''  ">col_ori_val,</if>
+			<if test="colNowVal != null  and colNowVal != ''  ">col_now_val,</if>
+			<if test="colKey != null  and colKey != ''  ">col_key,</if>
+			<if test="colKeyVal != null  and colKeyVal != ''  ">col_key_val,</if>
+			<if test="modifyTimes != null  ">modify_times,</if>
+			<if test="ext1 != null  and ext1 != ''  ">ext1,</if>
+			<if test="ext2 != null  and ext2 != ''  ">ext2,</if>
+			<if test="ext3 != null  and ext3 != ''  ">ext3,</if>
+			<if test="ext4 != null  and ext4 != ''  ">ext4,</if>
+			<if test="status != null  and status != ''  ">status,</if>
+			<if test="createBy != null  and createBy != ''  ">create_by,</if>
+			<if test="createTime != null  ">create_time,</if>
+			<if test="updateBy != null  and updateBy != ''  ">update_by,</if>
+			<if test="updateTime != null  ">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="resultId != null  ">#{resultId},</if>
+			<if test="owner != null  and owner != ''  ">#{owner},</if>
+			<if test="tableName != null  and tableName != ''  ">#{tableName},</if>
+			<if test="colName != null  and colName != ''  ">#{colName},</if>
+			<if test="colOriVal != null  and colOriVal != ''  ">#{colOriVal},</if>
+			<if test="colNowVal != null  and colNowVal != ''  ">#{colNowVal},</if>
+			<if test="colKey != null  and colKey != ''  ">#{colKey},</if>
+			<if test="colKeyVal != null  and colKeyVal != ''  ">#{colKeyVal},</if>
+			<if test="modifyTimes != null  ">#{modifyTimes},</if>
+			<if test="ext1 != null  and ext1 != ''  ">#{ext1},</if>
+			<if test="ext2 != null  and ext2 != ''  ">#{ext2},</if>
+			<if test="ext3 != null  and ext3 != ''  ">#{ext3},</if>
+			<if test="ext4 != null  and ext4 != ''  ">#{ext4},</if>
+			<if test="status != null  and status != ''  ">#{status},</if>
+			<if test="createBy != null  and createBy != ''  ">#{createBy},</if>
+			<if test="createTime != null  ">#{createTime},</if>
+			<if test="updateBy != null  and updateBy != ''  ">#{updateBy},</if>
+			<if test="updateTime != null  ">#{updateTime},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateTDataResult" parameterType="TDataResult">
+        update t_data_result
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="owner != null  and owner != ''  ">owner = #{owner},</if>
+            <if test="tableName != null  and tableName != ''  ">table_name = #{tableName},</if>
+            <if test="colName != null  and colName != ''  ">col_name = #{colName},</if>
+            <if test="colOriVal != null  and colOriVal != ''  ">col_ori_val = #{colOriVal},</if>
+            <if test="colNowVal != null  and colNowVal != ''  ">col_now_val = #{colNowVal},</if>
+            <if test="colKey != null  and colKey != ''  ">col_key = #{colKey},</if>
+            <if test="colKeyVal != null  and colKeyVal != ''  ">col_key_val = #{colKeyVal},</if>
+            <if test="modifyTimes != null  ">modify_times = #{modifyTimes},</if>
+            <if test="ext1 != null  and ext1 != ''  ">ext1 = #{ext1},</if>
+            <if test="ext2 != null  and ext2 != ''  ">ext2 = #{ext2},</if>
+            <if test="ext3 != null  and ext3 != ''  ">ext3 = #{ext3},</if>
+            <if test="ext4 != null  and ext4 != ''  ">ext4 = #{ext4},</if>
+            <if test="status != null  and status != ''  ">status = #{status},</if>
+            <if test="createBy != null  and createBy != ''  ">create_by = #{createBy},</if>
+            <if test="createTime != null  ">create_time = #{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''  ">update_by = #{updateBy},</if>
+            <if test="updateTime != null  ">update_time = #{updateTime},</if>
+        </trim>
+        where result_id = #{resultId}
+    </update>
+
+	<delete id="deleteTDataResultById" parameterType="Integer">
+        delete from t_data_result where result_id = #{resultId}
+    </delete>
+	
+    <delete id="deleteTDataResultByIds" parameterType="String">
+        delete from t_data_result where result_id in 
+        <foreach item="resultId" collection="array" open="(" separator="," close=")">
+            #{resultId}
+        </foreach>
+    </delete>
+
+    <insert id="insertQueryRuleData" parameterType="String">
+        ${_parameter}
+    </insert>
+
+
+</mapper>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('权利人明细_簿载层列表')" />
+</head>
+<body class="gray-bg">
+    
+     <div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="formId">
+					<div class="select-list">
+						<ul>
+							<li>
+								接件编号：
+								<input type="text" name="jjbh" />
+							</li>
+
+							<li>
+								产权证号（自然人/非自然人）：
+								<input type="text" name="cqzh"/>
+							</li>
+
+							<div style="display:block">
+								<li>
+									权利人性别：<input type="text" name="qlrxb"/>
+								</li>
+
+								<li>
+									权利人名称：<input type="text" name="qlrmc"/>
+								</li>
+
+								<li>
+									业务登记类型：<input type="text" name="ywdjlx"/>
+								</li>
+
+								<li>
+									子业务登记类型：<input type="text" name="subywdjlx"/>
+								</li>
+
+								<li>
+									权利类型：<input type="text" name="qllx"/>
+								</li>
+
+								<li>
+									权利人类型(1,产权人;,22,抵押人)：<input type="text" name="qlrlx"/>
+								</li>
+
+								<li>
+									个人单位(01,个人;02,单位)：<input type="text" name="grdw"/>
+								</li>
+
+								<li>
+									权利人联系地址(自然人)/公司联系地址(非自然人)：<input type="text" name="qlrlxdz"/>
+								</li>
+
+								<li>
+									权利人国籍(自然人)/空(非自然人)：<input type="text" name="qlrgj"/>
+								</li>
+
+								<li>
+									户籍所在地(自然人)/单位地址(非自然人)：<input type="text" name="qlrdz"/>
+								</li>
+
+								<li>
+									权利人联系电话(自然人)/公司联系电话(非自然人)：<input type="text" name="qlrdh"/>
+								</li>
+
+								<li>
+									权利人单位性质(自然人)/公司单位性质(非自然人）)：<input type="text" name="qlrdwxz"/>
+								</li>
+
+								<li>
+									权利人编号：<input type="text" name="qlrbh"/>
+								</li>
+
+								<li>
+									权利人证件名称(自然人/非自然人)：<input type="text" name="qlrzjmc"/>
+								</li>
+
+								<li>
+									权利人证件编码(自然人/非自然人)：<input type="text" name="qlrzjhm"/>
+								</li>
+
+								<li>
+									权利人单位名称(自然人)/(非自然人)：<input type="text" name="qlrdwmc"/>
+								</li>
+
+								<li>
+									法人代表名称(自然人/非自然人)：<input type="text" name="frdbmc"/>
+								</li>
+
+								<li>
+									法人代表联系电话(自然人/非自然人)：<input type="text" name="frdblxdh"/>
+								</li>
+
+								<li>
+									法人代表证件名称(自然人/非自然人)：<input type="text" name="frdbzjmc"/>
+								</li>
+
+								<li>
+									法人代表证件编号(自然人/非自然人)：<input type="text" name="frdbzjhm"/>
+								</li>
+
+								<li>
+									原权利人主键（自然人/非自然人）：<input type="text" name="yqlrzj"/>
+								</li>
+
+								<li>
+									共有情况（自然人/非自然人）：<input type="text" name="gyqk"/>
+								</li>
+
+								<li>
+									产权份额（自然人/非自然人）：<input type="text" name="qlfe"/>
+								</li>
+
+								<li>
+									身份证签发机关：<input type="text" name="sfzqfjg"/>
+								</li>
+
+								<li>
+									身份证有效期限：<input type="text" name="sfzyxqx"/>
+								</li>
+
+								<li>
+									产权证编号（自然人/非自然人）：<input type="text" name="qzbh"/>
+								</li>
+
+								<li>
+									附记（自然人/非自然人）：<input type="text" name="fj"/>
+								</li>
+
+								<li>
+									排序：<input type="text" name="seq"/>
+								</li>
+							</div>
+
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+			
+	        <div class="btn-group-sm" id="toolbar" role="group">
+				<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="basp:djGgQlrmx:edit">
+					<i class="fa fa-edit"></i> 修改
+				</a>
+				<a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="basp:djGgQlrmx:export">
+						<i class="fa fa-download"></i> 导出
+				 </a>
+			</div>
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+    <div th:include="include :: footer"></div>
+    <script th:inline="javascript">
+        var editFlag = [[${@permission.hasPermi('basp:djGgQlrmx:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('basp:djGgQlrmx:remove')}]];
+        var prefix = ctx + "basp/djGgQlrmx";
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+				exportUrl: prefix + "/export",
+                modalName: "权利人明细_簿载层",
+		        showExport: true,
+                columns: [{
+		            checkbox: true
+		        },
+				{
+					field : 'id', 
+					title : '代理主键',
+					visible: true
+				},
+				{
+					field : 'idZb', 
+					title : '登记主表ID(外键)',
+					sortable: true
+				},
+				{
+					field : 'jjbh', 
+					title : '接件编号',
+					sortable: true
+				},
+				{
+					field : 'idEntity',
+					title : '实体id',
+					sortable: true
+				},
+				{
+					field : 'ywdjlx',
+					title : '业务登记类型',
+					sortable: true
+				},
+				{
+					field : 'subywdjlx',
+					title : '子业务登记类型',
+					sortable: true
+				},
+				{
+					field : 'qllx',
+					title : '权利类型',
+					sortable: true
+				},
+				{
+					field : 'qlrlx', 
+					title : '权利人类型(1,产权人;22,抵押人)',
+					sortable: true
+				},
+				{
+					field : 'grdw', 
+					title : '个人单位(01,个人;02,单位)',
+					sortable: true
+				},
+				{
+					field : 'qlrlxdz', 
+					title : '权利人联系地址(自然人)/公司联系地址(非自然人)',
+					sortable: true
+				},
+				{
+					field : 'qlrmc', 
+					title : '权利人名称(自然人)/公司名称(非自然人)',
+					sortable: true
+				},
+				{
+					field : 'qlrgj', 
+					title : '权利人国籍(自然人)/空(非自然人)',
+					sortable: true
+				},
+				{
+					field : 'qlrdz', 
+					title : '户籍所在地(自然人)/单位地址(非自然人)',
+					sortable: true
+				},
+				{
+					field : 'qlrdh', 
+					title : '权利人联系电话(自然人)/公司联系电话(非自然人)',
+					sortable: true
+				},
+				{
+					field : 'qlrdwxz', 
+					title : '权利人单位性质(自然人)/公司单位性质(非自然人）)',
+					sortable: true
+				},
+				{
+					field : 'qlrbh', 
+					title : '权利人编号',
+					sortable: true
+				},
+				{
+					field : 'qlrzjmc', 
+					title : '权利人证件名称(自然人/非自然人)',
+					sortable: true
+				},
+				{
+					field : 'qlrzjhm', 
+					title : '权利人证件编码(自然人/非自然人)',
+					sortable: true
+				},
+				{
+					field : 'qlrdwmc', 
+					title : '权利人单位名称(自然人)/(非自然人)',
+					sortable: true
+				},
+				{
+					field : 'frdbmc', 
+					title : '法人代表名称(自然人/非自然人)',
+					sortable: true
+				},
+				{
+					field : 'frdblxdh', 
+					title : '法人代表联系电话(自然人/非自然人)',
+					sortable: true
+				},
+				{
+					field : 'frdbzjmc', 
+					title : '法人代表证件名称(自然人/非自然人)',
+					sortable: true
+				},
+				{
+					field : 'frdbzjhm', 
+					title : '法人代表证件编号(自然人/非自然人)',
+					sortable: true
+				},
+				{
+					field : 'yqlrzj', 
+					title : '原权利人主键（自然人/非自然人）',
+					sortable: true
+				},
+				{
+					field : 'qlrxb', 
+					title : '权利人性别',
+					sortable: true
+				},
+				{
+					field : 'gyqk', 
+					title : '共有情况（自然人/非自然人）',
+					sortable: true
+				},
+				{
+					field : 'qlfe', 
+					title : '产权份额（自然人/非自然人）',
+					sortable: true
+				},
+				{
+					field : 'sfzqfjg', 
+					title : '身份证签发机关',
+					sortable: true
+				},
+				{
+					field : 'sfzyxqx', 
+					title : '身份证有效期限',
+					sortable: true
+				},
+				{
+					field : 'cqzh', 
+					title : '产权证号（自然人/非自然人）',
+					sortable: true
+				},
+				{
+					field : 'qzbh', 
+					title : '产权证编号（自然人/非自然人）',
+					sortable: true
+				},
+				{
+					field : 'fj', 
+					title : '附记（自然人/非自然人）',
+					sortable: true
+				},
+				{
+					field : 'seq', 
+					title : '排序',
+					sortable: true
+				},
+		        {
+		            title: '操作',
+		            align: 'center',
+		            formatter: function(value, row, index) {
+		                console.log(row);
+		            	var actions = [];
+		            	actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        return actions.join('');
+		            }
+		        }]
+            };
+            $.table.init(options);
+        });
+    </script>
+</body>
+</html>

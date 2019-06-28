@@ -1,0 +1,64 @@
+package com.ruoyi.basp.service;
+
+import com.ruoyi.basp.domain.TDataDistribution;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+/**
+ * 数据分配 服务层
+ * 
+ * @author ruoyi
+ * @date 2019-05-30
+ */
+public interface ITDataDistributionService 
+{
+	/**
+     * 查询数据分配信息
+     * 
+     * @param id 数据分配ID
+     * @return 数据分配信息
+     */
+	public TDataDistribution selectTDataDistributionById(String id);
+	
+	/**
+     * 查询数据分配列表
+     * 
+     * @param tDataDistribution 数据分配信息
+     * @return 数据分配集合
+     */
+	public List<TDataDistribution> selectTDataDistributionList(TDataDistribution tDataDistribution);
+	
+	/**
+     * 新增数据分配
+     * 
+     * @param tDataDistribution 数据分配信息
+     * @return 结果
+     */
+	public int insertTDataDistribution(TDataDistribution tDataDistribution);
+	
+	/**
+     * 修改数据分配
+     * 
+     * @param tDataDistribution 数据分配信息
+     * @return 结果
+     */
+	public int updateTDataDistribution(TDataDistribution tDataDistribution);
+		
+	/**
+     * 删除数据分配信息
+     * 
+     * @param ids 需要删除的数据ID
+     * @return 结果
+     */
+	public int deleteTDataDistributionByIds(String ids);
+
+	/**
+	 * 根据用户查询数据分配列表
+	 *
+	 * @param tDataDistribution
+	 * @return
+	 */
+	public TDataDistribution selectTDataDistributionListUser(TDataDistribution tDataDistribution);
+	
+}

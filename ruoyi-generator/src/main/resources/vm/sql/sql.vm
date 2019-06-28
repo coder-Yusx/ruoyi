@@ -1,0 +1,20 @@
+declare
+parentid number(10);
+begin
+insert into sys_menu (menu_id,menu_name, parent_id, order_num, url,menu_type, visible, perms, icon, create_by, create_time, update_by, update_time, remark)
+values(seq_sys_menu.nextval,'权利人', '4', '1', '/${moduleName}/${classname}', 'C', '0', '${moduleName}:${classname}:view', '#', 'admin', SYSDATE, 'ry', SYSDATE, '权利人菜单');
+
+select Max(menu_id) into parentid from sys_menu;
+
+insert into sys_menu  (menu_id,menu_name, parent_id, order_num, url,menu_type, visible, perms, icon, create_by, create_time, update_by, update_time, remark)
+values(seq_sys_menu.nextval,'权利人查询', parentId, '1',  '#',  'F', '0', '${moduleName}:${classname}:list',         '#', 'admin', SYSDATE, 'ry', SYSDATE, '');
+
+insert into sys_menu  (menu_id,menu_name, parent_id, order_num, url,menu_type, visible, perms, icon, create_by, create_time, update_by, update_time, remark)
+values(seq_sys_menu.nextval,'权利人新增', parentId, '2',  '#',  'F', '0', '${moduleName}:${classname}:add',          '#', 'admin', SYSDATE, 'ry', SYSDATE, '');
+
+insert into sys_menu  (menu_id,menu_name, parent_id, order_num, url,menu_type, visible, perms, icon, create_by, create_time, update_by, update_time, remark)
+values(seq_sys_menu.nextval,'权利人修改', parentId, '3',  '#',  'F', '0', '${moduleName}:${classname}:edit',         '#', 'admin', SYSDATE, 'ry', SYSDATE, '');
+
+insert into sys_menu  (menu_id,menu_name, parent_id, order_num, url,menu_type, visible, perms, icon, create_by, create_time, update_by, update_time, remark)
+values(seq_sys_menu.nextval,'权利人删除', parentId, '4',  '#',  'F', '0', '${moduleName}:${classname}:remove',       '#', 'admin', SYSDATE, 'ry', SYSDATE, '');
+end;

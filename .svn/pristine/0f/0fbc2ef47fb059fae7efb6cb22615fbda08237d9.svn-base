@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.basp.mapper.DjGgQlrmxMapper">
+
+    <resultMap type="DjGgQlrmx" id="DjGgQlrmxResult">
+        <result property="id"    column="id"    />
+        <result property="idZb"    column="id_zb"    />
+        <result property="jjbh"    column="jjbh"    />
+        <result property="idEntity"    column="id_entity"    />
+        <result property="ywdjlx"    column="ywdjlx"    />
+        <result property="subywdjlx"    column="subywdjlx"    />
+        <result property="qllx"    column="qllx"    />
+        <result property="qlrlx"    column="qlrlx"    />
+        <result property="grdw"    column="grdw"    />
+        <result property="qlrlxdz"    column="qlrlxdz"    />
+        <result property="qlrmc"    column="qlrmc"    />
+        <result property="qlrgj"    column="qlrgj"    />
+        <result property="qlrdz"    column="qlrdz"    />
+        <result property="qlrdh"    column="qlrdh"    />
+        <result property="qlrdwxz"    column="qlrdwxz"    />
+        <result property="qlrbh"    column="qlrbh"    />
+        <result property="qlrzjmc"    column="qlrzjmc"    />
+        <result property="qlrzjhm"    column="qlrzjhm"    />
+        <result property="qlrdwmc"    column="qlrdwmc"    />
+        <result property="frdbmc"    column="frdbmc"    />
+        <result property="frdblxdh"    column="frdblxdh"    />
+        <result property="frdbzjmc"    column="frdbzjmc"    />
+        <result property="frdbzjhm"    column="frdbzjhm"    />
+        <result property="yqlrzj"    column="yqlrzj"    />
+        <result property="qlrxb"    column="qlrxb"    />
+        <result property="gyqk"    column="gyqk"    />
+        <result property="qlfe"    column="qlfe"    />
+        <result property="sfzqfjg"    column="sfzqfjg"    />
+        <result property="sfzyxqx"    column="sfzyxqx"    />
+        <result property="cqzh"    column="cqzh"    />
+        <result property="qzbh"    column="qzbh"    />
+        <result property="fj"    column="fj"    />
+        <result property="seq"    column="seq"    />
+        <result property="image"    column="image"    />
+        <result property="ext1"    column="ext1"    />
+        <result property="ext2"    column="ext2"    />
+        <result property="ext3"    column="ext3"    />
+        <result property="ext4"    column="ext4"    />
+        <result property="ext5"    column="ext5"    />
+        <result property="dirname" column="dirname"    />
+        <result property="ftppath" column="ftppath"    />
+    </resultMap>
+
+    <sql id="selectDjGgQlrmxVo">
+        select id, id_zb, jjbh, id_entity, ywdjlx, subywdjlx, qllx, qlrlx, grdw, qlrlxdz, qlrmc, qlrgj, qlrdz, qlrdh, qlrdwxz, qlrbh, qlrzjmc, qlrzjhm, qlrdwmc, frdbmc, frdblxdh, frdbzjmc, frdbzjhm, yqlrzj, qlrxb, gyqk, qlfe, sfzqfjg, sfzyxqx, cqzh, qzbh, fj, seq, image, ext1, ext2, ext3, ext4, ext5 from basp.dj_gg_qlrmx
+    </sql>
+
+    <select id="selectDjGgQlrmxList" parameterType="DjGgQlrmx" resultMap="DjGgQlrmxResult">
+        <include refid="selectDjGgQlrmxVo"/>
+        <where>
+            <if test="id != null  and id != '' "> and id = #{id}</if>
+            <if test="idZb != null  and idZb != '' "> and id_zb = #{idZb}</if>
+            <if test="jjbh != null  and jjbh != '' "> and jjbh = #{jjbh}</if>
+            <if test="idEntity != null  and idEntity != '' "> and id_entity = #{idEntity}</if>
+            <if test="ywdjlx != null  and ywdjlx != '' "> and ywdjlx = #{ywdjlx}</if>
+            <if test="subywdjlx != null  and subywdjlx != '' "> and subywdjlx = #{subywdjlx}</if>
+            <if test="qllx != null  and qllx != '' "> and qllx = #{qllx}</if>
+            <if test="qlrlx != null  and qlrlx != '' "> and qlrlx = #{qlrlx}</if>
+            <if test="grdw != null  and grdw != '' "> and grdw = #{grdw}</if>
+            <if test="qlrlxdz != null  and qlrlxdz != '' "> and qlrlxdz = #{qlrlxdz}</if>
+            <if test="qlrmc != null  and qlrmc != '' "> and qlrmc = #{qlrmc}</if>
+            <if test="qlrgj != null  and qlrgj != '' "> and qlrgj = #{qlrgj}</if>
+            <if test="qlrdz != null  and qlrdz != '' "> and qlrdz = #{qlrdz}</if>
+            <if test="qlrdh != null  and qlrdh != '' "> and qlrdh = #{qlrdh}</if>
+            <if test="qlrdwxz != null  and qlrdwxz != '' "> and qlrdwxz = #{qlrdwxz}</if>
+            <if test="qlrbh != null  and qlrbh != '' "> and qlrbh = #{qlrbh}</if>
+            <if test="qlrzjmc != null  and qlrzjmc != '' "> and qlrzjmc = #{qlrzjmc}</if>
+            <if test="qlrzjhm != null  and qlrzjhm != '' "> and qlrzjhm = #{qlrzjhm}</if>
+            <if test="qlrdwmc != null  and qlrdwmc != '' "> and qlrdwmc = #{qlrdwmc}</if>
+            <if test="frdbmc != null  and frdbmc != '' "> and frdbmc = #{frdbmc}</if>
+            <if test="frdblxdh != null  and frdblxdh != '' "> and frdblxdh = #{frdblxdh}</if>
+            <if test="frdbzjmc != null  and frdbzjmc != '' "> and frdbzjmc = #{frdbzjmc}</if>
+            <if test="frdbzjhm != null  and frdbzjhm != '' "> and frdbzjhm = #{frdbzjhm}</if>
+            <if test="yqlrzj != null  and yqlrzj != '' "> and yqlrzj = #{yqlrzj}</if>
+            <if test="qlrxb != null  and qlrxb != '' "> and qlrxb = #{qlrxb}</if>
+            <if test="gyqk != null  and gyqk != '' "> and gyqk = #{gyqk}</if>
+            <if test="qlfe != null  and qlfe != '' "> and qlfe = #{qlfe}</if>
+            <if test="sfzqfjg != null  and sfzqfjg != '' "> and sfzqfjg = #{sfzqfjg}</if>
+            <if test="sfzyxqx != null  and sfzyxqx != '' "> and sfzyxqx = #{sfzyxqx}</if>
+            <if test="cqzh != null  and cqzh != '' "> and cqzh = #{cqzh}</if>
+            <if test="qzbh != null  and qzbh != '' "> and qzbh = #{qzbh}</if>
+            <if test="fj != null  and fj != '' "> and fj = #{fj}</if>
+            <if test="seq != null "> and seq = #{seq}</if>
+            <if test="image != null "> and image = #{image}</if>
+            <if test="ext1 != null  and ext1 != '' "> and ext1 = #{ext1}</if>
+            <if test="ext2 != null  and ext2 != '' "> and ext2 = #{ext2}</if>
+            <if test="ext3 != null  and ext3 != '' "> and ext3 = #{ext3}</if>
+            <if test="ext4 != null  and ext4 != '' "> and ext4 = #{ext4}</if>
+            <if test="ext5 != null  and ext5 != '' "> and ext5 = #{ext5}</if>
+        </where>
+    </select>
+
+    <select id="selectDjGgQlrmxListPageData" parameterType="com.ruoyi.common.utils.PageData" resultType="com.ruoyi.common.utils.PageData">
+        <include refid="selectDjGgQlrmxVo"/>
+        <!--<where>
+            <foreach collection="pd.keys" item="key" open="" close="">
+                <if test=" ${key} != null  and ${key} != '' "> and ${key} = #{pd[key]}</if>
+            </foreach>
+        </where>-->
+    </select>
+
+    <select id="selectDjGgQlrmxById" parameterType="String" resultMap="DjGgQlrmxResult">
+        select qlrmx.id, qlrmx.id_zb, qlrmx.jjbh, qlrmx.id_entity, qlrmx.ywdjlx, qlrmx.subywdjlx, qlrmx.qllx, qlrmx.qlrlx, qlrmx.grdw, qlrmx.qlrlxdz, qlrmx.qlrmc, qlrmx.qlrgj, qlrmx.qlrdz, qlrmx.qlrdh, qlrmx.qlrdwxz, qlrmx.qlrbh, qlrmx.qlrzjmc, qlrmx.qlrzjhm, qlrmx.qlrdwmc, qlrmx.frdbmc, qlrmx.frdblxdh, qlrmx.frdbzjmc, qlrmx.frdbzjhm, qlrmx.yqlrzj, qlrmx.qlrxb, qlrmx.gyqk, qlrmx.qlfe, qlrmx.sfzqfjg, qlrmx.sfzyxqx, qlrmx.cqzh, qlrmx.qzbh, qlrmx.fj, qlrmx.seq, qlrmx.image, qlrmx.ext1, qlrmx.ext2, qlrmx.ext3, qlrmx.ext4, qlrmx.ext5 from basp.dj_gg_qlrmx qlrmx
+        where qlrmx.id = #{id}
+    </select>
+
+    <!--<select id="selectDjGgQlrmxById" parameterType="String" resultMap="DjGgQlrmxResult">
+        select wjj.dirname, wj.ftppath, qlrmx.id, qlrmx.id_zb, qlrmx.jjbh, qlrmx.id_entity, qlrmx.ywdjlx, qlrmx.subywdjlx, qlrmx.qllx, qlrmx.qlrlx, qlrmx.grdw, qlrmx.qlrlxdz, qlrmx.qlrmc, qlrmx.qlrgj, qlrmx.qlrdz, qlrmx.qlrdh, qlrmx.qlrdwxz, qlrmx.qlrbh, qlrmx.qlrzjmc, qlrmx.qlrzjhm, qlrmx.qlrdwmc, qlrmx.frdbmc, qlrmx.frdblxdh, qlrmx.frdbzjmc, qlrmx.frdbzjhm, qlrmx.yqlrzj, qlrmx.qlrxb, qlrmx.gyqk, qlrmx.qlfe, qlrmx.sfzqfjg, qlrmx.sfzyxqx, qlrmx.cqzh, qlrmx.qzbh, qlrmx.fj, qlrmx.seq, qlrmx.image, qlrmx.ext1, qlrmx.ext2, qlrmx.ext3, qlrmx.ext4, qlrmx.ext5 from basp.dj_gg_qlrmx qlrmx, basp.basp_filemanager_directory wjj, basp.basp_filemanager_file wj
+        where qlrmx.id = #{id} and qlrmx.jjbh = wjj.id and wj.dirid = wjj.id and rownum = 1
+    </select>-->
+
+    <insert id="insertDjGgQlrmx" parameterType="DjGgQlrmx">
+        insert into basp.dj_gg_qlrmx
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null  and id != ''  ">id,</if>
+            <if test="idZb != null  and idZb != ''  ">id_zb,</if>
+            <if test="jjbh != null  and jjbh != ''  ">jjbh,</if>
+            <if test="idEntity != null  and idEntity != ''  ">id_entity,</if>
+            <if test="ywdjlx != null  and ywdjlx != ''  ">ywdjlx,</if>
+            <if test="subywdjlx != null  and subywdjlx != ''  ">subywdjlx,</if>
+            <if test="qllx != null  and qllx != ''  ">qllx,</if>
+            <if test="qlrlx != null  and qlrlx != ''  ">qlrlx,</if>
+            <if test="grdw != null  and grdw != ''  ">grdw,</if>
+            <if test="qlrlxdz != null  and qlrlxdz != ''  ">qlrlxdz,</if>
+            <if test="qlrmc != null  and qlrmc != ''  ">qlrmc,</if>
+            <if test="qlrgj != null  and qlrgj != ''  ">qlrgj,</if>
+            <if test="qlrdz != null  and qlrdz != ''  ">qlrdz,</if>
+            <if test="qlrdh != null  and qlrdh != ''  ">qlrdh,</if>
+            <if test="qlrdwxz != null  and qlrdwxz != ''  ">qlrdwxz,</if>
+            <if test="qlrbh != null  and qlrbh != ''  ">qlrbh,</if>
+            <if test="qlrzjmc != null  and qlrzjmc != ''  ">qlrzjmc,</if>
+            <if test="qlrzjhm != null  and qlrzjhm != ''  ">qlrzjhm,</if>
+            <if test="qlrdwmc != null  and qlrdwmc != ''  ">qlrdwmc,</if>
+            <if test="frdbmc != null  and frdbmc != ''  ">frdbmc,</if>
+            <if test="frdblxdh != null  and frdblxdh != ''  ">frdblxdh,</if>
+            <if test="frdbzjmc != null  and frdbzjmc != ''  ">frdbzjmc,</if>
+            <if test="frdbzjhm != null  and frdbzjhm != ''  ">frdbzjhm,</if>
+            <if test="yqlrzj != null  and yqlrzj != ''  ">yqlrzj,</if>
+            <if test="qlrxb != null  and qlrxb != ''  ">qlrxb,</if>
+            <if test="gyqk != null  and gyqk != ''  ">gyqk,</if>
+            <if test="qlfe != null  and qlfe != ''  ">qlfe,</if>
+            <if test="sfzqfjg != null  and sfzqfjg != ''  ">sfzqfjg,</if>
+            <if test="sfzyxqx != null  and sfzyxqx != ''  ">sfzyxqx,</if>
+            <if test="cqzh != null  and cqzh != ''  ">cqzh,</if>
+            <if test="qzbh != null  and qzbh != ''  ">qzbh,</if>
+            <if test="fj != null  and fj != ''  ">fj,</if>
+            <if test="seq != null  ">seq,</if>
+            <if test="image != null  ">image,</if>
+            <if test="ext1 != null  and ext1 != ''  ">ext1,</if>
+            <if test="ext2 != null  and ext2 != ''  ">ext2,</if>
+            <if test="ext3 != null  and ext3 != ''  ">ext3,</if>
+            <if test="ext4 != null  and ext4 != ''  ">ext4,</if>
+            <if test="ext5 != null  and ext5 != ''  ">ext5,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null  and id != ''  ">#{id},</if>
+            <if test="idZb != null  and idZb != ''  ">#{idZb},</if>
+            <if test="jjbh != null  and jjbh != ''  ">#{jjbh},</if>
+            <if test="idEntity != null  and idEntity != ''  ">#{idEntity},</if>
+            <if test="ywdjlx != null  and ywdjlx != ''  ">#{ywdjlx},</if>
+            <if test="subywdjlx != null  and subywdjlx != ''  ">#{subywdjlx},</if>
+            <if test="qllx != null  and qllx != ''  ">#{qllx},</if>
+            <if test="qlrlx != null  and qlrlx != ''  ">#{qlrlx},</if>
+            <if test="grdw != null  and grdw != ''  ">#{grdw},</if>
+            <if test="qlrlxdz != null  and qlrlxdz != ''  ">#{qlrlxdz},</if>
+            <if test="qlrmc != null  and qlrmc != ''  ">#{qlrmc},</if>
+            <if test="qlrgj != null  and qlrgj != ''  ">#{qlrgj},</if>
+            <if test="qlrdz != null  and qlrdz != ''  ">#{qlrdz},</if>
+            <if test="qlrdh != null  and qlrdh != ''  ">#{qlrdh},</if>
+            <if test="qlrdwxz != null  and qlrdwxz != ''  ">#{qlrdwxz},</if>
+            <if test="qlrbh != null  and qlrbh != ''  ">#{qlrbh},</if>
+            <if test="qlrzjmc != null  and qlrzjmc != ''  ">#{qlrzjmc},</if>
+            <if test="qlrzjhm != null  and qlrzjhm != ''  ">#{qlrzjhm},</if>
+            <if test="qlrdwmc != null  and qlrdwmc != ''  ">#{qlrdwmc},</if>
+            <if test="frdbmc != null  and frdbmc != ''  ">#{frdbmc},</if>
+            <if test="frdblxdh != null  and frdblxdh != ''  ">#{frdblxdh},</if>
+            <if test="frdbzjmc != null  and frdbzjmc != ''  ">#{frdbzjmc},</if>
+            <if test="frdbzjhm != null  and frdbzjhm != ''  ">#{frdbzjhm},</if>
+            <if test="yqlrzj != null  and yqlrzj != ''  ">#{yqlrzj},</if>
+            <if test="qlrxb != null  and qlrxb != ''  ">#{qlrxb},</if>
+            <if test="gyqk != null  and gyqk != ''  ">#{gyqk},</if>
+            <if test="qlfe != null  and qlfe != ''  ">#{qlfe},</if>
+            <if test="sfzqfjg != null  and sfzqfjg != ''  ">#{sfzqfjg},</if>
+            <if test="sfzyxqx != null  and sfzyxqx != ''  ">#{sfzyxqx},</if>
+            <if test="cqzh != null  and cqzh != ''  ">#{cqzh},</if>
+            <if test="qzbh != null  and qzbh != ''  ">#{qzbh},</if>
+            <if test="fj != null  and fj != ''  ">#{fj},</if>
+            <if test="seq != null  ">#{seq},</if>
+            <if test="image != null  ">#{image},</if>
+            <if test="ext1 != null  and ext1 != ''  ">#{ext1},</if>
+            <if test="ext2 != null  and ext2 != ''  ">#{ext2},</if>
+            <if test="ext3 != null  and ext3 != ''  ">#{ext3},</if>
+            <if test="ext4 != null  and ext4 != ''  ">#{ext4},</if>
+            <if test="ext5 != null  and ext5 != ''  ">#{ext5},</if>
+        </trim>
+    </insert>
+
+    <update id="updateDjGgQlrmx" parameterType="DjGgQlrmx">
+        update basp.dj_gg_qlrmx
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="idZb != null  and idZb != ''  ">id_zb = #{idZb},</if>
+            <if test="jjbh != null  and jjbh != ''  ">jjbh = #{jjbh},</if>
+            <if test="idEntity != null  and idEntity != ''  ">id_entity = #{idEntity},</if>
+            <if test="ywdjlx != null  and ywdjlx != ''  ">ywdjlx = #{ywdjlx},</if>
+            <if test="subywdjlx != null  and subywdjlx != ''  ">subywdjlx = #{subywdjlx},</if>
+            <if test="qllx != null  and qllx != ''  ">qllx = #{qllx},</if>
+            <if test="qlrlx != null  and qlrlx != ''  ">qlrlx = #{qlrlx},</if>
+            <if test="grdw != null  and grdw != ''  ">grdw = #{grdw},</if>
+            <if test="qlrlxdz != null  and qlrlxdz != ''  ">qlrlxdz = #{qlrlxdz},</if>
+            <if test="qlrmc != null  and qlrmc != ''  ">qlrmc = #{qlrmc},</if>
+            <if test="qlrgj != null  and qlrgj != ''  ">qlrgj = #{qlrgj},</if>
+            <if test="qlrdz != null  and qlrdz != ''  ">qlrdz = #{qlrdz},</if>
+            <if test="qlrdh != null  and qlrdh != ''  ">qlrdh = #{qlrdh},</if>
+            <if test="qlrdwxz != null  and qlrdwxz != ''  ">qlrdwxz = #{qlrdwxz},</if>
+            <if test="qlrbh != null  and qlrbh != ''  ">qlrbh = #{qlrbh},</if>
+            <if test="qlrzjmc != null  and qlrzjmc != ''  ">qlrzjmc = #{qlrzjmc},</if>
+            <if test="qlrzjhm != null  and qlrzjhm != ''  ">qlrzjhm = #{qlrzjhm},</if>
+            <if test="qlrdwmc != null  and qlrdwmc != ''  ">qlrdwmc = #{qlrdwmc},</if>
+            <if test="frdbmc != null  and frdbmc != ''  ">frdbmc = #{frdbmc},</if>
+            <if test="frdblxdh != null  and frdblxdh != ''  ">frdblxdh = #{frdblxdh},</if>
+            <if test="frdbzjmc != null  and frdbzjmc != ''  ">frdbzjmc = #{frdbzjmc},</if>
+            <if test="frdbzjhm != null  and frdbzjhm != ''  ">frdbzjhm = #{frdbzjhm},</if>
+            <if test="yqlrzj != null  and yqlrzj != ''  ">yqlrzj = #{yqlrzj},</if>
+            <if test="qlrxb != null  and qlrxb != ''  ">qlrxb = #{qlrxb},</if>
+            <if test="gyqk != null  and gyqk != ''  ">gyqk = #{gyqk},</if>
+            <if test="qlfe != null  and qlfe != ''  ">qlfe = #{qlfe},</if>
+            <if test="sfzqfjg != null  and sfzqfjg != ''  ">sfzqfjg = #{sfzqfjg},</if>
+            <if test="sfzyxqx != null  and sfzyxqx != ''  ">sfzyxqx = #{sfzyxqx},</if>
+            <if test="cqzh != null  and cqzh != ''  ">cqzh = #{cqzh},</if>
+            <if test="qzbh != null  and qzbh != ''  ">qzbh = #{qzbh},</if>
+            <if test="fj != null  and fj != ''  ">fj = #{fj},</if>
+            <if test="seq != null  ">seq = #{seq},</if>
+            <if test="image != null  ">image = #{image},</if>
+            <if test="ext1 != null  and ext1 != ''  ">ext1 = #{ext1},</if>
+            <if test="ext2 != null  and ext2 != ''  ">ext2 = #{ext2},</if>
+            <if test="ext3 != null  and ext3 != ''  ">ext3 = #{ext3},</if>
+            <if test="ext4 != null  and ext4 != ''  ">ext4 = #{ext4},</if>
+            <if test="ext5 != null  and ext5 != ''  ">ext5 = #{ext5},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteDjGgQlrmxById" parameterType="String">
+        delete from basp.dj_gg_qlrmx where id = #{id}
+    </delete>
+
+    <delete id="deleteDjGgQlrmxByIds" parameterType="String">
+        delete from basp.dj_gg_qlrmx where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="selectDjGgQlrmxByHbId" parameterType="String" resultMap="DjGgQlrmxResult">
+        select qlrmx.* from BASP.DJ_GG_QLRMX qlrmx
+        left join BASP.DJ_GG_HMX hmx on hmx.id_zb = qlrmx.id_zb
+        left join BASP.GGFC_HB hb on (hb.id = hmx.id_bz and hb.fwbh = hmx.fwbh)
+        where hb.id = #{id}
+    </select>
+
+</mapper>

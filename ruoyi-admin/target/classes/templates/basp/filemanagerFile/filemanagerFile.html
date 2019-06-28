@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('附件文件列表')" />
+</head>
+<body class="gray-bg">
+    
+     <div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="formId">
+					<div class="select-list">
+						<ul>
+							<li>
+								所在目录：<input type="text" name="dirid"/>
+							</li>
+
+							<li>
+								显示名：<input type="text" name="showname"/>
+							</li>
+
+							<li>
+								扩展名：<input type="text" name="extendname"/>
+							</li>
+
+							<li>
+								上传用户：<input type="text" name="userid"/>
+							</li>
+
+							<li>
+								备注：<input type="text" name="memoa"/>
+							</li>
+
+							<li>
+								上传时间：<input type="text" name="uploaddate"/>
+							</li>
+
+							<li>
+								业务主键：<input type="text" name="xtajbh"/>
+							</li>
+
+							<li>
+								ftp服务：<input type="text" name="ftpserver"/>
+							</li>
+
+							<li>
+								FTP路径：<input type="text" name="ftppath"/>
+							</li>
+
+							<li>
+								排序号：<input type="text" name="seq"/>
+							</li>
+
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+			
+	        <div class="btn-group-sm" id="toolbar" role="group">
+				<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="basp:filemanagerFile:edit">
+					<i class="fa fa-edit"></i> 修改
+				</a>
+				</a>
+				<a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="basp:filemanagerFile:export">
+						<i class="fa fa-download"></i> 导出
+				 </a>
+			</div>
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+    <div th:include="include :: footer"></div>
+    <script th:inline="javascript">
+        var editFlag = [[${@permission.hasPermi('basp:filemanagerFile:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('basp:filemanagerFile:remove')}]];
+        var prefix = ctx + "basp/filemanagerFile";
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+				exportUrl: prefix + "/export",
+                modalName: "附件文件",
+		        showExport: true,
+                columns: [{
+		            checkbox: true
+		        },
+				{
+					field : 'id', 
+					title : '文件id主键',
+					visible: true
+				},
+				{
+					field : 'dirid', 
+					title : '所在目录',
+					sortable: true
+				},
+				{
+					field : 'showname', 
+					title : '显示名',
+					sortable: true
+				},
+				{
+					field : 'extendname', 
+					title : '扩展名',
+					sortable: true
+				},
+				{
+					field : 'userid', 
+					title : '上传用户',
+                    visible: false
+				},
+				{
+					field : 'memoa', 
+					title : '备注',
+					sortable: true
+				},
+				{
+					field : 'uploaddate', 
+					title : '上传时间',
+                    visible: false
+				},
+				{
+					field : 'xtajbh', 
+					title : '业务主键',
+                    visible: false
+				},
+				{
+					field : 'ftpserver', 
+					title : 'ftp服务',
+                    visible: false
+				},
+				{
+					field : 'ftppath', 
+					title : 'FTP路径',
+                    visible: false
+				},
+				{
+					field : 'seq', 
+					title : '排序号',
+                    visible: false
+				},
+		        {
+		            title: '操作',
+		            align: 'center',
+		            formatter: function(value, row, index) {
+		            	var actions = [];
+		            	actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        return actions.join('');
+		            }
+		        }]
+            };
+            $.table.init(options);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.basp.mapper.FilemanagerFileMapper">
+    
+    <resultMap type="FilemanagerFile" id="FilemanagerFileResult">
+        <result property="id"    column="id"    />
+        <result property="dirid"    column="dirid"    />
+        <result property="showname"    column="showname"    />
+        <result property="extendname"    column="extendname"    />
+        <result property="userid"    column="userid"    />
+        <result property="memoa"    column="memoa"    />
+        <result property="uploaddate"    column="uploaddate"    />
+        <result property="xtajbh"    column="xtajbh"    />
+        <result property="ftpserver"    column="ftpserver"    />
+        <result property="ftppath"    column="ftppath"    />
+        <result property="seq"    column="seq"    />
+        <result property="jjbh"     column="jjbh"    />
+        <result property="qlrlx"    column="qlrlx"    />
+        <result property="qlrmc"    column="qlrmc"    />
+        <result property="qlrdh"    column="qlrdh"    />
+        <result property="qlrlxdz"  column="qlrlxdz"    />
+        <result property="qlrzjmc"  column="qlrzjmc"    />
+        <result property="qlrzjhm"  column="qlrzjhm"    />
+        <result property="cqzh"     column="cqzh"    />
+    </resultMap>
+	
+	<sql id="selectFilemanagerFileVo">
+        select id, dirid, showname, extendname, userid, memoa, uploaddate, xtajbh, ftpserver, ftppath, seq from basp.basp_filemanager_file
+    </sql>
+	
+    <select id="selectFilemanagerFileList" parameterType="FilemanagerFile" resultMap="FilemanagerFileResult">
+        <include refid="selectFilemanagerFileVo"/>
+        <where>  
+            <if test="id != null  and id != '' "> and id = #{id}</if>
+             <if test="dirid != null  and dirid != '' "> and dirid = #{dirid}</if>
+             <if test="showname != null  and showname != '' "> and showname = #{showname}</if>
+             <if test="extendname != null  and extendname != '' "> and extendname = #{extendname}</if>
+             <if test="userid != null  and userid != '' "> and userid = #{userid}</if>
+             <if test="memoa != null  and memoa != '' "> and memoa = #{memoa}</if>
+             <if test="uploaddate != null "> and uploaddate = #{uploaddate}</if>
+             <if test="xtajbh != null  and xtajbh != '' "> and xtajbh = #{xtajbh}</if>
+             <if test="ftpserver != null  and ftpserver != '' "> and ftpserver = #{ftpserver}</if>
+             <if test="ftppath != null  and ftppath != '' "> and ftppath = #{ftppath}</if>
+             <if test="seq != null "> and seq = #{seq}</if>
+         </where>
+    </select>
+    
+    <select id="selectFilemanagerFileById" parameterType="String" resultMap="FilemanagerFileResult">
+        select distinct qlrmx.jjbh, qlrmx.qlrlx, qlrmx.qlrmc, qlrmx.qlrdh, qlrmx.qlrlxdz, qlrmx.qlrzjmc, qlrmx.qlrzjhm, qlrmx.cqzh, wj.id,  wj.dirid,  wj.showname,  wj.extendname,  wj.userid,  wj.memoa,  wj.uploaddate,  wj.xtajbh,  wj.ftpserver,  wj.ftppath,  wj.seq,  wjj.dirname
+        from BASP.DJ_GG_QLRMX qlrmx
+        left join BASP.BASP_FILEMANAGER_DIRECTORY wjj on wjj.id = qlrmx.jjbh
+        left join BASP.BASP_FILEMANAGER_FILE wj on wj.dirid = wjj.id
+        where
+          wj.id = #{id} and rownum = 1
+
+        <!--<include refid="selectFilemanagerFileVo"/>-->
+    </select>
+        
+    <insert id="insertFilemanagerFile" parameterType="FilemanagerFile">
+        insert into basp.basp_filemanager_file
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null  and id != ''  ">id,</if>
+			<if test="dirid != null  and dirid != ''  ">dirid,</if>
+			<if test="showname != null  and showname != ''  ">showname,</if>
+			<if test="extendname != null  and extendname != ''  ">extendname,</if>
+			<if test="userid != null  and userid != ''  ">userid,</if>
+			<if test="memoa != null  and memoa != ''  ">memoa,</if>
+			<if test="uploaddate != null  ">uploaddate,</if>
+			<if test="xtajbh != null  and xtajbh != ''  ">xtajbh,</if>
+			<if test="ftpserver != null  and ftpserver != ''  ">ftpserver,</if>
+			<if test="ftppath != null  and ftppath != ''  ">ftppath,</if>
+			<if test="seq != null  ">seq,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null  and id != ''  ">#{id},</if>
+			<if test="dirid != null  and dirid != ''  ">#{dirid},</if>
+			<if test="showname != null  and showname != ''  ">#{showname},</if>
+			<if test="extendname != null  and extendname != ''  ">#{extendname},</if>
+			<if test="userid != null  and userid != ''  ">#{userid},</if>
+			<if test="memoa != null  and memoa != ''  ">#{memoa},</if>
+			<if test="uploaddate != null  ">#{uploaddate},</if>
+			<if test="xtajbh != null  and xtajbh != ''  ">#{xtajbh},</if>
+			<if test="ftpserver != null  and ftpserver != ''  ">#{ftpserver},</if>
+			<if test="ftppath != null  and ftppath != ''  ">#{ftppath},</if>
+			<if test="seq != null  ">#{seq},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateFilemanagerFile" parameterType="FilemanagerFile">
+        update basp.basp_filemanager_file
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="dirid != null  and dirid != ''  ">dirid = #{dirid},</if>
+            <if test="showname != null  and showname != ''  ">showname = #{showname},</if>
+            <if test="extendname != null  and extendname != ''  ">extendname = #{extendname},</if>
+            <if test="userid != null  and userid != ''  ">userid = #{userid},</if>
+            <if test="memoa != null  and memoa != ''  ">memoa = #{memoa},</if>
+            <if test="uploaddate != null  ">uploaddate = #{uploaddate},</if>
+            <if test="xtajbh != null  and xtajbh != ''  ">xtajbh = #{xtajbh},</if>
+            <if test="ftpserver != null  and ftpserver != ''  ">ftpserver = #{ftpserver},</if>
+            <if test="ftppath != null  and ftppath != ''  ">ftppath = #{ftppath},</if>
+            <if test="seq != null  ">seq = #{seq},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+	<delete id="deleteFilemanagerFileById" parameterType="String">
+        delete from basp.basp_filemanager_file where id = #{id}
+    </delete>
+	
+    <delete id="deleteFilemanagerFileByIds" parameterType="String">
+        delete from basp.basp_filemanager_file where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+    <select id="selectFilemanagerFileByHbId" parameterType="String" resultMap="FilemanagerFileResult">
+        select distinct wj.* from  BASP.BASP_FILEMANAGER_FILE wj
+        left join BASP.BASP_FILEMANAGER_DIRECTORY wjj on wjj.id = wj.dirid
+        where wjj.id =  #{id}
+    </select>
+    
+</mapper>

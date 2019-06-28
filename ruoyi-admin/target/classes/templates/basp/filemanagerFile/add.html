@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('新增附件文件')" />
+</head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-filemanagerFile-add">
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">所在目录：</label>
+				<div class="col-sm-8">
+					<input id="dirid" name="dirid" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">显示名：</label>
+				<div class="col-sm-8">
+					<input id="showname" name="showname" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">扩展名：</label>
+				<div class="col-sm-8">
+					<input id="extendname" name="extendname" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">上传用户：</label>
+				<div class="col-sm-8">
+					<input id="userid" name="userid" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">备注：</label>
+				<div class="col-sm-8">
+					<input id="memoa" name="memoa" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">上传时间：</label>
+				<div class="col-sm-8">
+					<input id="uploaddate" name="uploaddate" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">业务主键：</label>
+				<div class="col-sm-8">
+					<input id="xtajbh" name="xtajbh" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">ftp服务：</label>
+				<div class="col-sm-8">
+					<input id="ftpserver" name="ftpserver" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">FTP路径：</label>
+				<div class="col-sm-8">
+					<input id="ftppath" name="ftppath" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">排序号：</label>
+				<div class="col-sm-8">
+					<input id="seq" name="seq" class="form-control" type="text">
+				</div>
+			</div>
+		</form>
+	</div>
+    <div th:include="include::footer"></div>
+    <script type="text/javascript">
+		var prefix = ctx + "basp/filemanagerFile"
+		$("#form-filemanagerFile-add").validate({
+			rules:{
+				xxxx:{
+					required:true,
+				},
+			},
+			focusCleanup: true
+		});
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	            $.operate.save(prefix + "/add", $('#form-filemanagerFile-add').serialize());
+	        }
+	    }
+	</script>
+</body>
+</html>

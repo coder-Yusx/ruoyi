@@ -1,0 +1,90 @@
+package com.ruoyi.baseclean.service.impl;
+
+import com.ruoyi.baseclean.domain.TDataRule;
+import com.ruoyi.baseclean.mapper.TDataRuleMapper;
+import com.ruoyi.baseclean.service.ITDataRuleService;
+import com.ruoyi.common.core.text.Convert;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * 校验规则 服务层实现
+ * 
+ * @author ruoyi
+ * @date 2019-05-31
+ */
+@Service
+public class TDataRuleServiceImpl implements ITDataRuleService 
+{
+	@Autowired
+	private TDataRuleMapper tDataRuleMapper;
+
+	/**
+     * 查询校验规则信息
+     * 
+     * @param ruleId 校验规则ID
+     * @return 校验规则信息
+     */
+    @Override
+	public TDataRule selectTDataRuleById(Integer ruleId)
+	{
+	    return tDataRuleMapper.selectTDataRuleById(ruleId);
+	}
+	
+	/**
+     * 查询校验规则列表
+     * 
+     * @param tDataRule 校验规则信息
+     * @return 校验规则集合
+     */
+	@Override
+	public List<TDataRule> selectTDataRuleList(TDataRule tDataRule)
+	{
+	    return tDataRuleMapper.selectTDataRuleList(tDataRule);
+	}
+
+	@Override
+	public List<TDataRule> selectTDataRuleList2()
+	{
+		return tDataRuleMapper.selectTDataRuleList(new TDataRule());
+	}
+	
+    /**
+     * 新增校验规则
+     * 
+     * @param tDataRule 校验规则信息
+     * @return 结果
+     */
+	@Override
+	public int insertTDataRule(TDataRule tDataRule)
+	{
+	    return tDataRuleMapper.insertTDataRule(tDataRule);
+	}
+	
+	/**
+     * 修改校验规则
+     * 
+     * @param tDataRule 校验规则信息
+     * @return 结果
+     */
+	@Override
+	public int updateTDataRule(TDataRule tDataRule)
+	{
+	    return tDataRuleMapper.updateTDataRule(tDataRule);
+	}
+
+	/**
+     * 删除校验规则对象
+     * 
+     * @param ids 需要删除的数据ID
+     * @return 结果
+     */
+	@Override
+	public int deleteTDataRuleByIds(String ids)
+	{
+		return tDataRuleMapper.deleteTDataRuleByIds(Convert.toStrArray(ids));
+	}
+	
+}

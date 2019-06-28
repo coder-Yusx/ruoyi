@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.baseclean.mapper.BaseTestMapper">
+
+    <resultMap id="ColsCommentsMap" type="Map">
+        <result property="key" column="column_name"></result>
+        <result property="value" column="comments"></result>
+    </resultMap>
+
+    <select id="selectColsComments" parameterType="Map" resultType="ColComments">
+            select column_name columnName,comments comments
+              from all_col_comments
+             where 1=1
+                <if test="owner !=null and tableName!=''">
+                    and owner = #{owner}
+                </if>
+              <if test="tableName !=null and tableName!=''">
+                  and table_Name = #{tableName}
+              </if>
+    </select>
+
+    <select id="selectPersonsMap" parameterType="Map" resultType="java.util.LinkedHashMap">
+        select * from ${map.owner}.${map.tableName} where 1=1
+        <if test="map.param != null">
+            <foreach collection="map.param.entrySet()" index="key" item="value" separator=" ">
+                and ${key} = #{value}
+            </foreach>
+        </if>
+    </select>
+</mapper>

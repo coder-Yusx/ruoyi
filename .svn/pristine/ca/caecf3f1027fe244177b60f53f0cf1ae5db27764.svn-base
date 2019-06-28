@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('修改公共户')" />
+	<style>
+		.fenjiexian{
+			border: #0e9aef 1px solid;
+            margin-bottom: 2rem;
+            padding-top: 1rem;
+		}
+	</style>
+</head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+		<div class="row">
+			<div class="col-sm-3 col-md-3 col-lg-3">
+                <h3>从业主体_开发商信息</h3>
+                <div class="form-horizontal m fenjiexian" th:each="lm : ${cyztCyjgKfs}">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">机构名称：</label>
+                        <div class="col-sm-8">
+                            <input id="jgmc" name="jgmc" th:value="${lm.jgmc}" class="form-control" type="text" readonly="readonly" >
+                        </div>
+                    </div>
+                </div>
+
+                <h3>项目基本信息</h3>
+                <div class="form-horizontal m fenjiexian" th:each="lm : ${xmglXmXmjbxxb}">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">项目名称：</label>
+                        <div class="col-sm-8">
+                            <input id="xmmc" name="xmmc" th:value="*{lm.xmmc}" readonly="readonly" class="form-control" type="text">
+                        </div>
+                    </div>
+
+                </div>
+
+                <h3>楼表信息</h3>
+                <div class="form-horizontal m fenjiexian" th:each="lm : ${ggfcLb}">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">楼名称：</label>
+                        <div class="col-sm-8">
+                            <input id="lmc" name="lmc" readonly="readonly" th:value="*{lm.lmc}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">房屋坐落：</label>
+                        <div class="col-sm-8">
+                            <input id="lbfwzl" name="lbfwzl" readonly="readonly" th:value="*{lm.fwzl}" class="form-control" type="text">
+                        </div>
+                    </div>
+                </div>
+
+				<h3>户表信息</h3>
+				<form class="form-horizontal m fenjiexian" id="form-ggfcHb-edit" th:object="${ggfcHb}">
+					<input id="id" name="id" th:field="*{id}"  type="hidden">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">楼id：</label>
+						<div class="col-sm-8">
+							<input id="idLid" name="idLid" th:field="*{idLid}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">房屋编号：</label>
+						<div class="col-sm-8">
+							<input id="fwbh" name="fwbh" th:field="*{fwbh}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">单元间号（户室）：</label>
+						<div class="col-sm-8">
+							<input id="dyjh" name="dyjh" th:field="*{dyjh}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">房屋座落：</label>
+						<div class="col-sm-8">
+							<input id="fwzl" name="fwzl" th:field="*{fwzl}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">政区码：</label>
+						<div class="col-sm-8">
+							<input id="zqm" name="zqm" th:field="*{zqm}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">街路巷：</label>
+						<div class="col-sm-8">
+							<input id="jlx" name="jlx" th:field="*{jlx}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">门牌号：</label>
+						<div class="col-sm-8">
+							<input id="mph" name="mph" th:field="*{mph}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">幢号：</label>
+						<div class="col-sm-8">
+							<input id="zh" name="zh" th:field="*{zh}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">单元：</label>
+						<div class="col-sm-8">
+							<input id="dy" name="dy" th:field="*{dy}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">房号：</label>
+						<div class="col-sm-8">
+							<input id="fh" name="fh" th:field="*{fh}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">朝向：</label>
+						<div class="col-sm-8">
+							<input id="cx" name="cx" th:field="*{cx}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">质量：</label>
+						<div class="col-sm-8">
+							<input id="zl" name="zl" th:field="*{zl}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">房籍号：</label>
+						<div class="col-sm-8">
+							<input id="fjh" name="fjh" th:field="*{fjh}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">户型：</label>
+						<div class="col-sm-8">
+							<input id="hx" name="hx" th:field="*{hx}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">地号：</label>
+						<div class="col-sm-8">
+							<input id="dh" name="dh" th:field="*{dh}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">层高：</label>
+						<div class="col-sm-8">
+							<input id="cg" name="cg" th:field="*{cg}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">四至_东临：</label>
+						<div class="col-sm-8">
+							<input id="szdl" name="szdl" th:field="*{szdl}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">四至_西临：</label>
+						<div class="col-sm-8">
+							<input id="szxl" name="szxl" th:field="*{szxl}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">四至_南临：</label>
+						<div class="col-sm-8">
+							<input id="sznl" name="sznl" th:field="*{sznl}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">四至_北临：</label>
+						<div class="col-sm-8">
+							<input id="szbl" name="szbl" th:field="*{szbl}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">逻辑楼层：</label>
+						<div class="col-sm-8">
+							<input id="ljcs" name="ljcs" th:field="*{ljcs}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">物理楼层：</label>
+						<div class="col-sm-8">
+							<input id="wlcs" name="wlcs" th:field="*{wlcs}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">所在楼总层数：</label>
+						<div class="col-sm-8">
+							<input id="zcs" name="zcs" th:field="*{zcs}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">建筑结构：</label>
+						<div class="col-sm-8">
+							<input id="jzjg" name="jzjg" th:field="*{jzjg}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">房屋类别：</label>
+						<div class="col-sm-8">
+							<input id="fwlb" name="fwlb" th:field="*{fwlb}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">房屋用途：</label>
+						<div class="col-sm-8">
+							<input id="fwyt" name="fwyt" th:field="*{fwyt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">房屋性质：</label>
+						<div class="col-sm-8">
+							<input id="fwxz" name="fwxz" th:field="*{fwxz}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">建筑面积：</label>
+						<div class="col-sm-8">
+							<input id="jzmj" name="jzmj" th:field="*{jzmj}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">套内面积：</label>
+						<div class="col-sm-8">
+							<input id="tnmj" name="tnmj" th:field="*{tnmj}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">分摊面积：</label>
+						<div class="col-sm-8">
+							<input id="ftmj" name="ftmj" th:field="*{ftmj}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">阳台面积：</label>
+						<div class="col-sm-8">
+							<input id="ytmj" name="ytmj" th:field="*{ytmj}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">使用面积：</label>
+						<div class="col-sm-8">
+							<input id="symj" name="symj" th:field="*{symj}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">房屋状态：</label>
+						<div class="col-sm-8">
+							<input id="fwzt" name="fwzt" th:field="*{fwzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">建设状态：</label>
+						<div class="col-sm-8">
+							<input id="jszt" name="jszt" th:field="*{jszt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">所有权利状态：</label>
+						<div class="col-sm-8">
+							<input id="syqlzt" name="syqlzt" th:field="*{syqlzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">法律限制状态：</label>
+						<div class="col-sm-8">
+							<input id="flxzzt" name="flxzzt" th:field="*{flxzzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">他项权利状态：</label>
+						<div class="col-sm-8">
+							<input id="txqlzt" name="txqlzt" th:field="*{txqlzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">拆迁冻结状态：</label>
+						<div class="col-sm-8">
+							<input id="cqdjzt" name="cqdjzt" th:field="*{cqdjzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">合同备案状态：</label>
+						<div class="col-sm-8">
+							<input id="htbazt" name="htbazt" th:field="*{htbazt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">初始登记状态：</label>
+						<div class="col-sm-8">
+							<input id="csdjzt" name="csdjzt" th:field="*{csdjzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">预售预告状态：</label>
+						<div class="col-sm-8">
+							<input id="ysygzt" name="ysygzt" th:field="*{ysygzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">预售抵押预告状态：</label>
+						<div class="col-sm-8">
+							<input id="ysdyygzt" name="ysdyygzt" th:field="*{ysdyygzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">在建工程抵押状态：</label>
+						<div class="col-sm-8">
+							<input id="zjgcdyzt" name="zjgcdyzt" th:field="*{zjgcdyzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">地役权状态：</label>
+						<div class="col-sm-8">
+							<input id="dyqzt" name="dyqzt" th:field="*{dyqzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">产权面积状态 ：</label>
+						<div class="col-sm-8">
+							<input id="cqmjzt" name="cqmjzt" th:field="*{cqmjzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">行政限制状态 ：</label>
+						<div class="col-sm-8">
+							<input id="xzxzzt" name="xzxzzt" th:field="*{xzxzzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">异议登记状态 ：</label>
+						<div class="col-sm-8">
+							<input id="yydjzt" name="yydjzt" th:field="*{yydjzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">测绘变更状态：</label>
+						<div class="col-sm-8">
+							<input id="chbgzt" name="chbgzt" th:field="*{chbgzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">是否纳入规划状态：</label>
+						<div class="col-sm-8">
+							<input id="sfnrghzt" name="sfnrghzt" th:field="*{sfnrghzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">存量房转移预告状态：</label>
+						<div class="col-sm-8">
+							<input id="clfzyygzt" name="clfzyygzt" th:field="*{clfzyygzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">抵押预告状态：</label>
+						<div class="col-sm-8">
+							<input id="dyygzt" name="dyygzt" th:field="*{dyygzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">限制状态：</label>
+						<div class="col-sm-8">
+							<input id="xzzt" name="xzzt" th:field="*{xzzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">预售许可状态：</label>
+						<div class="col-sm-8">
+							<input id="ysxkzt" name="ysxkzt" th:field="*{ysxkzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">物业用房状态：</label>
+						<div class="col-sm-8">
+							<input id="wyyfzt" name="wyyfzt" th:field="*{wyyfzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">拆迁安置状态：</label>
+						<div class="col-sm-8">
+							<input id="cqazzt" name="cqazzt" th:field="*{cqazzt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">人防工程状态：</label>
+						<div class="col-sm-8">
+							<input id="rfgczt" name="rfgczt" th:field="*{rfgczt}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">问题卷标识：</label>
+						<div class="col-sm-8">
+							<input id="wtjbs" name="wtjbs" th:field="*{wtjbs}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">数据来源 ：</label>
+						<div class="col-sm-8">
+							<input id="sjly" name="sjly" th:field="*{sjly}" class="form-control" type="text">
+						</div>
+					</div>
+					<!--<div class="form-group">
+						<label class="col-sm-3 control-label">发布时间：</label>
+						<div class="col-sm-8">
+							<input id="cjsj" name="cjsj" th:field="*{cjsj}" class="form-control" type="text">
+						</div>
+					</div>-->
+					<div class="form-group">
+						<label class="col-sm-3 control-label">分摊系数：</label>
+						<div class="col-sm-8">
+							<input id="ftxs" name="ftxs" th:field="*{ftxs}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[SZQY] 所在区域 ：</label>
+						<div class="col-sm-8">
+							<input id="szqy" name="szqy" th:field="*{szqy}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">测绘类型：</label>
+						<div class="col-sm-8">
+							<input id="chlx" name="chlx" th:field="*{chlx}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">分层分户图ID：</label>
+						<div class="col-sm-8">
+							<input id="fcfhid" name="fcfhid" th:field="*{fcfhid}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">测绘变更标识：</label>
+						<div class="col-sm-8">
+							<input id="chbgbs" name="chbgbs" th:field="*{chbgbs}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">房屋备注：</label>
+						<div class="col-sm-8">
+							<input id="bz" name="bz" th:field="*{bz}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">是否有效：</label>
+						<div class="col-sm-8">
+							<input id="sfyx" name="sfyx" th:field="*{sfyx}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">ext1：</label>
+						<div class="col-sm-8">
+							<input id="ext1" name="ext1" th:field="*{ext1}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">ext2：</label>
+						<div class="col-sm-8">
+							<input id="ext2" name="ext2" th:field="*{ext2}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">ext3：</label>
+						<div class="col-sm-8">
+							<input id="ext3" name="ext3" th:field="*{ext3}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">ext4：</label>
+						<div class="col-sm-8">
+							<input id="ext4" name="ext4" th:field="*{ext4}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">ext5：</label>
+						<div class="col-sm-8">
+							<input id="ext5" name="ext5" th:field="*{ext5}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">bdcdybh：</label>
+						<div class="col-sm-8">
+							<input id="bdcdybh" name="bdcdybh" th:field="*{bdcdybh}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">ext6：</label>
+						<div class="col-sm-8">
+							<input id="ext6" name="ext6" th:field="*{ext6}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">ext7：</label>
+						<div class="col-sm-8">
+							<input id="ext7" name="ext7" th:field="*{ext7}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">ext8：</label>
+						<div class="col-sm-8">
+							<input id="ext8" name="ext8" th:field="*{ext8}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">ext9：</label>
+						<div class="col-sm-8">
+							<input id="ext9" name="ext9" th:field="*{ext9}" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">ext10：</label>
+						<div class="col-sm-8">
+							<input id="ext10" name="ext10" th:field="*{ext10}" class="form-control" type="text">
+						</div>
+					</div>
+
+				</form>
+			</div>
+
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                <h3>权利人明细</h3>
+                <form class="form-horizontal m fenjiexian form-djGgQlrmx-edit" th:each="lm : ${djGgQlrmx}">
+                    <input id="qlid" name="id" th:value="*{lm.id}"  type="hidden">
+                    <div class="form-group" style="display: none">
+                        <label class="col-sm-3 control-label">登记主表ID(外键)：</label>
+                        <div class="col-sm-8">
+                            <input id="idZb" name="idZb" th:value="*{lm.idZb}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">接件编号：</label>
+                        <div class="col-sm-8">
+                            <input id="jjbh" name="jjbh" th:value="*{lm.jjbh}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group" style="display: none">
+                        <label class="col-sm-3 control-label">实体id：</label>
+                        <div class="col-sm-8">
+                            <input id="idEntity" name="idEntity" th:value="*{lm.idEntity}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">业务登记类型：</label>
+                        <div class="col-sm-8">
+                            <input id="ywdjlx" name="ywdjlx" th:value="*{lm.ywdjlx}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">子业务登记类型：</label>
+                        <div class="col-sm-8">
+                            <input id="subywdjlx" name="subywdjlx" th:value="*{lm.subywdjlx}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">权利类型：</label>
+                        <div class="col-sm-8">
+                            <input id="qllx" name="qllx" th:value="*{lm.qllx}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">权利人类型：</label>
+                        <div class="col-sm-8">
+                            <input id="qlrlx" name="qlrlx" th:value="*{lm.qlrlx}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">个人单位：</label>
+                        <div class="col-sm-8">
+                            <input id="grdw" name="grdw" th:value="*{lm.grdw}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">权利人联系地址：</label>
+                        <div class="col-sm-8">
+                            <input id="qlrlxdz" name="qlrlxdz" th:value="*{lm.qlrlxdz}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">权利人名称：</label>
+                        <div class="col-sm-8">
+                            <input id="qlrmc" name="qlrmc" th:value="*{lm.qlrmc}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">权利人国籍：</label>
+                        <div class="col-sm-8">
+                            <input id="qlrgj" name="qlrgj" th:value="*{lm.qlrgj}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">户籍所在地：</label>
+                        <div class="col-sm-8">
+                            <input id="qlrdz" name="qlrdz" th:value="*{lm.qlrdz}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">权利人联系电话：</label>
+                        <div class="col-sm-8">
+                            <input id="qlrdh" name="qlrdh" th:value="*{lm.qlrdh}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">权利人单位性质：</label>
+                        <div class="col-sm-8">
+                            <input id="qlrdwxz" name="qlrdwxz" th:value="*{lm.qlrdwxz}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">权利人编号：</label>
+                        <div class="col-sm-8">
+                            <input id="qlrbh" name="qlrbh" th:value="*{lm.qlrbh}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">权利人证件名称：</label>
+                        <div class="col-sm-8">
+                            <input id="qlrzjmc" name="qlrzjmc" th:value="*{lm.qlrzjmc}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">权利人证件编码：</label>
+                        <div class="col-sm-8">
+                            <input id="qlrzjhm" name="qlrzjhm" th:value="*{lm.qlrzjhm}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">权利人单位名称：</label>
+                        <div class="col-sm-8">
+                            <input id="qlrdwmc" name="qlrdwmc" th:value="*{lm.qlrdwmc}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">法人代表名称：</label>
+                        <div class="col-sm-8">
+                            <input id="frdbmc" name="frdbmc" th:value="*{lm.frdbmc}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">法人代表联系电话：</label>
+                        <div class="col-sm-8">
+                            <input id="frdblxdh" name="frdblxdh" th:value="*{lm.frdblxdh}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">法人代表证件名称：</label>
+                        <div class="col-sm-8">
+                            <input id="frdbzjmc" name="frdbzjmc" th:value="*{lm.frdbzjmc}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">法人代表证件编号：</label>
+                        <div class="col-sm-8">
+                            <input id="frdbzjhm" name="frdbzjhm" th:value="*{lm.frdbzjhm}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">原权利人主键：</label>
+                        <div class="col-sm-8">
+                            <input id="yqlrzj" name="yqlrzj" th:value="*{lm.yqlrzj}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">权利人性别：</label>
+                        <div class="col-sm-8">
+                            <input id="qlrxb" name="qlrxb" th:value="*{lm.qlrxb}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">共有情况：</label>
+                        <div class="col-sm-8">
+                            <input id="gyqk" name="gyqk" th:value="*{lm.gyqk}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">产权份额：</label>
+                        <div class="col-sm-8">
+                            <input id="qlfe" name="qlfe" th:value="*{lm.qlfe}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">身份证签发机关：</label>
+                        <div class="col-sm-8">
+                            <input id="sfzqfjg" name="sfzqfjg" th:value="*{lm.sfzqfjg}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">身份证有效期限：</label>
+                        <div class="col-sm-8">
+                            <input id="sfzyxqx" name="sfzyxqx" th:value="*{lm.sfzyxqx}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">产权证号：</label>
+                        <div class="col-sm-8">
+                            <input id="cqzh" name="cqzh" th:value="*{lm.cqzh}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">产权证编号：</label>
+                        <div class="col-sm-8">
+                            <input id="qzbh" name="qzbh" th:value="*{lm.qzbh}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">附记：</label>
+                        <div class="col-sm-8">
+                            <input id="fj" name="fj" th:value="*{lm.fj}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">排序：</label>
+                        <div class="col-sm-8">
+                            <input id="seq" name="seq" th:value="*{lm.seq}" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <!--<div class="form-group">
+                        <label class="col-sm-3 control-label">人像：</label>
+                        <div class="col-sm-8">
+                            <input id="image" name="image" th:value="*{lm.image}" class="form-control" type="text">
+                        </div>
+                    </div>-->
+
+                </form>
+            </div>
+
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                <h3>附件目录</h3>
+                <p th:each="lm : ${filemanagerDirectory}">
+                    <input type="hidden" th:value="*{lm.id}">
+                    <button type="button" class="btn btn-default" th:text="*{lm.dirname}" onclick="tagImag(this)"></button>
+                </p>
+            </div>
+
+            <div class="col-sm-3 col-md-3 col-lg-3">
+				<!--附件路径-->
+                <p id="duotupian"></p>
+            </div>
+		</div>
+    </div>
+    <div th:include="include::footer"></div>
+    <script type="text/javascript">
+		var prefix = ctx + "basp/ggfcHb";
+        var prefix2 = ctx + "basp/djGgQlrmx";
+
+		$("#form-ggfcHb-edit").validate({
+			rules:{
+				xxxx:{
+					required:true,
+				},
+			},
+			focusCleanup: true
+		});
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+                $.operate.save(prefix + "/editDataClean", $('#form-ggfcHb-edit').serialize());
+                $('.form-djGgQlrmx-edit').each(function(){
+                    $.operate.save(prefix2 + "/editDataClean", $(this).serialize());
+                })
+	        }
+	    }
+
+
+        function tagImag(obj){
+            var ds = {"id": $(obj).siblings("input").val()};
+            var url = prefix + "/filemanager";
+            $.ajax({
+                url: url,
+                type: "post",
+                dataType: "json",
+                data: ds,
+                success: function(data) {
+                    $("#duotupian").empty();
+                    var shtml = "<h3>" + $(obj).text() +"</h3><br/>"
+                    $.each(data.data,function(i,v){
+                        shtml += v.ftppath+"<br/>";
+                    })
+                    $("#duotupian").html(shtml)
+                },
+                error: function () {
+                    $.modal.alertError("网络错误");
+                },
+            })
+        }
+	</script>
+</body>
+</html>

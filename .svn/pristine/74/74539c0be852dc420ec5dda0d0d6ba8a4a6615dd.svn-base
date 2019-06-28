@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('权利人明细_簿载层列表')" />
+	<!--<link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>-->
+</head>
+<body class="gray-bg">
+    
+     <div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="formId">
+					<div class="select-list">
+						<ul>
+							<li>
+								用户：
+								<input type="text" id="owner" name="owner" />
+							</li>
+
+							<li>
+								表名：
+								<input type="text" id="tablename" name="tablename" />
+							</li>
+
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="loadtable()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+								<a class="btn btn-default btn-rounded btn-sm" onclick="$.table.exportExcel()"><i class="fa fa-download"></i> 导出</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+
+			<div class="col-sm-12 select-table table-striped">
+				<table class="table table-bordered" id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+    <div th:include="include :: footer"></div>
+	 <!--<script src="../../../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+	 <script src="../../../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>-->
+    <script th:inline="javascript">
+        var prefix = ctx + "basp/djGgQlrmx";
+
+        $(function() {
+            loadtable();
+        })
+
+		function loadtable(){
+            var mydata = {
+                "owner":$("#owner").val(),
+                "tablename":$("#tablename").val()
+            };
+            $.ajax({
+                url: prefix + "/list",
+                type : 'POST',
+                dataType : 'json',
+                data : JSON.stringify(mydata),
+                contentType : 'application/json',
+                success : function(data) {
+                    $("#bootstrap-table").empty();
+                    var trHtml = "<tr>";
+                    var tdHtml = "";
+                    for(var i in data.rows){
+                        tdHtml += "<tr>";
+                        for(var key in data.rows[i]){
+                            if(i==0){
+                                trHtml += "<th>" + key + "</th>";
+                            }
+                            tdHtml += "<td>";
+                            tdHtml += data.rows[i][key];
+                            tdHtml += "</td>";
+                        }
+                        trHtml += "</tr>";
+                    }
+                    $("#bootstrap-table").append(trHtml);
+                    $("#bootstrap-table").append(tdHtml);
+
+                },
+                error : function() {
+                    alert('Err...');
+                }
+            });
+		}
+
+    </script>
+</body>
+</html>
